@@ -5,8 +5,10 @@ public class Dungeon {
     private int width;
     private int gameHeight;
 
-    public void getDungeon(String name, int width, int gameHeight) {
-
+    public void getDungeon(String _name, int _width, int _gameHeight) {
+        name = _name;
+        width = _width;
+        gameHeight = _gameHeight;
     }
 
     public void addRoom(Room room) {
