@@ -1,0 +1,11 @@
+            <Player name="Player" room="1" serial="1">
+                <visible>1</visible>
+                <posX>1</posX>
+                <posY>1</posY>
+                <hp>100</hp>
+                <maxhit>1</maxhit>
+                <hpMoves>5</hpMoves>
+                <CreatureAction name="DropPack" type="hit">
+                    <actionMessage>You have dropped an item from your pack!</actionMessage>
+                </CreatureAction>
+            </Player>
