@@ -10,33 +10,33 @@ public abstract class Displayable {
     private int width;
     private int height;
 
-    public void setInvisible() { visible = false; }
+    public void setInvisible() { this.visible = false; }
 
-    public void setVisible() { visible = true; }
+    public void setVisible() { this.visible = true; }
 
-    public void setMaxhit(int _maxHit) { maxHit = _maxHit; }
+    public void setMaxhit(int _maxHit) { this.maxHit = _maxHit; }
 
     public void setHpMoves(int _hpMoves) {
-        hpMoves = _hpMoves;
+        this.hpMoves = _hpMoves;
     }
 
-    public void setHp(int _hp) { hp = _hp; }
+    public void setHp(int _hp) { this.hp = _hp; }
 
     public void setType(char _type) {
-        type = _type;
+        this.type = _type;
     }
 
     public void setIntValue(int _value) {
-        value = _value;
+        this.value = _value;
     }
 
     public void setPosX(int _x) {
-        posX = _x;
+        this.posX = _x;
     }
 
-    public void setPosY(int _y) { posY = _y; }
+    public void setPosY(int _y) { this.posY = _y; }
 
-    public void setWidth(int _width) { width = _width; }
+    public void setWidth(int _width) { this.width = _width; }
 
-    public void setHeight(int _height) { height = _height; }
+    public void setHeight(int _height) { this.height = _height; }
 }

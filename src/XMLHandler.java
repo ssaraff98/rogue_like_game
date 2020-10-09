@@ -26,11 +26,7 @@ public class XMLHandler extends DefaultHandler{
     private Room roomBeingParsed = null;
 
     // Declaring variables for dungeon dimensions
-    private String name = null;
-    private int width = -1;
-    private int gameHeight = -1;
     private int topHeight = -1;
-    private int bottomHeight = -1;
 
     // Declaring bX fields corresponding to those in the xml files
     private boolean bActionMessage = false;
@@ -64,17 +60,21 @@ public class XMLHandler extends DefaultHandler{
         // Dungeon
         if (qName.equalsIgnoreCase("Dungeon")) {
             bDungeon = true;
-            name = attributes.getValue("name");
-            width = Integer.parseInt(attributes.getValue("width"));
-            gameHeight = Integer.parseInt(attributes.getValue("gameHeight"));
+            String name = attributes.getValue("name");
+            int width = Integer.parseInt(attributes.getValue("width"));
+            int gameHeight = Integer.parseInt(attributes.getValue("gameHeight"));
             topHeight = Integer.parseInt(attributes.getValue("topHeight"));
-            bottomHeight = Integer.parseInt(attributes.getValue("bottomHeight"));
+            int bottomHeight = Integer.parseInt(attributes.getValue("bottomHeight"));
+
             dungeonBeingParsed = new Dungeon();
             dungeonBeingParsed.getDungeon(name, width, gameHeight);
+
+            ObjectDisplayGrid displayableGrid = new ObjectDisplayGrid();
+            displayableGrid.getObjectDisplayGrid(gameHeight, width, topHeight);
         }
         //
         else if (qName.equalsIgnoreCase("Room")) {
-
+            bRoom = true;
         }
     }
 }

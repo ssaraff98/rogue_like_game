@@ -4,11 +4,11 @@ public class Creature extends Displayable {
 
     @Override
     public void setHpMoves(int _hpMoves) {
-        hpMoves = _hpMoves;
+        this.hpMoves = _hpMoves;
     }
 
     @Override
-    public void setHp(int _hp) { hp = _hp; }
+    public void setHp(int _hp) { this.hp = _hp; }
 
     public void setHitAction(CreatureAction _hitAction) {
 
