@@ -6,5 +6,7 @@ public class EndGame extends CreatureAction {
         super(_owner);
         name = _name;
         owner = _owner;
+
+        System.out.println("Endgame Name: " + _name + " Owner: "+owner);
     }
 }

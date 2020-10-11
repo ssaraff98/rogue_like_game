@@ -6,10 +6,12 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 
 public class Test {
-    private static final String directory = "src/xmlfiles/";
+    private static final String directory = "src/xmlfiles";
 
     public static void main(String[] args) {
-        String fileName = null;
+//        String fileName = directory + "dungeon.xml";
+
+        String fileName  = null;
 
         // Checking if file name has been passed in
         // If only 1 argument is passed, getting file name

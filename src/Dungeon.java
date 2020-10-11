@@ -10,18 +10,22 @@ public class Dungeon {
     }
 
     public void addRoom(Room _room) {
+        System.out.println("Room: " +  _room);
 
     }
 
     public void addCreature(Creature _creature) {
+        System.out.println("Creature: " + _creature);
 
     }
 
     public void addPassage(Passage _passage) {
+        System.out.println("Passage: " + _passage);
 
     }
 
     public void addItem(Item _item) {
+        System.out.println("Item: " + _item);
 
     }
 }

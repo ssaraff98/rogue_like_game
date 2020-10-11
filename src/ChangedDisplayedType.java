@@ -6,5 +6,8 @@ public class ChangedDisplayedType extends CreatureAction {
         super(_owner);
         name = _name;
         owner = _owner;
+
+        System.out.println("Creature Name: " + _name + " Creature owner: "+_owner);
+
     }
 }
