@@ -9,7 +9,7 @@ public class Test {
     private static final String directory = "xmlfiles/";
 
     public static void main(String[] args) {
-        String fileName = directory + "wear.xml";
+        String fileName = directory + args[0];
 
 //        String fileName  = null;
 
