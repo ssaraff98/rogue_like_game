@@ -9,20 +9,18 @@ public class Test {
     private static final String directory = "xmlfiles/";
 
     public static void main(String[] args) {
-        String fileName = directory + args[0];
-
-//        String fileName  = null;
+        String fileName  = null;
 
         // Checking if file name has been passed in
         // If only 1 argument is passed, getting file name
         // Else, printing usage message
-//        if (args.length == 1) {
-//            fileName = directory + args[0];
-//        }
-//        else {
-//            System.out.println("Usage: java Test <xmlfilename>.xml");
-//            return;
-//        }
+        if (args.length == 1) {
+            fileName = directory + args[0];
+        }
+        else {
+            System.out.println("Usage: java Test <xmlfilename>.xml");
+            return;
+        }
 
         // Creating a saxParserFactory for creation of a parser
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
