@@ -38,7 +38,10 @@ public class XMLHandler extends DefaultHandler{
     private boolean bMonster = false; //added M
     private boolean bCreatureAction = false; //added M
     private boolean bScroll = false; //added M
+    private boolean bSword = false; //added M
     private boolean bItemAction = false; //added M
+    private boolean bPassage = false; //added M
+    private boolean bPlayer = false; //added M
     private boolean bHeight = false;
     private boolean bHP = false;
     private boolean bHPMoves = false;
@@ -88,13 +91,27 @@ public class XMLHandler extends DefaultHandler{
             displayableGrid.getObjectDisplayGrid(gameHeight, width, topHeight);
         }
         //
+
+        else if (qName.equalsIgnoreCase("Player")) {
+            bPlayer = true;
+            System.out.println("\n");
+            String name = attributes.getValue("name");
+            String room = attributes.getValue("room");
+            String serial = attributes.getValue("serial");
+            System.out.println("Player Name:"+ name);
+            System.out.println("Player Room: "+ room);
+            System.out.println("Player Serial: "+serial);
+            flag = 1;
+        }
         else if (qName.equalsIgnoreCase("Room")) {
             bRoom = true;
+            System.out.println("\n");
             String room = attributes.getValue("room");
             System.out.println("room: "+room);
             flag = 1;
         }
         else if (qName.equalsIgnoreCase("Monster")) {
+            System.out.println("\n");
             bMonster = true;
             String name = attributes.getValue("name");
             String room = attributes.getValue("room");
@@ -105,14 +122,38 @@ public class XMLHandler extends DefaultHandler{
             flag = 1;
         }
         else if (qName.equalsIgnoreCase("CreatureAction")) {
+            System.out.println("\n");
             bCreatureAction = true;
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
-            System.out.println("Creature Name: "+ name);
-            System.out.println("Creature type: "+type);
+            System.out.println("CreatureAction Name: "+ name);
+            System.out.println("CreatureAction Type: "+type);
+            flag = 1;
+        }
+        else if (qName.equalsIgnoreCase("Sword")) {
+            System.out.println("\n");
+            bSword = true;
+            String name = attributes.getValue("name");
+            String room = attributes.getValue("room");
+            String serial = attributes.getValue("serial");
+            System.out.println("Sword Name:"+ name);
+            System.out.println("Sword Room: "+ room);
+            System.out.println("Sword Serial: "+serial);
+            flag = 1;
+        }
+        else if (qName.equalsIgnoreCase("Armor")) {
+            System.out.println("\n");
+            bSword = true;
+            String name = attributes.getValue("name");
+            String room = attributes.getValue("room");
+            String serial = attributes.getValue("serial");
+            System.out.println("Armor Name:"+ name);
+            System.out.println("Armor Room: "+ room);
+            System.out.println("Armor Serial: "+serial);
             flag = 1;
         }
         else if (qName.equalsIgnoreCase("Scroll")) {
+            System.out.println("\n");
             bScroll = true;
             String name = attributes.getValue("name");
             String room = attributes.getValue("room");
@@ -124,6 +165,7 @@ public class XMLHandler extends DefaultHandler{
 
         }
         else if (qName.equalsIgnoreCase("ItemAction")) {
+            System.out.println("\n");
             bItemAction = true;
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
@@ -133,6 +175,18 @@ public class XMLHandler extends DefaultHandler{
 
 
         }
+        else if (qName.equalsIgnoreCase("Passage")) {
+            System.out.println("\n");
+            bPassage = true;
+            String room1 = attributes.getValue("room1");
+            String room2 = attributes.getValue("room2");
+            System.out.println("Passage Room1: "+room1);
+            System.out.println("Passage Room2: "+room2);
+            flag = 1;
+
+
+        }
+
         else if (qName.equalsIgnoreCase("visible")) {
             flag = 0;
             System.out.print("Visible: ");
@@ -198,17 +252,29 @@ public class XMLHandler extends DefaultHandler{
             bActionIntValue = true;
             System.out.print("Action Value: ");
         }
+        else if (qName.equalsIgnoreCase("actionCharValue")) {
+            flag = 0;
+            bActionCharValue = true;
+            System.out.print("Action Char Value: ");
+        }
     }
 
     public void characters(char ch[], int start, int length) throws SAXException {
-
+            String result = new String(ch, start, length);
+            //result.replace(" ","");
+            if(result.trim().length()>0){
             System.out.println(new String(ch, start, length));
-        //}
+        }
 
 
 
 
     }
+
+//    public void ignorableWhitespace (char buf[], int start, int length) throws SAXException { emit("IGNORABLE"); }
+//
+//    private void emit(String ignorable) {
+//    }
 //    @Override
 //    public void endElement(String uri, String localName, String qName) throws SAXException {
 //        Course course;

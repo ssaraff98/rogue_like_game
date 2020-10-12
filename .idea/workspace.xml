@@ -20,23 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dungeon.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BlessCurseOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BlessCurseOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChangedDisplayedType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChangedDisplayedType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CreatureAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreatureAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Displayable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Displayable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DropPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DropPack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rogue_like_game/Dungeon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rogue_like_game/Dungeon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rogue_like_game/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rogue_like_game/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rogue_like_game/XMLHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rogue_like_game/XMLHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dungeon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EndGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hallucinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hallucinate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XMLHandler.java" afterDir="false" />
     </list>
@@ -125,21 +113,21 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1602380981509" />
-    <state width="1237" height="294" key="GridCell.Tab.0.bottom" timestamp="1602392843472">
+    <state width="1237" height="253" key="GridCell.Tab.0.bottom" timestamp="1602470618934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1602392843472" />
-    <state width="1237" height="294" key="GridCell.Tab.0.center" timestamp="1602392843472">
+    <state width="1237" height="253" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1602470618934" />
+    <state width="1237" height="253" key="GridCell.Tab.0.center" timestamp="1602470618934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1602392843472" />
-    <state width="1237" height="294" key="GridCell.Tab.0.left" timestamp="1602392843472">
+    <state width="1237" height="253" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1602470618934" />
+    <state width="1237" height="253" key="GridCell.Tab.0.left" timestamp="1602470618934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1602392843472" />
-    <state width="1237" height="294" key="GridCell.Tab.0.right" timestamp="1602392843472">
+    <state width="1237" height="253" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1602470618934" />
+    <state width="1237" height="253" key="GridCell.Tab.0.right" timestamp="1602470618934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1602392843472" />
+    <state width="1237" height="253" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1602470618934" />
   </component>
 </project>

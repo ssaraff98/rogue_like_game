@@ -6,7 +6,7 @@ public class Dungeon {
     private int gameHeight;
 
     public void getDungeon(String _name, int _width, int _gameHeight) {
-        System.out.println("Dungeon name: " + _name + " width: " + _width + " gameHeight: " + _gameHeight);
+        System.out.println("Dungeon name: " + _name + "\n"+"width: " + _width + "\n"+"gameHeight: " + _gameHeight);
     }
 
     public void addRoom(Room _room) {
