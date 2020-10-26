@@ -11,21 +11,13 @@
                <posY>4</posY>
                <type>T</type>
                <hp>7</hp>
-               <Armor name="+7 Armor" room="1" serial="2">
-                   <visible>1</visible>
-                   <ItemIntValue>7</ItemIntValue>
-               </Armor>
                <maxhit>10</maxhit>
            </Monster>
            <Monster name="Snake" room="1" serial="3">
-               <posX>6</posX>
-               <posY>7</posY>
+               <posX>5</posX>
+               <posY>5</posY>
                <type>S</type>
                <hp>2</hp>
-               <Armor name="+2 Armor" room="1" serial="4">
-                   <visible>1</visible>
-                   <ItemIntValue>4</ItemIntValue>
-               </Armor>
                <maxhit>1</maxhit>
            </Monster>
             <Player name="Player" room="1" serial="5">
@@ -42,7 +34,7 @@
        </Room>
        <Room room="2">
            <posX>20</posX>
-           <posY>30</posY>
+           <posY>28</posY>
            <width>10</width>
            <height>12</height>
            <Monster name="Troll" room="2" serial="1">
@@ -50,10 +42,6 @@
                <posY>4</posY>
                <type>T</type>
                <hp>7</hp>
-               <Armor name="+7 Armor" room="2" serial="2">
-                   <visible>1</visible>
-                   <ItemIntValue>7</ItemIntValue>
-               </Armor>
                <maxhit>10</maxhit>
            </Monster>
            <Monster name="Snake" room="2" serial="3">
@@ -61,10 +49,6 @@
                <posy>7</posy>
                <type>S</type>
                <hp>2</hp>
-               <Armor name="+2 Armor" room="2" serial="4">
-                   <visible>1</visible>
-                   <ItemIntValue>4</ItemIntValue>
-               </Armor>
                <maxhit>1</maxhit>
            </Monster>
        </Room>
