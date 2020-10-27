@@ -34,19 +34,19 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         topHeight = _topHeight;
         bottomHeight = _bottomHeight;
 
-//        terminal = new AsciiPanel(width, gameHeight);
-//        objectGrid = new Char[width][gameHeight];
-//
-//        initializeDisplay();
-//
-//        super.add(terminal);
-//        super.setSize(width * 9, gameHeight * 16);
-//        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        super.setVisible(true);
-//        terminal.setVisible(true);
-//        super.addKeyListener(this);
-//        inputObservers = new ArrayList<>();
-//        super.repaint();
+        terminal = new AsciiPanel(width, gameHeight);
+        objectGrid = new Char[width][gameHeight];
+
+        initializeDisplay();
+
+        super.add(terminal);
+        super.setSize(width * 9, gameHeight * 16);
+        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super.setVisible(true);
+        terminal.setVisible(true);
+        super.addKeyListener(this);
+        inputObservers = new ArrayList<>();
+        super.repaint();
     }
 
     public ObjectDisplayGrid getObjectDisplayGrid(int _gameHeight, int _width, int _topHeight, int _bottomHeight) {
@@ -85,14 +85,14 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
+    // we have to override, but we don't use this
     @Override
     public void keyPressed(KeyEvent even) {
-
     }
 
+    // we have to override, but we don't use this
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     public final void initializeDisplay() {

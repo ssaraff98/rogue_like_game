@@ -12,6 +12,78 @@ public abstract class Displayable {
     private int width;
     private int height;
 
+    public void setHeight(int _height) {
+        this.height = _height;
+        System.out.println("Height: " + _height);
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public void setHp(int _hp) {
+        this.hp = _hp;
+        System.out.println("Hitpoint: " + _hp);
+    }
+
+    public int getHp() {
+        return this.hp;
+    }
+
+    public void setHpMoves(int _hpMoves) {
+        this.hpMoves = _hpMoves;
+        System.out.println("HpMoves: " + hpMoves);
+    }
+
+    public int getHpMoves() {
+        return this.hpMoves;
+    }
+
+    public void setIntValue(int _value) {
+        this.value = _value;
+        System.out.println("Value: " + value);
+    }
+
+    public int getIntValue() {
+        return this.value;
+    }
+
+    public void setMaxhit(int _maxHit) {
+        this.maxHit = _maxHit;
+        System.out.println("MaxHit: " + _maxHit);
+    }
+
+    public int getMaxHit() {
+        return this.maxHit;
+    }
+
+    public void setPosX(int _x) {
+        this.posX = _x;
+        System.out.println("PosX: " + _x);
+    }
+
+    public int getPosX() {
+        return this.posX;
+    }
+
+    public void setPosY(int _y) {
+        this.posY = _y;
+        System.out.println("PosY: " + _y);
+    }
+
+    public int getPosY() {
+        return this.posY;
+    }
+
+    public void setType(char _type) {
+        this.type = _type;
+        System.out.println("Type: " + _type);
+    }
+
+    public char getType() {
+        return this.type;
+    }
+
     public void setInvisible() {
         this.visible = false;
         System.out.println("Visible: " + false);
@@ -22,39 +94,8 @@ public abstract class Displayable {
         System.out.println("Visible: " + true);
     }
 
-    public void setMaxhit(int _maxHit) {
-        this.maxHit = _maxHit;
-        System.out.println("MaxHit: " + _maxHit);
-    }
-
-    public void setHpMoves(int _hpMoves) {
-        this.hpMoves = _hpMoves;
-        System.out.println("HpMoves: " + hpMoves);
-    }
-
-    public void setHp(int _hp) {
-        this.hp = _hp;
-        System.out.println("Hitpoint: " + _hp);
-    }
-
-    public void setType(char _type) {
-        this.type = _type;
-        System.out.println("Type: " + _type);
-    }
-
-    public void setIntValue(int _value) {
-        this.value = _value;
-        System.out.println("Value: " + value);
-    }
-
-    public void setPosX(int _x) {
-        this.posX = _x;
-        System.out.println("PosX: " + _x);
-    }
-
-    public void setPosY(int _y) {
-        this.posY = _y;
-        System.out.println("PosY: " + _y);
+    public boolean getVisible() {
+        return this.visible;
     }
 
     public void setWidth(int _width) {
@@ -62,8 +103,7 @@ public abstract class Displayable {
         System.out.println("Width: " + _width);
     }
 
-    public void setHeight(int _height) {
-        this.height = _height;
-        System.out.println("Height: " + _height);
+    public int getWidth() {
+        return this.width;
     }
 }

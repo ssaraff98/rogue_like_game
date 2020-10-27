@@ -45,7 +45,6 @@ public class XMLHandler extends DefaultHandler {
     private Stack<Displayable> displayableStack = null;
     private Stack<Action> actionStack = null;
 
-    // Declaring variables to store current room and dungeon being parsed
     private ObjectDisplayGrid displayGrid = new ObjectDisplayGrid();
     private Dungeon dungeonBeingParsed = new Dungeon();
     private Room roomBeingParsed = new Room();
@@ -373,6 +372,11 @@ public class XMLHandler extends DefaultHandler {
         // Room tag
         else if (qName.equalsIgnoreCase("Room")) {
             bRoom = false;
+
+            int posX = displayableStack.lastElement().getPosX();
+            int posY = displayableStack.lastElement().getPosY();
+            // displayGrid.addObjectToDisplay('X', posX, posY);
+
             roomBeingParsed = null;
             displayableStack.pop();
         }
