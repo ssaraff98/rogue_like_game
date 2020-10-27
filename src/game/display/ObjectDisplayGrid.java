@@ -1,11 +1,14 @@
 package game.display;
 
+import game.displayable.Displayable;
+
 import asciiPanel.AsciiPanel;
 import java.io.IOException;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubject {
     private static final int DEBUG = 0;
@@ -13,6 +16,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     private static AsciiPanel terminal;
     private Char[][] objectGrid = null;
+    // private Stack<Displayable>[][] objectGrid = null;
 
     private List<InputObserver> inputObservers = null;
 
@@ -36,6 +40,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
         terminal = new AsciiPanel(width, gameHeight);
         objectGrid = new Char[width][gameHeight];
+        // objectGrid = (Stack<Displayable>[][]) new Stack[width][gameHeight];
 
         initializeDisplay();
 

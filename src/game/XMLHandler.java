@@ -375,7 +375,7 @@ public class XMLHandler extends DefaultHandler {
 
             int posX = displayableStack.lastElement().getPosX();
             int posY = displayableStack.lastElement().getPosY();
-            // displayGrid.addObjectToDisplay('X', posX, posY);
+            // displayGrid.addObjectToDisplay(new Char('X'), posX, posY);
 
             roomBeingParsed = null;
             displayableStack.pop();
