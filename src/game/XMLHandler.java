@@ -118,6 +118,7 @@ public class XMLHandler extends DefaultHandler {
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
 
+            // actionStack.push();
         }
         // ItemAction tag
         else if (qName.equalsIgnoreCase("ItemAction")) {
@@ -125,6 +126,7 @@ public class XMLHandler extends DefaultHandler {
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
 
+            // actionStack.push();
         }
         // Monster tag
         else if (qName.equalsIgnoreCase("Monster")) {
@@ -271,42 +273,65 @@ public class XMLHandler extends DefaultHandler {
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (bActionCharValue) {
             bActionCharValue = false;
+            // actionStack.lastElement().setCharValue(data.toString().charAt(0));
         }
         else if (bActionIntValue) {
             bActionIntValue = false;
+            // actionStack.lastElement().setIntValue(Integer.parseInt(data.toString()));
         }
         else if (bActionMessage) {
             bActionMessage = false;
+            // actionStack.lastElement().setMessage(data.toString());
         }
         else if (bHeight) {
             bHeight = false;
+            displayableStack.lastElement().setHeight(Integer.parseInt(data.toString()));
         }
         else if (bHP) {
             bHP = false;
+            displayableStack.lastElement().setHp(Integer.parseInt(data.toString()));
         }
         else if (bHPMoves) {
             bHPMoves = false;
+            displayableStack.lastElement().setHpMoves(Integer.parseInt(data.toString()));
         }
         else if (bItemIntValue) {
             bItemIntValue = false;
+            displayableStack.lastElement().setIntValue(Integer.parseInt(data.toString()));
         }
         else if (bMaxHit) {
             bMaxHit = false;
+            displayableStack.lastElement().setMaxhit(Integer.parseInt(data.toString()));
         }
         else if (bPosX) {
             bPosX = false;
+            displayableStack.lastElement().setPosX(Integer.parseInt(data.toString()));
         }
         else if (bPosY) {
             bPosY = false;
+            displayableStack.lastElement().setPosY(Integer.parseInt(data.toString()));
         }
         else if (bType) {
             bType = false;
+            displayableStack.lastElement().setType(data.toString().charAt(0));
         }
         else if (bVisible) {
             bVisible = false;
+            int visible = Integer.parseInt(data.toString());
+
+            if (visible == 1) {
+                displayableStack.lastElement().setVisible();
+            }
+            else if (visible == 0) {
+                displayableStack.lastElement().setInvisible();
+            }
+            else {
+                System.out.println("Visible value " + visible + " is invalid");
+            }
         }
         else if (bWidth) {
             bWidth = false;
+            displayableStack.lastElement().setWidth(Integer.parseInt(data.toString()));
         }
 
         // Dungeon tag
@@ -318,14 +343,17 @@ public class XMLHandler extends DefaultHandler {
         // Armor tag
         else if (qName.equalsIgnoreCase("Armor")) {
             bArmor = false;
+            displayableStack.pop();
         }
         // CreatureAction tag
         else if (qName.equalsIgnoreCase("CreatureAction")) {
             bCreatureAction = false;
+            // actionStack.pop();
         }
         // ItemAction tag
         else if (qName.equalsIgnoreCase("ItemAction")) {
             bItemAction = false;
+            // actionStack.pop();
         }
         // Monster tag
         else if (qName.equalsIgnoreCase("Monster")) {
