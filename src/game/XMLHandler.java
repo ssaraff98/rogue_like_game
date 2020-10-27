@@ -46,9 +46,9 @@ public class XMLHandler extends DefaultHandler {
     private Stack<Action> actionStack = null;
 
     // Declaring variables to store current room and dungeon being parsed
-    private ObjectDisplayGrid displayGrid = null;
-    private Dungeon dungeonBeingParsed = null;
-    private Room roomBeingParsed = null;
+    private ObjectDisplayGrid displayGrid = new ObjectDisplayGrid();
+    private Dungeon dungeonBeingParsed = new Dungeon();
+    private Room roomBeingParsed = new Room();
 
     private boolean bActionCharValue = false;
     private boolean bActionIntValue = false;
@@ -85,8 +85,6 @@ public class XMLHandler extends DefaultHandler {
             System.out.println(CLASSID + ".startElement qName: " + qName);
         }
 
-        data = new StringBuilder();
-
         // Dungeon tag
         if (qName.equalsIgnoreCase("Dungeon")) {
             bDungeon = true;
@@ -96,25 +94,10 @@ public class XMLHandler extends DefaultHandler {
             int topHeight = Integer.parseInt(attributes.getValue("topHeight"));
             int bottomHeight = Integer.parseInt(attributes.getValue("bottomHeight"));
 
-            displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
+            displayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
 
-            dungeonBeingParsed = Dungeon.getDungeon(name, width, gameHeight);
+            dungeonBeingParsed.getDungeon(name, width, gameHeight);
             displayableStack.push(dungeonBeingParsed);
-        }
-        // ActionCharValue tag
-        else if (qName.equalsIgnoreCase("actionCharValue")) {
-            bActionCharValue = true;
-
-        }
-        // ActionIntValue tag
-        else if (qName.equalsIgnoreCase("actionIntValue")) {
-            bActionIntValue = true;
-
-        }
-        // ActionMessage tag
-        else if (qName.equalsIgnoreCase("actionMessage")) {
-            bActionMessage = true;
-
         }
         // Armor tag
         else if (qName.equalsIgnoreCase("Armor")) {
@@ -136,36 +119,11 @@ public class XMLHandler extends DefaultHandler {
             String type = attributes.getValue("type");
 
         }
-        // Height tag
-        else if (qName.equalsIgnoreCase("height")) {
-            bHeight = true;
-
-        }
-        // HP tag
-        else if (qName.equalsIgnoreCase("hp")) {
-            bHP = true;
-
-        }
-        // HPMoves tag
-        else if (qName.equalsIgnoreCase("hpMoves")) {
-            bHPMoves = true;
-
-        }
-        // ItemIntValue tag
-        else if (qName.equalsIgnoreCase("ItemIntValue")) {
-            bItemIntValue = true;
-
-        }
         // ItemAction tag
         else if (qName.equalsIgnoreCase("ItemAction")) {
             bItemAction = true;
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
-
-        }
-        // MaxHit tag
-        else if (qName.equalsIgnoreCase("maxhit")) {
-            bMaxHit = true;
 
         }
         // Monster tag
@@ -208,16 +166,6 @@ public class XMLHandler extends DefaultHandler {
 
             displayableStack.push(player);
         }
-        // PosX tag
-        else if (qName.equalsIgnoreCase("PosX")) {
-            bPosX = true;
-
-        }
-        // PosY tag
-        else if (qName.equalsIgnoreCase("PosY")) {
-            bPosY = true;
-
-        }
         // Room tag
         else if (qName.equalsIgnoreCase("Room")) {
             bRoom = true;
@@ -228,6 +176,10 @@ public class XMLHandler extends DefaultHandler {
             roomBeingParsed.setId(room);
 
             displayableStack.push(roomBeingParsed);
+        }
+        // Rooms tag
+        else if (qName.equalsIgnoreCase("Rooms")) {
+            // Do nothing
         }
         // Scroll tag
         else if (qName.equalsIgnoreCase("Scroll")) {
@@ -255,27 +207,165 @@ public class XMLHandler extends DefaultHandler {
 
             displayableStack.push(sword);
         }
+
+        // ActionCharValue tag
+        else if (qName.equalsIgnoreCase("actionCharValue")) {
+            bActionCharValue = true;
+        }
+        // ActionIntValue tag
+        else if (qName.equalsIgnoreCase("actionIntValue")) {
+            bActionIntValue = true;
+        }
+        // ActionMessage tag
+        else if (qName.equalsIgnoreCase("actionMessage")) {
+            bActionMessage = true;
+        }
+        // Height tag
+        else if (qName.equalsIgnoreCase("height")) {
+            bHeight = true;
+        }
+        // HP tag
+        else if (qName.equalsIgnoreCase("hp")) {
+            bHP = true;
+        }
+        // HPMoves tag
+        else if (qName.equalsIgnoreCase("hpMoves")) {
+            bHPMoves = true;
+        }
+        // ItemIntValue tag
+        else if (qName.equalsIgnoreCase("ItemIntValue")) {
+            bItemIntValue = true;
+        }
+        // MaxHit tag
+        else if (qName.equalsIgnoreCase("maxhit")) {
+            bMaxHit = true;
+        }
+        // PosX tag
+        else if (qName.equalsIgnoreCase("PosX")) {
+            bPosX = true;
+        }
+        // PosY tag
+        else if (qName.equalsIgnoreCase("PosY")) {
+            bPosY = true;
+        }
         // Type tag
         else if (qName.equalsIgnoreCase("type")) {
             bType = true;
-
         }
         // Visible tag
         else if (qName.equalsIgnoreCase("visible")) {
             bVisible = true;
-
         }
         // Width tag
         else if (qName.equalsIgnoreCase("width")) {
             bWidth = true;
-
         }
+        else {
+            System.out.println("Unknown qname: " + qName);
+        }
+
+        data = new StringBuilder();
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (bDungeon) {
+        if (bActionCharValue) {
+            bActionCharValue = false;
+        }
+        else if (bActionIntValue) {
+            bActionIntValue = false;
+        }
+        else if (bActionMessage) {
+            bActionMessage = false;
+        }
+        else if (bHeight) {
+            bHeight = false;
+        }
+        else if (bHP) {
+            bHP = false;
+        }
+        else if (bHPMoves) {
+            bHPMoves = false;
+        }
+        else if (bItemIntValue) {
+            bItemIntValue = false;
+        }
+        else if (bMaxHit) {
+            bMaxHit = false;
+        }
+        else if (bPosX) {
+            bPosX = false;
+        }
+        else if (bPosY) {
+            bPosY = false;
+        }
+        else if (bType) {
+            bType = false;
+        }
+        else if (bVisible) {
+            bVisible = false;
+        }
+        else if (bWidth) {
+            bWidth = false;
+        }
+
+        // Dungeon tag
+        if (qName.equalsIgnoreCase("Dungeon")) {
             bDungeon = false;
+            dungeonBeingParsed = null;
+            displayableStack.pop();
+        }
+        // Armor tag
+        else if (qName.equalsIgnoreCase("Armor")) {
+            bArmor = false;
+        }
+        // CreatureAction tag
+        else if (qName.equalsIgnoreCase("CreatureAction")) {
+            bCreatureAction = false;
+        }
+        // ItemAction tag
+        else if (qName.equalsIgnoreCase("ItemAction")) {
+            bItemAction = false;
+        }
+        // Monster tag
+        else if (qName.equalsIgnoreCase("Monster")) {
+            bMonster = false;
+            displayableStack.pop();
+        }
+        // Passage tag
+        else if (qName.equalsIgnoreCase("Passage")) {
+            bPassage = false;
+            displayableStack.pop();
+        }
+        // Player tag
+        else if (qName.equalsIgnoreCase("Player")) {
+            bPlayer = false;
+            displayableStack.pop();
+        }
+        // Room tag
+        else if (qName.equalsIgnoreCase("Room")) {
+            bRoom = false;
+            roomBeingParsed = null;
+            displayableStack.pop();
+        }
+        // Scroll tag
+        else if (qName.equalsIgnoreCase("Scroll")) {
+            bScroll = false;
+            displayableStack.pop();
+        }
+        // Sword tag
+        else if (qName.equalsIgnoreCase("Sword")) {
+            bSword = false;
+            displayableStack.pop();
+        }
+    }
+
+    @Override
+    public void characters(char ch[], int start, int length) throws SAXException {
+        data.append(new String(ch, start, length));
+        if (DEBUG > 1) {
+            System.out.println(CLASSID + ".characters: " + new String(ch, start, length));
+            System.out.flush();
         }
     }
 }

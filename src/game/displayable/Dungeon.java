@@ -11,6 +11,16 @@ public class Dungeon extends Displayable {
     private String name;
     private int width;
     private int gameHeight;
+    private ArrayList<Creature> creatures = new ArrayList<Creature>();
+    private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<Passage> passages = new ArrayList<Passage>();
+    private ArrayList<Room> rooms = new ArrayList<Room>();
+
+    public Dungeon() {
+        name = "";
+        width = -1;
+        gameHeight = -1;
+    }
 
     public Dungeon(String _name, int _width, int _gameHeight) {
         name = _name;
@@ -26,23 +36,11 @@ public class Dungeon extends Displayable {
         return dungeon;
     }
 
-    public void addRoom(Room _room) {
-        System.out.println("Room: " +  _room);
+    public void addCreature(Creature _creature) { creatures.add(_creature); }
 
-    }
+    public void addItem(Item _item) { items.add(_item); }
 
-    public void addCreature(Creature _creature) {
-        System.out.println("Creature: " + _creature);
+    public void addPassage(Passage _passage) { passages.add(_passage); }
 
-    }
-
-    public void addPassage(Passage _passage) {
-        System.out.println("Passage: " + _passage);
-
-    }
-
-    public void addItem(Item _item) {
-        System.out.println("Item: " + _item);
-
-    }
+    public void addRoom(Room _room) { rooms.add(_room); }
 }

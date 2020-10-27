@@ -1,5 +1,7 @@
 package game;
 
+import game.display.ObjectDisplayGrid;
+
 import java.io.File;
 import java.io.IOException;
 

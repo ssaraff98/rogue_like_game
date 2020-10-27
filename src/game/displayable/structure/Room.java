@@ -6,6 +6,8 @@ public class Room extends Structure {
     private int room;
     private Creature creature;
 
+    public Room() { room = -1; }
+
     public Room(int _room) { room = _room; }
 
     public void setId(int _room) { this.room = _room; }
