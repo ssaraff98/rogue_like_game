@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiCharacterData.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiCharacterData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiFont.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiFont.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asciiPanel/TileTransformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/TileTransformer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Rogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/ChangedDisplayedType.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/ChangedDisplayedType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/CreatureAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/CreatureAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/Remove.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/Remove.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/YouWin.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/YouWin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/DropPack.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/DropPack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/EndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/EndGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/itemAction/BlessCurse.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/itemAction/BlessCurse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/itemAction/Hallucinate.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/itemAction/Hallucinate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/itemAction/ItemAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/itemAction/ItemAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Monster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Armor.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Armor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Scroll.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Scroll.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Sword.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Sword.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/structure/Passage.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/structure/Passage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/structure/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/structure/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/structure/Structure.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/structure/Structure.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1iiBdD9B01N3rYPuFCJOO2TG1cr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\theVirtualCoffeeChat\rogue_like_game\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="rogue_like_game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <module name="rogue_like_game" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$/Test.java" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Java Scratch" nameIsGenerated="true">
+      <module name="rogue_like_game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Groovy.Test" />
+      <item itemvalue="Java Scratch.Unnamed" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="" />
+      <created>1602380616334</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602380616334</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602380981509">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1602380981509" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1603919127137">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1603919127137" />
+    <state width="1237" height="197" key="GridCell.Tab.0.bottom" timestamp="1603575328341">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="197" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603575328341" />
+    <state width="1237" height="197" key="GridCell.Tab.0.center" timestamp="1603575328341">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="197" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603575328341" />
+    <state width="1237" height="197" key="GridCell.Tab.0.left" timestamp="1603575328341">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="197" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603575328341" />
+    <state width="1237" height="197" key="GridCell.Tab.0.right" timestamp="1603575328341">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="197" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603575328341" />
+    <state x="458" y="254" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603574727289">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="458" y="254" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1603574727289" />
+    <state x="91" y="0" key="new project wizard" timestamp="1602856713085">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1602856713085" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1603575326977">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1603575326977" />
+  </component>
+</project>
