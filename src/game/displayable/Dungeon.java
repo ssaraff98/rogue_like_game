@@ -7,7 +7,7 @@ import game.displayable.structure.Room;
 
 import java.util.ArrayList;
 
-public class Dungeon extends Displayable {
+public class Dungeon extends Displayable implements Runnable {
     private String name;
     private int width;
     private int gameHeight;
@@ -15,6 +15,10 @@ public class Dungeon extends Displayable {
     private ArrayList<Item> items = new ArrayList<Item>();
     private ArrayList<Passage> passages = new ArrayList<Passage>();
     private ArrayList<Room> rooms = new ArrayList<Room>();
+
+    public void run() {
+
+    }
 
     public Dungeon() {
         name = "";

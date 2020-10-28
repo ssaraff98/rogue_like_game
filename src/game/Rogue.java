@@ -1,23 +1,21 @@
 package game;
 
+import game.display.ObjectDisplayGrid;
+import game.displayable.Dungeon;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import game.display.ObjectDisplayGrid;
-import game.displayble.Dungeon;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 
-
-
 public class Rogue {
-
     private static final String directory = "xmlFiles/";
-    private static final int Debug = 0;
+    private static final int DEBUG = 0;
     private boolean isRunning;
     public static final int FRAMESPERSECOND = 60;
     public static final int TIMEPERLOOP = 1000000000/FRAMESPERSECOND;
@@ -26,9 +24,8 @@ public class Rogue {
 
     private  Rectangle gameViewArea;
 
-    public Rogue(int gameHeight, int gameWidth, int topMsgHeight, int bottomMsgHeight, String filename ){
-        displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(gameHeight,gameWidth, topMsgHeight,bottomMsgHeight);
-        ObjectDisplayGrid.initializeMessageFields();
+    public Rogue(int gameHeight, int width, int topHeight, int bottomHeight, String fileName) {
+        displayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
         System.out.flush();
         displayGrid.refresh();
     }
@@ -40,22 +37,23 @@ public class Rogue {
     public void run(){
         isRunning = true;
 
-        while (isRunning){
+        while (isRunning) {
             long startTime = System.nanoTime();
             render();
             long endTime = System.nanoTime();
             long sleepTime = TIMEPERLOOP - (endTime - startTime);
 
             if(sleepTime > 0){
-                try{
+                try {
                     Thread.sleep(sleepTime/1000000);
-                }catch (InterruptedExecution e){
+                }
+                catch (InterruptedException e) {
                     e.printStackTrace(System.out);
                 }
             }
         }
 
-        System.out.println("in run in rougue");
+        System.out.println("In run in Rogue");
     }
 
     public static ObjectDisplayGrid getDisplayGrid(){
@@ -87,34 +85,29 @@ public class Rogue {
             e.printStackTrace(System.out);
         }
 
-
-//        something Mridul Added on 10/27/2020
-        if(Debug >0){
-            if(dungeon!=null){
+        // Checking if dungeon has been initialized
+        if(DEBUG > 0) {
+            if(dungeon != null) {
                 System.out.println(dungeon);
             }
-        } else{
-            System.out.println("dungeon is null");
+        }
+        else {
+            System.out.println("Dungeon is null");
         }
 
-
-        if(Debug > 0){
-            System.out.println("gameHeight: "+ dungeon.getGameHeight());
-            System.out.println("width: " + dungeon.getGameWidth());
-            System.out.println("topHeight: "+ObjectDisplayGrid.getTopMessageHeight());
-            System.out.println("bottomHeight: "+ObjectDisplayGrid.getBottomMessageHeight());
+        // Printing game display dimensions
+        if(DEBUG > 0) {
+            System.out.println("gameHeight: " + dungeon.getHeight());
+            System.out.println("width: " + dungeon.getWidth());
+            System.out.println("topHeight: " + displayGrid.getTopMessageHeight());
+            System.out.println("bottomHeight: " + displayGrid.getBottomMessageHeight());
         }
 
-        Rogue game = new Rogue(dungeon.getGameHeight(),dungeon.getGameWidth(),
-                ObjectDisplayGrid.getTopMessageHeight(),
-                ObjectDisplayGrid.getBottomMessageHeight(),
-                fileName);
+        Rogue game = new Rogue(dungeon.getHeight(), dungeon.getWidth(), displayGrid.getTopMessageHeight(), displayGrid.getBottomMessageHeight(), fileName);
         System.out.println("SPM: user directory: "+ System.getProperty("user.dir"));
 
-        Thread tr = new Thread(dungeon);
-        tr.start();
+        new Thread(dungeon).start();
         game.run();
-
         displayGrid.fireUp();
     }
 }

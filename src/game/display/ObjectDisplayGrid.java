@@ -64,6 +64,12 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     public void setTopMessageHeight(int _topHeight) { this.topHeight = _topHeight; }
 
+    public int getTopMessageHeight() { return this.topHeight; }
+
+    public void setBottomMessageHeight(int _bottomHeight) { this.bottomHeight = _bottomHeight; }
+
+    public int getBottomMessageHeight() { return this.bottomHeight; }
+
     @Override
     public void registerInputObserver(InputObserver observer) {
         if (DEBUG > 0) {
