@@ -4,6 +4,7 @@ import game.displayable.creature.Creature;
 import game.displayable.item.Item;
 import game.displayable.structure.Passage;
 import game.displayable.structure.Room;
+import game.display.ObjectDisplayGrid;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class Dungeon extends Displayable implements Runnable {
     private String name;
     private int width;
     private int gameHeight;
+
     private ArrayList<Creature> creatures = new ArrayList<Creature>();
     private ArrayList<Item> items = new ArrayList<Item>();
     private ArrayList<Passage> passages = new ArrayList<Passage>();
@@ -54,4 +56,10 @@ public class Dungeon extends Displayable implements Runnable {
     public void addPassage(Passage _passage) { passages.add(_passage); }
 
     public void addRoom(Room _room) { rooms.add(_room); }
+
+    public void addObjectToDisplay() {
+        for (int i = 0; i <= creatures.size(); i++) {
+            ObjectDisplayGrid.getObjectDisplayGrid().addObjectToDisplay(creatures.get(i));
+        }
+    }
 }

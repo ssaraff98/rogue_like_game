@@ -20,35 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiCharacterData.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiCharacterData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiFont.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiFont.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asciiPanel/TileTransformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/TileTransformer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Rogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/ChangedDisplayedType.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/ChangedDisplayedType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/CreatureAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/CreatureAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/Remove.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/Remove.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/YouWin.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/YouWin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/DropPack.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/DropPack.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/EndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/EndGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/itemAction/BlessCurse.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/itemAction/BlessCurse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/itemAction/Hallucinate.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/itemAction/Hallucinate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/itemAction/ItemAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/itemAction/ItemAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Monster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Armor.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Armor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Scroll.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Scroll.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Sword.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Sword.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/structure/Passage.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/structure/Passage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/structure/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/structure/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/structure/Structure.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/structure/Structure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

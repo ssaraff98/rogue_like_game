@@ -1,6 +1,7 @@
 package game.display;
 
 import game.displayable.Displayable;
+import game.displayable.Dungeon;
 
 import asciiPanel.AsciiPanel;
 import java.io.IOException;
@@ -15,8 +16,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     private static final String CLASSID = ".ObjectDisplayGrid";
 
     private static AsciiPanel terminal;
-    private Char[][] objectGrid = null;
-    // private Stack<Displayable>[][] objectGrid = null;
+    private Stack<Displayable>[][] objectGrid = null;
 
     private List<InputObserver> inputObservers = null;
 
@@ -39,10 +39,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         bottomHeight = _bottomHeight;
 
         terminal = new AsciiPanel(width, gameHeight);
-        objectGrid = new Char[width][gameHeight];
-        // objectGrid = (Stack<Displayable>[][]) new Stack[width][gameHeight];
+        objectGrid = (Stack<Displayable>[][]) new Stack[width][gameHeight];
 
-        initializeDisplay();
+        // initializeDisplay();
 
         super.add(terminal);
         super.setSize(width * 9, gameHeight * 16);
@@ -106,15 +105,15 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     public void keyReleased(KeyEvent e) {
     }
 
-    public final void initializeDisplay() {
-        Char ch = new Char('.');
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < gameHeight; j++) {
-                addObjectToDisplay(ch, i, j);
-            }
-        }
-        terminal.repaint();
-    }
+//    public final void initializeDisplay() {
+//        Char ch = new Char('.');
+//        for (int i = 0; i < width; i++) {
+//            for (int j = 0; j < gameHeight; j++) {
+//                addObjectToDisplay(ch, i, j);
+//            }
+//        }
+//        terminal.repaint();
+//    }
 
     public void fireUp() {
         if (terminal.requestFocusInWindow()) {
@@ -124,17 +123,22 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
-    public void addObjectToDisplay(Char ch, int x, int y) {
+    public void addObjectToDisplay(Displayable element) {
+        int x = element.getPosX();
+        int y = element.getPosY();
+
+        System.out.println(x + " " + y);
+
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
-                objectGrid[x][y] = ch;
+                objectGrid[x][y].push(element);
                 writeToTerminal(x, y);
             }
         }
     }
 
     private void writeToTerminal(int x, int y) {
-        char ch = objectGrid[x][y].getChar();
+        char ch = objectGrid[x][y].lastElement().getType();
         terminal.write(ch, x, y);
         terminal.repaint();
     }

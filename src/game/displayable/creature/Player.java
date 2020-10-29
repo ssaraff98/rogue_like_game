@@ -2,7 +2,7 @@ package game.displayable.creature;
 
 import game.displayable.item.Item;
 
-public class Player extends Creature {
+public class Player extends Creature  {
     private Item sword;
     private Item armor;
 

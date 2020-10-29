@@ -376,9 +376,9 @@ public class XMLHandler extends DefaultHandler {
         else if (qName.equalsIgnoreCase("Room")) {
             bRoom = false;
 
-            int posX = displayableStack.lastElement().getPosX();
-            int posY = displayableStack.lastElement().getPosY();
-            // displayGrid.addObjectToDisplay(new Char('X'), posX, posY);
+//            int posX = displayableStack.lastElement().getPosX();
+//            int posY = displayableStack.lastElement().getPosY();
+//            displayGrid.addObjectToDisplay(new Char('X'), posX, posY);
 
             roomBeingParsed = null;
             displayableStack.pop();
