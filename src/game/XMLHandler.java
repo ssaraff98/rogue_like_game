@@ -73,6 +73,10 @@ public class XMLHandler extends DefaultHandler {
     private boolean bVisible = false;
     private boolean bWidth = false;
 
+    public Dungeon getDungeon() {
+        return dungeonBeingParsed;
+    }
+
     public XMLHandler() {
         displayableStack = new Stack<>();
         actionStack = new Stack<>();
@@ -94,8 +98,7 @@ public class XMLHandler extends DefaultHandler {
             int bottomHeight = Integer.parseInt(attributes.getValue("bottomHeight"));
 
             displayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
-
-            dungeonBeingParsed.getDungeon(name, width, gameHeight);
+            dungeonBeingParsed = dungeonBeingParsed.getDungeon(name, width, gameHeight);
             displayableStack.push(dungeonBeingParsed);
         }
         // Armor tag
@@ -336,7 +339,7 @@ public class XMLHandler extends DefaultHandler {
         // Dungeon tag
         if (qName.equalsIgnoreCase("Dungeon")) {
             bDungeon = false;
-            dungeonBeingParsed = null;
+            // dungeonBeingParsed = null;
             displayableStack.pop();
         }
         // Armor tag

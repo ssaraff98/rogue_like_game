@@ -16,22 +16,23 @@ import org.xml.sax.SAXException;
 public class Rogue {
     private static final String directory = "xmlFiles/";
     private static final int DEBUG = 0;
-    private boolean isRunning;
     public static final int FRAMESPERSECOND = 60;
-    public static final int TIMEPERLOOP = 1000000000/FRAMESPERSECOND;
+    public static final int TIMEPERLOOP = 1000000000 / FRAMESPERSECOND;
+    private boolean isRunning;
+
     private static ObjectDisplayGrid displayGrid = new ObjectDisplayGrid();
-    private static Dungeon dungeon = null;
+    private static Dungeon dungeon = new Dungeon();
 
     private  Rectangle gameViewArea;
 
     public Rogue(int gameHeight, int width, int topHeight, int bottomHeight, String fileName) {
         displayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
         System.out.flush();
-        displayGrid.refresh();
+        // displayGrid.refresh();
     }
 
     public static void render(){
-        displayGrid.refresh();
+        // displayGrid.refresh();
     }
 
     public void run(){
@@ -53,7 +54,7 @@ public class Rogue {
             }
         }
 
-        System.out.println("In run in Rogue");
+        System.out.println("Run in Rogue");
     }
 
     public static ObjectDisplayGrid getDisplayGrid(){
@@ -80,6 +81,7 @@ public class Rogue {
             SAXParser saxParser = saxParserFactory.newSAXParser();
             XMLHandler handler = new XMLHandler();
             saxParser.parse(new File(fileName), handler);
+            dungeon = handler.getDungeon();
         }
         catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace(System.out);
@@ -90,9 +92,9 @@ public class Rogue {
             if(dungeon != null) {
                 System.out.println(dungeon);
             }
-        }
-        else {
-            System.out.println("Dungeon is null");
+            else {
+                System.out.println("Dungeon is null");
+            }
         }
 
         // Printing game display dimensions

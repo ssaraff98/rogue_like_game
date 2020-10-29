@@ -17,7 +17,7 @@ public class Dungeon extends Displayable implements Runnable {
     private ArrayList<Room> rooms = new ArrayList<Room>();
 
     public void run() {
-
+        System.out.println("Run in Dungeon");
     }
 
     public Dungeon() {
@@ -27,17 +27,24 @@ public class Dungeon extends Displayable implements Runnable {
     }
 
     public Dungeon(String _name, int _width, int _gameHeight) {
-        name = _name;
-        width = _width;
-        gameHeight = _gameHeight;
+        this.name = _name;
+        this.width = _width;
+        this.gameHeight = _gameHeight;
     }
 
     public Dungeon getDungeon(String _name, int _width, int _gameHeight) {
         if (this.name == _name && this.width == _width && this.gameHeight == _gameHeight) {
             return this;
         }
+
         Dungeon dungeon = new Dungeon(_name, _width, _gameHeight);
         return dungeon;
+    }
+
+    public int getHeight() { return this.gameHeight; }
+
+    public int getWidth() {
+        return this.width;
     }
 
     public void addCreature(Creature _creature) { creatures.add(_creature); }
