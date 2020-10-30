@@ -57,9 +57,9 @@ public class Dungeon extends Displayable implements Runnable {
 
     public void addRoom(Room _room) { rooms.add(_room); }
 
-    public void addObjectToDisplay() {
+    public void addObjectToDisplay(ObjectDisplayGrid displayGrid) {
         for (int i = 0; i <= creatures.size(); i++) {
-            ObjectDisplayGrid.getObjectDisplayGrid().addObjectToDisplay(creatures.get(i));
+            displayGrid.addObjectToDisplay(creatures.get(i));   // Might need to do displayGrid = ... so it updates the actual object reference
         }
     }
 }

@@ -105,6 +105,8 @@ public class Rogue {
             System.out.println("bottomHeight: " + displayGrid.getBottomMessageHeight());
         }
 
+        dungeon.addObjectToDisplay(displayGrid);    // Is this where we need to place the call or after initializing Rogue game
+
         Rogue game = new Rogue(dungeon.getHeight(), dungeon.getWidth(), displayGrid.getTopMessageHeight(), displayGrid.getBottomMessageHeight(), fileName);
         System.out.println("SPM: user directory: "+ System.getProperty("user.dir"));
 
