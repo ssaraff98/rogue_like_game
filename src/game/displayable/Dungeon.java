@@ -122,6 +122,7 @@ public class Dungeon extends Displayable implements Runnable {
             Item item = items.get(i);
             int x = item.getPosX();
             int y = item.getPosY();
+            System.out.println("Item " + x + " " + y);
 
             displayGrid.addObjectToDisplay(item, x, y);
         }

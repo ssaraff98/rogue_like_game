@@ -119,7 +119,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     }
 
     public void addObjectToDisplay(Displayable element, int x, int y) {
-        // System.out.println(element + " " + x + " " + y);
+        System.out.println(element + " " + x + " " + y);
 
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
