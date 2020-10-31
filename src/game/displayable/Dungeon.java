@@ -88,12 +88,48 @@ public class Dungeon extends Displayable implements Runnable {
             for (int j = 0; j < posX.size() - 1; j++) {
                 int x1 = posX.get(j).intValue();
                 int y1 = posY.get(j).intValue();
-                displayGrid.addObjectToDisplay((Displayable) passage, x, y);
+                int x2 = posX.get(j + 1).intValue();
+                int y2 = posY.get(j + 1).intValue();
+
+                if (x1 == x2) {
+                    int min_y = (y1 < y2)? y1 : y2;
+                    int max_y = (y1 < y2)? y2 : y1;
+
+                    for (int k = min_y; k <= max_y; k++) {
+                        displayGrid.addObjectToDisplay((Displayable) passage, x1, k);
+                    }
+                }
+
+                if (y1 == y2) {
+                    int min_x = (x1 < x2)? x1 : x2;
+                    int max_x = (x1 < x2)? x2 : x1;
+
+                    for (int k = min_x; k <= max_x; k++) {
+                        displayGrid.addObjectToDisplay((Displayable) passage, k, y1);
+                    }
+                }
             }
         }
 
-//        for (int i = 0; i < rooms.size(); i++) {
-//            displayGrid.addObjectToDisplay(rooms.get(i));
-//        }
+        for (int j = 0; j< rooms.size();j++) {
+            int xstarting = rooms.get(j).getPosX();
+            int ystarting = rooms.get(j).getPosY();
+            int xending = xstarting + rooms.get(j).getWidth();
+            int yending = ystarting + rooms.get(j).getHeight();
+
+
+            for (int m = ystarting; m < yending; m++) {
+                displayGrid.addObjectToDisplay(rooms.get(j), xstarting, m);
+            }
+            for (int m = xstarting; m < xending; m++) {
+                displayGrid.addObjectToDisplay(rooms.get(j), m, ystarting);
+            }
+            for (int m = yending - 1; m > ystarting; m--) {
+                displayGrid.addObjectToDisplay(rooms.get(j), xending - 1, m);
+            }
+            for (int m = xending - 1; m > xstarting; m--) {
+                displayGrid.addObjectToDisplay(rooms.get(j), m, yending - 1);
+            }
+        }
     }
 }

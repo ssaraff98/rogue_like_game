@@ -166,7 +166,6 @@ public class XMLHandler extends DefaultHandler {
             int serial = Integer.parseInt(attributes.getValue("serial"));
 
             Player player = new Player();
-            player.setType('@');
             dungeonBeingParsed.addCreature(player);
             roomBeingParsed.setCreature(player);
 
@@ -180,6 +179,7 @@ public class XMLHandler extends DefaultHandler {
             roomBeingParsed = new Room(room);
             dungeonBeingParsed.addRoom(roomBeingParsed);
             roomBeingParsed.setId(room);
+            roomBeingParsed.setType('X');
 
             displayableStack.push(roomBeingParsed);
         }

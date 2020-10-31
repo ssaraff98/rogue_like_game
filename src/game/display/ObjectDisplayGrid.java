@@ -2,6 +2,8 @@ package game.display;
 
 import game.displayable.Displayable;
 import game.displayable.Dungeon;
+import game.displayable.structure.Passage;
+import game.displayable.structure.Room;
 
 import asciiPanel.AsciiPanel;
 import java.io.IOException;
@@ -121,7 +123,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
-                objectGrid[x][y].push(element);
+                if (!objectGrid[x][y].contains(element)) {
+                    objectGrid[x][y].push(element);
+                }
                 writeToTerminal(x, y);
             }
         }
@@ -129,6 +133,20 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     private void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getType();
+
+        int count = 0;
+        for (Displayable item: objectGrid[x][y]) {
+            System.out.println(item);
+            if (item.getType() == '#' || item.getType() == 'X') {
+                count++;
+            }
+
+            if (count == 2) {
+                ch = '+';
+                break;
+            }
+        }
+
         terminal.write(ch, x, y);
         terminal.repaint();
     }
