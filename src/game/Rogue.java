@@ -2,6 +2,7 @@ package game;
 
 import game.display.ObjectDisplayGrid;
 import game.displayable.Dungeon;
+import game.display.KeyStrokePrinter;
 
 import java.awt.*;
 import java.io.File;
@@ -13,11 +14,13 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 
-public class Rogue {
+
+public class Rogue implements Runnable {
     private static final String directory = "xmlFiles/";
     private static final int DEBUG = 0;
     public static final int FRAMESPERSECOND = 60;
     public static final int TIMEPERLOOP = 1000000000 / FRAMESPERSECOND;
+    public Thread keyStrokePrinter;
     private boolean isRunning;
 
     private static Dungeon dungeon = new Dungeon();
@@ -34,7 +37,8 @@ public class Rogue {
         // displayGrid.refresh();
     }
 
-    public void run(){
+    @Override
+    public void run() {
         isRunning = true;
 
         while (isRunning) {
@@ -60,7 +64,7 @@ public class Rogue {
         return ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         String fileName  = null;
 
         if (args.length == 1) {
@@ -105,13 +109,20 @@ public class Rogue {
             System.out.println("bottomHeight: " + displayGrid.getBottomMessageHeight());
         }
 
-        dungeon.addObjectToDisplay(displayGrid);    // Is this where we need to place the call or after initializing Rogue game
+        dungeon.addObjectToDisplay(displayGrid);
 
         Rogue game = new Rogue(dungeon.getHeight(), dungeon.getWidth(), displayGrid.getTopMessageHeight(), displayGrid.getBottomMessageHeight(), fileName);
         System.out.println("SPM: user directory: "+ System.getProperty("user.dir"));
 
-        new Thread(dungeon).start();
+        Thread testThread = new Thread(dungeon);
+        testThread.start();
         game.run();
         displayGrid.fireUp();
+
+        game.keyStrokePrinter = new Thread(new KeyStrokePrinter(displayGrid));
+        game.keyStrokePrinter.start();
+
+        testThread.join();
+        game.keyStrokePrinter.join();
     }
 }
