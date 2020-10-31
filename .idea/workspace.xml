@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Rogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Item.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +36,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1iiBdD9B01N3rYPuFCJOO2TG1cr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

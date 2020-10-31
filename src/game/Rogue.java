@@ -120,6 +120,7 @@ public class Rogue implements Runnable {
         displayGrid.fireUp();
 
         game.keyStrokePrinter = new Thread(new KeyStrokePrinter(displayGrid));
+
         game.keyStrokePrinter.start();
 
         testThread.join();
