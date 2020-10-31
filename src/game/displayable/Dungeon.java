@@ -60,6 +60,36 @@ public class Dungeon extends Displayable implements Runnable {
     public void addRoom(Room _room) { rooms.add(_room); }
 
     public void addObjectToDisplay(ObjectDisplayGrid displayGrid) {
+        for (int j = 0; j < rooms.size(); j++) {
+            int xstarting = rooms.get(j).getPosX();
+            int ystarting = rooms.get(j).getPosY();
+            int xending = xstarting + rooms.get(j).getWidth();
+            int yending = ystarting + rooms.get(j).getHeight();
+
+            rooms.get(j).setType('.');
+
+            for(int i = xstarting; i < xending; i++){
+                for(int l = ystarting; l < yending; l++){
+                    displayGrid.addObjectToDisplay(rooms.get(j), i, l);
+                }
+            }
+
+            rooms.get(j).setType('X');
+
+            for (int m = ystarting; m < yending; m++) {
+                displayGrid.addObjectToDisplay(rooms.get(j), xstarting, m);
+            }
+            for (int m = xstarting; m < xending; m++) {
+                displayGrid.addObjectToDisplay(rooms.get(j), m, ystarting);
+            }
+            for (int m = yending - 1; m > ystarting; m--) {
+                displayGrid.addObjectToDisplay(rooms.get(j), xending - 1, m);
+            }
+            for (int m = xending - 1; m > xstarting; m--) {
+                displayGrid.addObjectToDisplay(rooms.get(j), m, yending - 1);
+            }
+        }
+
         for (int i = 0; i < creatures.size(); i++) {
             Creature creature = creatures.get(i);
             int creature_x = creature.getPosX();
@@ -128,27 +158,6 @@ public class Dungeon extends Displayable implements Runnable {
                         displayGrid.addObjectToDisplay((Displayable) passage, k, y1);
                     }
                 }
-            }
-        }
-
-        for (int j = 0; j< rooms.size();j++) {
-            int xstarting = rooms.get(j).getPosX();
-            int ystarting = rooms.get(j).getPosY();
-            int xending = xstarting + rooms.get(j).getWidth();
-            int yending = ystarting + rooms.get(j).getHeight();
-
-
-            for (int m = ystarting; m < yending; m++) {
-                displayGrid.addObjectToDisplay(rooms.get(j), xstarting, m);
-            }
-            for (int m = xstarting; m < xending; m++) {
-                displayGrid.addObjectToDisplay(rooms.get(j), m, ystarting);
-            }
-            for (int m = yending - 1; m > ystarting; m--) {
-                displayGrid.addObjectToDisplay(rooms.get(j), xending - 1, m);
-            }
-            for (int m = xending - 1; m > xstarting; m--) {
-                displayGrid.addObjectToDisplay(rooms.get(j), m, yending - 1);
             }
         }
     }
