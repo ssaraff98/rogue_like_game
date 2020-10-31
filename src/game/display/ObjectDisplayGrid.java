@@ -134,16 +134,26 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     private void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getType();
 
-        int count = 0;
+        int count1 = 0;
+        int count2 = 0;
+
         for (Displayable item: objectGrid[x][y]) {
             System.out.println(item);
             if (item.getType() == '#' || item.getType() == 'X') {
-                count++;
+                count1++;
             }
 
-            if (count == 2) {
+            if (count1 == 2) {
                 ch = '+';
                 break;
+            }
+
+            if (item.getType() == ')' || item.getType() == 'X') {
+                count2++;
+            }
+
+            if (count2 == 2) {
+                ch = 'X';
             }
         }
 
