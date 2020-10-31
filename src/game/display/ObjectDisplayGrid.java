@@ -20,6 +20,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     private List<InputObserver> inputObservers = null;
 
+    private static ObjectDisplayGrid instance = null;
     private int gameHeight;
     private int width;
     private int topHeight;
@@ -41,6 +42,12 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         terminal = new AsciiPanel(width, gameHeight);
         objectGrid = (Stack<Displayable>[][]) new Stack[width][gameHeight];
 
+        for(int i = 0; i < width; i++) {
+            for(int j = 0; j < gameHeight; j++) {
+                objectGrid[i][j] = new Stack<Displayable>();
+            }
+        }
+
         // initializeDisplay();
 
         super.add(terminal);
@@ -53,12 +60,15 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         super.repaint();
     }
 
-    public ObjectDisplayGrid getObjectDisplayGrid(int _gameHeight, int _width, int _topHeight, int _bottomHeight) {
-        if (this.gameHeight == _gameHeight && this.width == _width && this.topHeight == _topHeight && this.bottomHeight == _bottomHeight) {
-            return this;
+    public static ObjectDisplayGrid getObjectDisplayGrid(int _gameHeight, int _width, int _topHeight, int _bottomHeight) {
+        // if (this.gameHeight == _gameHeight && this.width == _width && this.topHeight == _topHeight && this.bottomHeight == _bottomHeight) {
+        //     return this;
+        // }
+        if (instance == null) {
+            instance = new ObjectDisplayGrid(_gameHeight, _width, _topHeight, _bottomHeight);
         }
-        ObjectDisplayGrid grid = new ObjectDisplayGrid(_gameHeight, _width, _topHeight, _bottomHeight);
-        return grid;
+
+        return instance;
     }
 
     public void setTopMessageHeight(int _topHeight) { this.topHeight = _topHeight; }

@@ -20,13 +20,12 @@ public class Rogue {
     public static final int TIMEPERLOOP = 1000000000 / FRAMESPERSECOND;
     private boolean isRunning;
 
-    private static ObjectDisplayGrid displayGrid = new ObjectDisplayGrid();
     private static Dungeon dungeon = new Dungeon();
 
     private  Rectangle gameViewArea;
 
     public Rogue(int gameHeight, int width, int topHeight, int bottomHeight, String fileName) {
-        displayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
+        ObjectDisplayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
         System.out.flush();
         // displayGrid.refresh();
     }
@@ -58,7 +57,7 @@ public class Rogue {
     }
 
     public static ObjectDisplayGrid getDisplayGrid(){
-        return displayGrid;
+        return ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
     }
 
     public static void main(String[] args) {
@@ -98,6 +97,7 @@ public class Rogue {
         }
 
         // Printing game display dimensions
+        ObjectDisplayGrid displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
         if(DEBUG > 0) {
             System.out.println("gameHeight: " + dungeon.getHeight());
             System.out.println("width: " + dungeon.getWidth());

@@ -97,7 +97,7 @@ public class XMLHandler extends DefaultHandler {
             int topHeight = Integer.parseInt(attributes.getValue("topHeight"));
             int bottomHeight = Integer.parseInt(attributes.getValue("bottomHeight"));
 
-            displayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
+            ObjectDisplayGrid.getObjectDisplayGrid(gameHeight, width, topHeight, bottomHeight);
             dungeonBeingParsed = dungeonBeingParsed.getDungeon(name, width, gameHeight);
             displayableStack.push(dungeonBeingParsed);
         }
