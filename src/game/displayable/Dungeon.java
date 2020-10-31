@@ -62,8 +62,28 @@ public class Dungeon extends Displayable implements Runnable {
     public void addObjectToDisplay(ObjectDisplayGrid displayGrid) {
         for (int i = 0; i < creatures.size(); i++) {
             Creature creature = creatures.get(i);
-            int x = creature.getPosX();
-            int y = creature.getPosY();
+            int creature_x = creature.getPosX();
+            int creature_y = creature.getPosY();
+
+            int room = creature.getRoom();
+            int room_x = -1;
+            int room_y = -1;
+
+            for (Room r : rooms) {
+                if (r.getId() == room) {
+                    room_x = r.getPosX();
+                    room_y = r.getPosY();
+                    break;
+                }
+            }
+
+            if (room_x == -1 || room_y == -1) {
+                System.out.println("Room position is invalid\n");
+                return;
+            }
+
+            int x = room_x + creature_x;
+            int y = room_y + creature_y;
 
             displayGrid.addObjectToDisplay(creature, x, y);
         }
@@ -82,7 +102,7 @@ public class Dungeon extends Displayable implements Runnable {
             ArrayList<Integer> posY = passage.getPosYList();
 
             if (posX.size() != posY.size()) {
-                System.out.println("Incorrent number of X and Y positions for passage");
+                System.out.println("Incorrent number of X and Y positions for passage\n");
             }
 
             for (int j = 0; j < posX.size() - 1; j++) {

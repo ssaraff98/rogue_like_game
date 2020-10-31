@@ -4,11 +4,24 @@ import game.displayable.Displayable;
 import game.action.creatureAction.CreatureAction;
 
 public class Creature extends Displayable {
+    private String name;
+    private int room;
+    private int serial;
     private int hpMoves;
     private int hp;
     private CreatureAction hitAction;
     private CreatureAction deathAction;
 
+    public void setName(String _name) { this.name = _name; }
+
+    public String getName() { return this.name; }
+
+    public void setID(int _room, int _serial) {
+        this.room = _room;
+        this.serial = _serial;
+    }
+
+    public int getRoom() { return this.room; }
 
     @Override
     public void setHpMoves(int _hpMoves) {

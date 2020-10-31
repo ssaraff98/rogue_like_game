@@ -1,8 +1,18 @@
+FLAGS = -g
+JC = javac
+JVM = java
+RM = rm -f
+MAIN = Rogue
+FOLDER = game
+
+.SUFFIXES: .java .class
+
 build:
-	javac game/Rogue.java
+	$(JC) $(FOLDER)/$(MAIN).java
 
 %.xml:
-	java game.Rogue $@
+	$(JVM) $(FOLDER).$(MAIN) $@
 
 clean:
-	find . -type f -name '*.class' -delete
+	$(RM) *.class
+	#find src -type f -name "*.class" -delete

@@ -3,7 +3,33 @@ package game.displayable.creature;
 import game.displayable.item.Item;
 
 public class Player extends Creature /*implements Runnable, inputObserver*/ {
-    //    private static final int DEBUG = 1;
+    private String name;
+    private int room;
+    private int serial;
+
+    private Item sword;
+    private Item armor;
+
+    public void setName(String _name) { this.name = _name; }
+
+    public String getName() { return this.name; }
+
+    public void setID(int _room, int _serial) {
+        this.room = _room;
+        this.serial = _serial;
+    }
+
+    public int getRoom() { return this.room; }
+
+    public void setWeapon(Item _sword) {
+        sword = _sword;
+    }
+
+    public void setArmor(Item _armor) {
+        armor = _armor;
+    }
+    
+//    private static final int DEBUG = 1;
 //    private static final String CLASSID ="game.displayble.creature.Player";
 //    private static final int MAX_PACK_SIZE = 5;
 //    private static Queue<Character> inputQueue = null;
@@ -11,9 +37,7 @@ public class Player extends Creature /*implements Runnable, inputObserver*/ {
 //    private Item weapon = null;
 //    private Item armor = null;
 //    private int moveCount =0;
-    private Item sword;
-    private Item armor;
-    //
+
 //    public Player(String name){
 //        super();
 //        type = '@';
@@ -182,11 +206,4 @@ public class Player extends Creature /*implements Runnable, inputObserver*/ {
 //        }
 //
 //    }
-    public void setWeapon(Item _sword) {
-        sword = _sword;
-    }
-
-    public void setArmor(Item _armor) {
-        armor = _armor;
-    }
 }

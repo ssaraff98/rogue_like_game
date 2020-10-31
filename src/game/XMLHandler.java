@@ -111,6 +111,7 @@ public class XMLHandler extends DefaultHandler {
             Armor armor = new Armor(name);
             dungeonBeingParsed.addItem(armor);
             armor.setID(room, serial);
+            armor.setType(']');
 
             displayableStack.push(armor);
         }
@@ -139,9 +140,9 @@ public class XMLHandler extends DefaultHandler {
 
             Monster monster = new Monster();
             dungeonBeingParsed.addCreature(monster);
+            roomBeingParsed.setCreature(monster);
             monster.setName(name);
             monster.setID(room, serial);
-            roomBeingParsed.setCreature(monster);
 
             displayableStack.push(monster);
         }
@@ -168,6 +169,9 @@ public class XMLHandler extends DefaultHandler {
             Player player = new Player();
             dungeonBeingParsed.addCreature(player);
             roomBeingParsed.setCreature(player);
+            player.setName(name);
+            player.setID(room, serial);
+            player.setType('@');
 
             displayableStack.push(player);
         }
@@ -197,6 +201,7 @@ public class XMLHandler extends DefaultHandler {
             Scroll scroll = new Scroll(name);
             dungeonBeingParsed.addItem(scroll);
             scroll.setID(room, serial);
+            scroll.setType('?');
 
             displayableStack.push(scroll);
         }
@@ -210,6 +215,7 @@ public class XMLHandler extends DefaultHandler {
             Sword sword = new Sword(name);
             dungeonBeingParsed.addItem(sword);
             sword.setID(room, serial);
+            sword.setType(')');
 
             displayableStack.push(sword);
         }
