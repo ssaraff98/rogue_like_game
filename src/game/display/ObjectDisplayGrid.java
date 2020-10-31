@@ -48,8 +48,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
 
-        // initializeDisplay();
-
         super.add(terminal);
         super.setSize(width * 9, gameHeight * 16);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,9 +59,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     }
 
     public static ObjectDisplayGrid getObjectDisplayGrid(int _gameHeight, int _width, int _topHeight, int _bottomHeight) {
-        // if (this.gameHeight == _gameHeight && this.width == _width && this.topHeight == _topHeight && this.bottomHeight == _bottomHeight) {
-        //     return this;
-        // }
         if (instance == null) {
             instance = new ObjectDisplayGrid(_gameHeight, _width, _topHeight, _bottomHeight);
         }
@@ -105,25 +100,13 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
-    // we have to override, but we don't use this
     @Override
     public void keyPressed(KeyEvent even) {
     }
 
-    // we have to override, but we don't use this
     @Override
     public void keyReleased(KeyEvent e) {
     }
-
-//    public final void initializeDisplay() {
-//        Char ch = new Char('.');
-//        for (int i = 0; i < width; i++) {
-//            for (int j = 0; j < gameHeight; j++) {
-//                addObjectToDisplay(ch, i, j);
-//            }
-//        }
-//        terminal.repaint();
-//    }
 
     public void fireUp() {
         if (terminal.requestFocusInWindow()) {
@@ -133,11 +116,8 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
-    public void addObjectToDisplay(Displayable element) {
-        int x = element.getPosX();
-        int y = element.getPosY();
-
-        System.out.println(x + " " + y);
+    public void addObjectToDisplay(Displayable element, int x, int y) {
+        System.out.println(element + " " + x + " " + y);
 
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {

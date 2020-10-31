@@ -154,6 +154,7 @@ public class XMLHandler extends DefaultHandler {
             Passage passage = new Passage();
             dungeonBeingParsed.addPassage(passage);
             passage.setID(room1, room2);
+            passage.setType('#');
 
             displayableStack.push(passage);
         }
@@ -165,6 +166,7 @@ public class XMLHandler extends DefaultHandler {
             int serial = Integer.parseInt(attributes.getValue("serial"));
 
             Player player = new Player();
+            player.setType('@');
             dungeonBeingParsed.addCreature(player);
             roomBeingParsed.setCreature(player);
 
@@ -375,11 +377,6 @@ public class XMLHandler extends DefaultHandler {
         // Room tag
         else if (qName.equalsIgnoreCase("Room")) {
             bRoom = false;
-
-//            int posX = displayableStack.lastElement().getPosX();
-//            int posY = displayableStack.lastElement().getPosY();
-//            displayGrid.addObjectToDisplay(new Char('X'), posX, posY);
-
             roomBeingParsed = null;
             displayableStack.pop();
         }

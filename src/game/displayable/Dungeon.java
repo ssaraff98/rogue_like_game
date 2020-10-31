@@ -1,10 +1,12 @@
 package game.displayable;
 
+import game.display.ObjectDisplayGrid;
+
+import game.displayable.Displayable;
 import game.displayable.creature.Creature;
 import game.displayable.item.Item;
 import game.displayable.structure.Passage;
 import game.displayable.structure.Room;
-import game.display.ObjectDisplayGrid;
 
 import java.util.ArrayList;
 
@@ -59,7 +61,39 @@ public class Dungeon extends Displayable implements Runnable {
 
     public void addObjectToDisplay(ObjectDisplayGrid displayGrid) {
         for (int i = 0; i < creatures.size(); i++) {
-            displayGrid.addObjectToDisplay(creatures.get(i));   // Might need to do displayGrid = ... so it updates the actual object reference
+            Creature creature = creatures.get(i);
+            int x = creature.getPosX();
+            int y = creature.getPosY();
+
+            displayGrid.addObjectToDisplay(creature, x, y);
         }
+
+        for (int i = 0; i < items.size(); i++) {
+            Item item = items.get(i);
+            int x = item.getPosX();
+            int y = item.getPosY();
+
+            displayGrid.addObjectToDisplay(item, x, y);
+        }
+
+        for (int i = 0; i < passages.size(); i++) {
+            Passage passage = passages.get(i);
+            ArrayList<Integer> posX = passage.getPosXList();
+            ArrayList<Integer> posY = passage.getPosYList();
+
+            if (posX.size() != posY.size()) {
+                System.out.println("Incorrent number of X and Y positions for passage");
+            }
+
+            for (int j = 0; j < posX.size() - 1; j++) {
+                int x1 = posX.get(j).intValue();
+                int y1 = posY.get(j).intValue();
+                displayGrid.addObjectToDisplay((Displayable) passage, x, y);
+            }
+        }
+
+//        for (int i = 0; i < rooms.size(); i++) {
+//            displayGrid.addObjectToDisplay(rooms.get(i));
+//        }
     }
 }
