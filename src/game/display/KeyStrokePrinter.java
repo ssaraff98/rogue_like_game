@@ -23,7 +23,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         inputQueue.add(ch);
     }
 
-    private void rest() {
+    public void rest() {
         try {
             Thread.sleep(20);
         } catch (InterruptedException e) {
@@ -32,7 +32,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         }
     }
 
-    private boolean processInput() {
+    public boolean processInput() {
 
         char ch;
 
