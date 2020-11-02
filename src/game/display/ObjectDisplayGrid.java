@@ -44,7 +44,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         topHeight = _topHeight;
         bottomHeight = _bottomHeight;
 
-        terminal = new AsciiPanel(width, gameHeight);
+        terminal = new AsciiPanel(width, gameHeight+topHeight+bottomHeight);
         objectGrid = (Stack<Char>[][]) new Stack[width][gameHeight];
 
         for(int i = 0; i < width; i++) {
@@ -52,6 +52,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 objectGrid[i][j] = new Stack<Char>();
             }
         }
+        System.out.println(topHeight + "  bottom: "+bottomHeight+ "   gm: "+gameHeight);
+        topDisplay();
+        bottomDisplay();
         initializeDisplay();
         super.add(terminal);
         super.setSize(width * 9, gameHeight * 16);
@@ -85,6 +88,26 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     public Player getMainPlayer(){
         return mainPlayer;
+    }
+    public final void topDisplay() {
+        Char ch = new Char(' ');
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < topHeight; j++) {
+                addObjectToDisplay(ch, i, j);
+            }
+
+        }
+
+    }
+    public final void bottomDisplay() {
+        Char ch = new Char(' ');
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < bottomHeight; j++) {
+                addObjectToDisplay(ch, i, j);
+            }
+        }
+        terminal.repaint();
+
     }
 
     public final void initializeDisplay() {
@@ -153,6 +176,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 //    }
 
     public void addObjectToDisplay(Char ch, int x, int y) {
+
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 if (!objectGrid[x][y].contains(ch)) {
@@ -199,13 +223,13 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 //                ch = 'X';
 //            }
         }
-
+        y = y+topHeight;
         terminal.write(ch, x, y);
         terminal.repaint();
     }
 
     public Char getDisplayChar(int x, int y) {
-        y += topHeight;
+
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 System.out.println("getDisplayChar.objectGrid " + objectGrid[x][y]);
