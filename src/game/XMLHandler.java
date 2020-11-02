@@ -172,6 +172,7 @@ public class XMLHandler extends DefaultHandler {
             player.setName(name);
             player.setID(room, serial);
             player.setType('@');
+            ObjectDisplayGrid.setMainPlayer(player);
 
             displayableStack.push(player);
         }

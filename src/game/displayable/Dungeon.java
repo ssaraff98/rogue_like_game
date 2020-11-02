@@ -1,6 +1,7 @@
 package game.displayable;
 
 import game.display.ObjectDisplayGrid;
+import game.display.Char;
 
 import game.displayable.Displayable;
 import game.displayable.creature.Creature;
@@ -66,27 +67,23 @@ public class Dungeon extends Displayable implements Runnable {
             int xending = xstarting + rooms.get(j).getWidth();
             int yending = ystarting + rooms.get(j).getHeight();
 
-            rooms.get(j).setType('.');
-
             for(int i = xstarting; i < xending; i++){
                 for(int l = ystarting; l < yending; l++){
-                    displayGrid.addObjectToDisplay(rooms.get(j), i, l);
+                    displayGrid.addObjectToDisplay(new Char('.'), i, l);
                 }
             }
 
-            rooms.get(j).setType('X');
-
             for (int m = ystarting; m < yending; m++) {
-                displayGrid.addObjectToDisplay(rooms.get(j), xstarting, m);
+                displayGrid.addObjectToDisplay(new Char('X'), xstarting, m);
             }
             for (int m = xstarting; m < xending; m++) {
-                displayGrid.addObjectToDisplay(rooms.get(j), m, ystarting);
+                displayGrid.addObjectToDisplay(new Char('X'), m, ystarting);
             }
             for (int m = yending - 1; m > ystarting; m--) {
-                displayGrid.addObjectToDisplay(rooms.get(j), xending - 1, m);
+                displayGrid.addObjectToDisplay(new Char('X'), xending - 1, m);
             }
             for (int m = xending - 1; m > xstarting; m--) {
-                displayGrid.addObjectToDisplay(rooms.get(j), m, yending - 1);
+                displayGrid.addObjectToDisplay(new Char('X'), m, yending - 1);
             }
         }
 
@@ -115,7 +112,7 @@ public class Dungeon extends Displayable implements Runnable {
             int x = room_x + creature_x;
             int y = room_y + creature_y;
 
-            displayGrid.addObjectToDisplay(creature, x, y);
+            displayGrid.addObjectToDisplay(new Char(creature.getType()), x, y);
         }
 
         for (int i = 0; i < items.size(); i++) {
@@ -124,7 +121,7 @@ public class Dungeon extends Displayable implements Runnable {
             int y = item.getPosY();
             System.out.println("Item " + x + " " + y);
 
-            displayGrid.addObjectToDisplay(item, x, y);
+            displayGrid.addObjectToDisplay(new Char(item.getType()), x, y);
         }
 
         for (int i = 0; i < passages.size(); i++) {
@@ -147,7 +144,7 @@ public class Dungeon extends Displayable implements Runnable {
                     int max_y = (y1 < y2)? y2 : y1;
 
                     for (int k = min_y; k <= max_y; k++) {
-                        displayGrid.addObjectToDisplay((Displayable) passage, x1, k);
+                        displayGrid.addObjectToDisplay(new Char('#'), x1, k);
                     }
                 }
 
@@ -156,7 +153,7 @@ public class Dungeon extends Displayable implements Runnable {
                     int max_x = (x1 < x2)? x2 : x1;
 
                     for (int k = min_x; k <= max_x; k++) {
-                        displayGrid.addObjectToDisplay((Displayable) passage, k, y1);
+                        displayGrid.addObjectToDisplay(new Char('#'), k, y1);
                     }
                 }
             }

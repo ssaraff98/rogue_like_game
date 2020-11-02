@@ -1,6 +1,7 @@
 package game.displayable.creature;
 
 import game.displayable.item.Item;
+import game.display.Char;
 
 public class Player extends Creature /*implements Runnable, inputObserver*/ {
     private String name;
@@ -9,6 +10,11 @@ public class Player extends Creature /*implements Runnable, inputObserver*/ {
 
     private Item sword;
     private Item armor;
+    private Char charStandingOn = new Char('.');
+
+    public Player() {
+        System.out.println("Player constructor");
+    }
 
     public void setName(String _name) { this.name = _name; }
 
@@ -27,6 +33,13 @@ public class Player extends Creature /*implements Runnable, inputObserver*/ {
 
     public void setArmor(Item _armor) {
         armor = _armor;
+    }
+    public void setCharStandingOn(Char _charStandingOn){
+        charStandingOn = _charStandingOn;
+    }
+
+    public Char getCharStandingOn(){
+        return charStandingOn;
     }
 
 //    private static final int DEBUG = 1;
