@@ -111,6 +111,8 @@ public class Dungeon extends Displayable implements Runnable {
 
             int x = room_x + creature_x;
             int y = room_y + creature_y;
+            creature.setPosX(x);
+            creature.setPosY(y);
 
             displayGrid.addObjectToDisplay(new Char(creature.getType()), x, y);
         }

@@ -90,7 +90,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         return mainPlayer;
     }
     public final void topDisplay() {
-        Char ch = new Char(' ');
+        Char ch = new Char('t');
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < topHeight; j++) {
                 addObjectToDisplay(ch, i, j);
@@ -100,9 +100,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     }
     public final void bottomDisplay() {
-        Char ch = new Char(' ');
+        Char ch = new Char('b');
         for (int i = 0; i < width; i++) {
-            for (int j = 0; j < bottomHeight; j++) {
+            for (int j = 0; j < bottomHeight+gameHeight; j++) {
                 addObjectToDisplay(ch, i, j);
             }
         }

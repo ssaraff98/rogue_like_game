@@ -66,14 +66,14 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 System.out.println("h:  "+ displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar());
 
                 if (displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != 'X') {
-                    if (charStandingOn != '#') {
+                    if (charStandingOn != '#' && charStandingOn!=' ') {
                         displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                         displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos - 1, charYPos));
                         displayGrid.addObjectToDisplay(new Char('@'), charXPos - 1, charYPos);
                         displayGrid.getMainPlayer().setPosX(charXPos - 1);
                         System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
                     } else {
-                        if (displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != '.') {
+                        if (displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != '.' && displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != ' ') {
                             displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                             displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos - 1, charYPos));
                             displayGrid.addObjectToDisplay(new Char('@'), charXPos - 1, charYPos);
@@ -87,14 +87,14 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 System.out.println("move right");
 
                 if (displayGrid.getDisplayChar(charXPos + 1, charYPos).getChar() != 'X') {
-                    if (charStandingOn != '#') {
+                    if (charStandingOn != '#' && charStandingOn != ' ') {
                         displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                         displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos + 1, charYPos));
                         displayGrid.addObjectToDisplay(new Char('@'), charXPos + 1, charYPos);
                         displayGrid.getMainPlayer().setPosX(charXPos + 1);
                         System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
                     } else {
-                        if (displayGrid.getDisplayChar(charXPos + 1, charYPos).getChar() != '.') {
+                        if (displayGrid.getDisplayChar(charXPos + 1, charYPos).getChar() != '.' && displayGrid.getDisplayChar(charXPos + 1, charYPos).getChar() != ' ' ) {
                             displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                             displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos + 1, charYPos));
                             displayGrid.addObjectToDisplay(new Char('@'), charXPos + 1, charYPos);
@@ -107,15 +107,17 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             } else if (ch == 'k') {
                 System.out.println("move up");
 
+
+
                 if (displayGrid.getDisplayChar(charXPos, charYPos - 1).getChar() != 'X') {
-                    if (charStandingOn != '#') {
+                    if (charStandingOn != '#' && charStandingOn!=' ') {
                         displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                         displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos - 1));
                         displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos - 1);
                         displayGrid.getMainPlayer().setPosY(charYPos - 1);
                         System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
                     } else {
-                        if (displayGrid.getDisplayChar(charXPos, charYPos - 1).getChar() != '.') {
+                        if (displayGrid.getDisplayChar(charXPos, charYPos - 1).getChar() != '.' && displayGrid.getDisplayChar(charXPos, charYPos - 1).getChar() != ' ') {
                             displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                             displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos - 1));
                             displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos - 1);
@@ -130,14 +132,14 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
 
 
                 if (displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar() != 'X') {
-                    if (charStandingOn != '#') {
+                    if (charStandingOn != '#' && charStandingOn!=' ') {
                         displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                         displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos + 1));
                         displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos + 1);
                         displayGrid.getMainPlayer().setPosY(charYPos + 1);
                         System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
                     } else {
-                        if (displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar() != '.') {
+                        if (displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar() != '.' && displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar() != ' ') {
                             displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
                             displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos +1));
                             displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos + 1);
