@@ -159,6 +159,10 @@ public class XMLHandler extends DefaultHandler {
 
             displayableStack.push(passage);
         }
+        // Passages tag
+        else if (qName.equalsIgnoreCase("Passages")) {
+            // Do nothing
+        }
         // Player tag
         else if (qName.equalsIgnoreCase("Player")) {
             bPlayer = true;

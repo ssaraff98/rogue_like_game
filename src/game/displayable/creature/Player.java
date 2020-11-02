@@ -13,7 +13,6 @@ public class Player extends Creature /*implements Runnable, inputObserver*/ {
     private Char charStandingOn = new Char('.');
 
     public Player() {
-        System.out.println("Player constructor");
     }
 
     public void setName(String _name) { this.name = _name; }

@@ -63,7 +63,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 */
             } else if (ch == 'h') {
                 System.out.println("move left");
-                System.out.println("h:  "+ displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar());
 
                 if (displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != 'X') {
                     if (charStandingOn != '#' && charStandingOn!=' ') {

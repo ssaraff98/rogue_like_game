@@ -49,26 +49,10 @@ public class Rogue implements Runnable {
             render();
             long endTime = System.nanoTime();
             long sleepTime = TIMEPERLOOP - (endTime - startTime);
-//            Scanner s = new Scanner(System.in);
-//            String  temp = s.nextLine();
-//            if(temp.equals("W")){
-//                System.out.println("print getting WWWWWWWWWWWWWWWW");
-//            }
-//            KeyStrokprinter keyStrokprinter = null;
-//            boolean working = true;
+
             ObjectDisplayGrid displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
             KeyStrokePrinter print = new KeyStrokePrinter(displayGrid);
             print.run();
-
-
-//            rest();
-//            working = (processInput( ));
-
-//            boolean working = true;
-//            while (working) {
-//                rest();
-//                working = (processInput( ));
-//            }
 
             if(sleepTime > 0){
                 try {
@@ -135,42 +119,15 @@ public class Rogue implements Runnable {
         dungeon.addObjectToDisplay(displayGrid);
 
         Rogue game = new Rogue(dungeon.getHeight(), dungeon.getWidth(), displayGrid.getTopMessageHeight(), displayGrid.getBottomMessageHeight(), fileName);
-        System.out.println("SPM: user directory: "+ System.getProperty("user.dir"));
+        // System.out.println("SPM: user directory: "+ System.getProperty("user.dir"));
 
         Thread testThread = new Thread(dungeon);
         testThread.start();
         game.run();
 
-
-//        Scanner s = new Scanner(System.in);
-//        String  temp = s.nextLine();
-//        if(temp.equals("W")){
-//            System.out.println("print getting WWWWWWWWWWWWWWWW");
-//        }
-//        System.out.println(s);
-
-
-//        public void keyPressed(KeyEvent e) {
-//            int keyCode = e.getKeyCode();
-//            if(keyCode ==  KeyEvent.VK_UP)
-//            {
-//                System.out.println("up arrow");
-//                //code here
-//            }
-//            else if(keyCode == KeyEvent.VK_DOWN)
-//            {
-//                System.out.println("down arrow");
-//                //code here
-//            }
-//            //etc...
-//        }
-
-
-
         game.keyStrokePrinter = new Thread(new KeyStrokePrinter(displayGrid));
 
         game.keyStrokePrinter.start();
-
 
         testThread.join();
         game.keyStrokePrinter.join();

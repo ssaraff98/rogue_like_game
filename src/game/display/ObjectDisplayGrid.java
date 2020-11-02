@@ -52,7 +52,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 objectGrid[i][j] = new Stack<Char>();
             }
         }
-        System.out.println(topHeight + "  bottom: "+bottomHeight+ "   gm: "+gameHeight);
+
         topDisplay();
         bottomDisplay();
         initializeDisplay();
@@ -70,7 +70,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         if (displayGrid == null) {
             displayGrid = new ObjectDisplayGrid(_gameHeight, _width, _topHeight, _bottomHeight);
         }
-
         return displayGrid;
     }
 
@@ -89,16 +88,16 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     public Player getMainPlayer(){
         return mainPlayer;
     }
+
     public final void topDisplay() {
         Char ch = new Char('t');
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < topHeight; j++) {
                 addObjectToDisplay(ch, i, j);
             }
-
         }
-
     }
+
     public final void bottomDisplay() {
         Char ch = new Char('b');
         for (int i = 0; i < width; i++) {
@@ -107,7 +106,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
         terminal.repaint();
-
     }
 
     public final void initializeDisplay() {
@@ -162,21 +160,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
-//    public void addObjectToDisplay(Displayable element, int x, int y) {
-//        System.out.println(element + " " + x + " " + y);
-//
-//        if ((0 <= x) && (x < objectGrid.length)) {
-//            if ((0 <= y) && (y < objectGrid[0].length)) {
-//                if (!objectGrid[x][y].contains(element)) {
-//                    objectGrid[x][y].push(element);
-//                }
-//                writeToTerminal(x, y);
-//            }
-//        }
-//    }
-
     public void addObjectToDisplay(Char ch, int x, int y) {
-
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 if (!objectGrid[x][y].contains(ch)) {
@@ -207,6 +191,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
             if (count1 >= 1 && count2 >= 1) {
                 ch = '+';
+                objectGrid[x][y].push(new Char('+'));
                 break;
             }
 
@@ -214,25 +199,17 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 ch = 'X';
                 break;
             }
-
-//            if (c.getChar() == ')' || c.getChar() == 'X') {
-//                count2++;
-//            }
-//
-//            if (count2 == 2) {
-//                ch = 'X';
-//            }
         }
-        y = y+topHeight;
+
+        y = y + topHeight;
         terminal.write(ch, x, y);
         terminal.repaint();
     }
 
     public Char getDisplayChar(int x, int y) {
-
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
-                System.out.println("getDisplayChar.objectGrid " + objectGrid[x][y]);
+                // System.out.println("getDisplayChar.objectGrid " + objectGrid[x][y]);
                 return objectGrid[x][y].lastElement();
             }
         }

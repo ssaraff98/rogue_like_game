@@ -14,7 +14,7 @@ public abstract class Displayable {
 
     public void setHeight(int _height) {
         this.height = _height;
-        System.out.println("Height: " + _height);
+        // System.out.println("Height: " + _height);
     }
 
     public int getHeight() {
@@ -23,7 +23,7 @@ public abstract class Displayable {
 
     public void setHp(int _hp) {
         this.hp = _hp;
-        System.out.println("Hitpoint: " + _hp);
+        // System.out.println("Hitpoint: " + _hp);
     }
 
     public int getHp() {
@@ -32,7 +32,7 @@ public abstract class Displayable {
 
     public void setHpMoves(int _hpMoves) {
         this.hpMoves = _hpMoves;
-        System.out.println("HpMoves: " + hpMoves);
+        // System.out.println("HpMoves: " + hpMoves);
     }
 
     public int getHpMoves() {
@@ -41,7 +41,7 @@ public abstract class Displayable {
 
     public void setIntValue(int _value) {
         this.value = _value;
-        System.out.println("Value: " + value);
+        // System.out.println("Value: " + value);
     }
 
     public int getIntValue() {
@@ -50,7 +50,7 @@ public abstract class Displayable {
 
     public void setMaxhit(int _maxHit) {
         this.maxHit = _maxHit;
-        System.out.println("MaxHit: " + _maxHit);
+        // System.out.println("MaxHit: " + _maxHit);
     }
 
     public int getMaxHit() {
@@ -59,7 +59,7 @@ public abstract class Displayable {
 
     public void setPosX(int _x) {
         this.posX = _x;
-        System.out.println("PosX: " + _x);
+        // System.out.println("PosX: " + _x);
     }
 
     public int getPosX() {
@@ -68,7 +68,7 @@ public abstract class Displayable {
 
     public void setPosY(int _y) {
         this.posY = _y;
-        System.out.println("PosY: " + _y);
+        // System.out.println("PosY: " + _y);
     }
 
     public int getPosY() {
@@ -77,7 +77,7 @@ public abstract class Displayable {
 
     public void setType(char _type) {
         this.type = _type;
-        System.out.println("Type: " + _type);
+        // System.out.println("Type: " + _type);
     }
 
     public char getType() {
@@ -86,12 +86,12 @@ public abstract class Displayable {
 
     public void setInvisible() {
         this.visible = false;
-        System.out.println("Visible: " + false);
+        // System.out.println("Visible: " + false);
     }
 
     public void setVisible() {
         this.visible = true;
-        System.out.println("Visible: " + true);
+        // System.out.println("Visible: " + true);
     }
 
     public boolean getVisible() {
@@ -100,7 +100,7 @@ public abstract class Displayable {
 
     public void setWidth(int _width) {
         this.width = _width;
-        System.out.println("Width: " + _width);
+        // System.out.println("Width: " + _width);
     }
 
     public int getWidth() {
