@@ -30,6 +30,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     private int width;
     private int topHeight;
     private int bottomHeight;
+    private int totalHeight;
 
     public ObjectDisplayGrid() {
         gameHeight = -1;
@@ -43,18 +44,17 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         width = _width;
         topHeight = _topHeight;
         bottomHeight = _bottomHeight;
+        totalHeight = gameHeight + topHeight + bottomHeight;
 
-        terminal = new AsciiPanel(width, gameHeight+topHeight+bottomHeight);
-        objectGrid = (Stack<Char>[][]) new Stack[width][gameHeight];
+        terminal = new AsciiPanel(width, totalHeight);
+        objectGrid = (Stack<Char>[][]) new Stack[width][totalHeight];
 
         for(int i = 0; i < width; i++) {
-            for(int j = 0; j < gameHeight; j++) {
+            for(int j = 0; j < totalHeight; j++) {
                 objectGrid[i][j] = new Stack<Char>();
             }
         }
 
-        topDisplay();
-        bottomDisplay();
         initializeDisplay();
         super.add(terminal);
         super.setSize(width * 9, gameHeight * 16);
@@ -101,20 +101,21 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     public final void bottomDisplay() {
         Char ch = new Char('b');
         for (int i = 0; i < width; i++) {
-            for (int j = 0; j < bottomHeight+gameHeight; j++) {
+            for (int j = topHeight + gameHeight; j < totalHeight; j++) {
                 addObjectToDisplay(ch, i, j);
             }
         }
-        terminal.repaint();
     }
 
     public final void initializeDisplay() {
         Char ch = new Char(' ');
         for (int i = 0; i < width; i++) {
-            for (int j = 0; j < gameHeight; j++) {
+            for (int j = topHeight; j < topHeight + gameHeight; j++) {
                 addObjectToDisplay(ch, i, j);
             }
         }
+        topDisplay();
+        bottomDisplay();
         terminal.repaint();
     }
 
@@ -200,8 +201,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 break;
             }
         }
-
-        y = y + topHeight;
         terminal.write(ch, x, y);
         terminal.repaint();
     }

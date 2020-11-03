@@ -20,11 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiCharacterData.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiCharacterData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiFont.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiFont.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asciiPanel/AsciiPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/AsciiPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asciiPanel/TileTransformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/asciiPanel/TileTransformer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Rogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/action/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/Action.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/ChangedDisplayedType.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/ChangedDisplayedType.class" afterDir="false" />
@@ -42,10 +44,11 @@
       <change beforePath="$PROJECT_DIR$/src/game/display/InputObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/InputObserver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/display/InputSubject.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/InputSubject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/Displayable.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Displayable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Monster.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Player.class" afterDir="false" />

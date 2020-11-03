@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
 
 public class Rogue implements Runnable {
     private static final String directory = "xmlFiles/";
-    private static final int DEBUG = 0;
+    private static final int DEBUG = 1;
     public static final int FRAMESPERSECOND = 60;
     public static final int TIMEPERLOOP = 1000000000 / FRAMESPERSECOND;
     public Thread keyStrokePrinter;
