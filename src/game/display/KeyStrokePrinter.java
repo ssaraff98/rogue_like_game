@@ -4,8 +4,6 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import game.displayable.creature.Player;
 import game.display.Char;
-import game.display.ObjectDisplayGrid;
-import asciiPanel.AsciiPanel;
 
 public class KeyStrokePrinter implements InputObserver, Runnable {
 
@@ -13,7 +11,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
     private static String CLASSID = "KeyStrokePrinter";
     private static Queue<Character> inputQueue = null;
     private ObjectDisplayGrid displayGrid;
-    private static AsciiPanel terminal;
 
     public KeyStrokePrinter(ObjectDisplayGrid grid) {
         inputQueue = new ConcurrentLinkedQueue<>();
@@ -26,6 +23,16 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             System.out.println(CLASSID + ".observerUpdate receiving character " + ch);
         }
         inputQueue.add(ch);
+    }
+
+    @Override
+    public void run() {
+        displayGrid.registerInputObserver(this);
+        boolean working = true;
+        while (working) {
+            rest();
+            working = (processInput( ));
+        }
     }
 
     public void rest() {
@@ -45,129 +52,93 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         while (processing) {
             if (inputQueue.peek() == null) {
                 processing = false;
-            } else {
+            }
+            else {
                 ch = inputQueue.poll();
                 if (DEBUG > 1) {
                     System.out.println(CLASSID + ".processInput peek is " + ch);
                 }
-                int charXPos = displayGrid.getMainPlayer().getPosX();
-                int charYPos = displayGrid.getMainPlayer().getPosY();
-                char charStandingOn = displayGrid.getMainPlayer().getCharStandingOn().getChar();
 
-                if (ch == 'X') {
-                    System.out.println("got an X, ending input checking");
-                    return false;
-                 /*
-                Logic for moving player:
-                Check ahead to see if there is a wall
-                If there is no wall, see if the space ahead is available to walk on
-                Restore the char the player was currently on and store the char the player is about to move to
-                Move player and update position
-                */
-            } else if (ch == 'h') {
-                System.out.println("move left");
-
-                if (displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != 'X') {
-                    if (charStandingOn != '#' && charStandingOn!=' ') {
-                        displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                        displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos - 1, charYPos));
-                        displayGrid.addObjectToDisplay(new Char('@'), charXPos - 1, charYPos);
-                        displayGrid.getMainPlayer().setPosX(charXPos - 1);
-//                        System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                    } else {
-                        if (displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != '.' && displayGrid.getDisplayChar(charXPos - 1, charYPos).getChar() != ' ') {
-                            displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                            displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos - 1, charYPos));
-                            displayGrid.addObjectToDisplay(new Char('@'), charXPos - 1, charYPos);
-                            displayGrid.getMainPlayer().setPosX(charXPos - 1);
-//                            System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                        }
-                    }
-                }
-
-            } else if (ch == 'l') {
-                System.out.println("move right");
-
-                if (displayGrid.getDisplayChar(charXPos + 1, charYPos).getChar() != 'X') {
-                    if (charStandingOn != '#' && charStandingOn != ' ') {
-                        displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                        displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos + 1, charYPos));
-                        displayGrid.addObjectToDisplay(new Char('@'), charXPos + 1, charYPos);
-                        displayGrid.getMainPlayer().setPosX(charXPos + 1);
-//                        System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                    } else {
-                        if (displayGrid.getDisplayChar(charXPos + 1, charYPos).getChar() != '.' && displayGrid.getDisplayChar(charXPos + 1, charYPos).getChar() != ' ' ) {
-                            displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                            displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos + 1, charYPos));
-                            displayGrid.addObjectToDisplay(new Char('@'), charXPos + 1, charYPos);
-                            displayGrid.getMainPlayer().setPosX(charXPos + 1);
-//                            System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                        }
-                    }
-                }
-
-            } else if (ch == 'k') {
-                System.out.println("move up");
-
-
-
-                if (displayGrid.getDisplayChar(charXPos, charYPos - 1).getChar() != 'X') {
-                    if (charStandingOn != '#' && charStandingOn!=' ') {
-                        displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                        displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos - 1));
-                        displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos - 1);
-                        displayGrid.getMainPlayer().setPosY(charYPos - 1);
-//                        System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                    } else {
-                        if (displayGrid.getDisplayChar(charXPos, charYPos - 1).getChar() != '.' && displayGrid.getDisplayChar(charXPos, charYPos - 1).getChar() != ' ') {
-                            displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                            displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos - 1));
-                            displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos - 1);
-                            displayGrid.getMainPlayer().setPosY(charYPos - 1);
-//                            System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                        }
-                    }
-                }
-
-            } else if (ch == 'j') {
-                System.out.println("move down");
-
-
-                if (displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar() != 'X') {
-                    if (charStandingOn != '#' && charStandingOn!=' ') {
-                        displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                        displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos + 1));
-                        displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos + 1);
-                        displayGrid.getMainPlayer().setPosY(charYPos + 1);
-//                        System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                    } else {
-                        if (displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar() != '.' && displayGrid.getDisplayChar(charXPos, charYPos + 1).getChar() != ' ') {
-                            displayGrid.addObjectToDisplay(new Char(charStandingOn), charXPos, charYPos);
-                            displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(charXPos, charYPos +1));
-                            displayGrid.addObjectToDisplay(new Char('@'), charXPos, charYPos + 1);
-                            displayGrid.getMainPlayer().setPosY(charYPos + 1);
-//                            System.out.println("Char standing on: " + displayGrid.getMainPlayer().getCharStandingOn().getChar());
-                        }
-                    }
-                }
-            }else if (ch == '?'){
-                    displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,R,T,w,E,0-9. H <cmd> for more info",0,displayGrid.getBottomMessageHeight()+displayGrid.getTopMessageHeight()+displayGrid.getGameHeight()-1);
-                }
-                else {
-                System.out.println("character " + ch + " entered on the keyboard");
+                return checkInputCharacter(ch);
             }
         }
-    }
         return true;
-}
+    }
 
-    @Override
-    public void run() {
-        displayGrid.registerInputObserver(this);
-        boolean working = true;
-        while (working) {
-            rest();
-            working = (processInput( ));
+    public boolean checkInputCharacter(char ch) {
+        int x = displayGrid.getMainPlayer().getPosX();
+        int y = displayGrid.getMainPlayer().getPosY();
+        char charStandingOn = displayGrid.getMainPlayer().getCharStandingOn().getChar();
+        boolean check = false;
+
+        switch(ch) {
+            case 'X':
+                System.out.println("got an X, ending input checking");
+                break;
+            case '?':
+                displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,R,T,w,E,0-9. H <cmd> for more info", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'h':
+            case 'j':
+            case 'k':
+            case 'l':
+                check = moveCharacter(ch, x, y, charStandingOn);
+            default:
+                System.out.println("Character " + ch + " entered on the keyboard");
         }
+        return check;
+    }
+
+    public boolean moveCharacter(char move, int x, int y, char charStandingOn) {
+        int nextX = -1;
+        int nextY = -1;
+
+        switch(move) {
+            case 'h':
+                System.out.println("Move Left");
+                nextX = x - 1;
+                nextY = y;
+                break;
+            case 'j':
+                System.out.println("Move Down");
+                nextX = x;
+                nextY = y + 1;
+                break;
+            case 'k':
+                System.out.println("Move Up");
+                nextX = x;
+                nextY = y - 1;
+                break;
+            case 'l':
+                System.out.println("Move Right");
+                nextX = x + 1;
+                nextY = y;
+                break;
+            default:
+                System.out.println("Invalid player movement");
+                System.out.println("Usage: 'h' - move left, 'j' - move down, 'k' - move up, 'l' - move right");
+                return false;
+        }
+
+        if (displayGrid.getDisplayChar(nextX, nextY).getChar() != 'X') {
+            if (charStandingOn != '#' && charStandingOn != ' ') {
+                displayGrid.addObjectToDisplay(new Char(charStandingOn), x, y);
+                displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
+                displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
+                displayGrid.getMainPlayer().setPosX(nextX);
+                displayGrid.getMainPlayer().setPosY(nextY);
+            }
+            else {
+                if (displayGrid.getDisplayChar(nextX, nextY).getChar() != '.' && displayGrid.getDisplayChar(nextX, nextY).getChar() != ' ' ) {
+                    displayGrid.addObjectToDisplay(new Char(charStandingOn), x, y);
+                    displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
+                    displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
+                    displayGrid.getMainPlayer().setPosX(nextX);
+                    displayGrid.getMainPlayer().setPosY(nextY);
+                }
+            }
+        }
+
+        return true;
     }
 }
