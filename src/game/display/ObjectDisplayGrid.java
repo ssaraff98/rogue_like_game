@@ -211,9 +211,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
 
 
-    public void displayStringToTerminal(String temp,int x, int y) {
-
-
+    public void displayStringToTerminal(String temp, int x, int y) {
         terminal.write(temp, x, y);
         terminal.repaint();
     }

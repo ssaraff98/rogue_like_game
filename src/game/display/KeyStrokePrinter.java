@@ -31,7 +31,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         boolean working = true;
         while (working) {
             rest();
-            working = (processInput( ));
+            working = (processInput(false));
         }
     }
 
@@ -44,11 +44,10 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         }
     }
 
-    public boolean processInput() {
-
+    public boolean processInput(boolean is_H) {
         char ch;
-
         boolean processing = true;
+
         while (processing) {
             if (inputQueue.peek() == null) {
                 processing = false;
@@ -58,14 +57,13 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 if (DEBUG > 1) {
                     System.out.println(CLASSID + ".processInput peek is " + ch);
                 }
-
-                return checkInputCharacter(ch);
+                return checkInputCharacter(ch, is_H);
             }
         }
         return true;
     }
 
-    public boolean checkInputCharacter(char ch) {
+    public boolean checkInputCharacter(char ch, boolean is_H) {
         int x = displayGrid.getMainPlayer().getPosX();
         int y = displayGrid.getMainPlayer().getPosY();
         char charStandingOn = displayGrid.getMainPlayer().getCharStandingOn().getChar();
@@ -78,39 +76,57 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             case '?':
                 displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,R,T,w,E,0-9. H <cmd> for more info", 0, displayGrid.getTotalHeight() - 1);
                 break;
+            case 'c':
+                break;
+            case 'd':
+                break;
+            case 'i':
+                break;
+            case 'H':
+                processInput(true);
+                break;
             case 'h':
             case 'j':
             case 'k':
             case 'l':
-                check = moveCharacter(ch, x, y, charStandingOn);
+                check = moveCharacter(ch, x, y, charStandingOn, is_H);
+                break;
             default:
                 System.out.println("Character " + ch + " entered on the keyboard");
         }
         return check;
     }
 
-    public boolean moveCharacter(char move, int x, int y, char charStandingOn) {
+    public boolean moveCharacter(char move, int x, int y, char charStandingOn, boolean is_H) {
         int nextX = -1;
         int nextY = -1;
 
         switch(move) {
             case 'h':
-                System.out.println("Move Left");
+                if (is_H) {
+                    displayGrid.displayStringToTerminal("Info: h: move left 1 space", 0, displayGrid.getTotalHeight() - 1);
+                }
                 nextX = x - 1;
                 nextY = y;
                 break;
             case 'j':
-                System.out.println("Move Down");
+                if (is_H) {
+                    displayGrid.displayStringToTerminal("Info: h: move down 1 space", 0, displayGrid.getTotalHeight() - 1);
+                }
                 nextX = x;
                 nextY = y + 1;
                 break;
             case 'k':
-                System.out.println("Move Up");
+                if (is_H) {
+                    displayGrid.displayStringToTerminal("Info: h: move up 1 space", 0, displayGrid.getTotalHeight() - 1);
+                }
                 nextX = x;
                 nextY = y - 1;
                 break;
             case 'l':
-                System.out.println("Move Right");
+                if (is_H) {
+                    displayGrid.displayStringToTerminal("Info: h: move right 1 space", 0, displayGrid.getTotalHeight() - 1);
+                }
                 nextX = x + 1;
                 nextY = y;
                 break;
