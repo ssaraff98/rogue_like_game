@@ -4,6 +4,8 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import game.displayable.creature.Player;
 import game.display.Char;
+import game.display.ObjectDisplayGrid;
+import asciiPanel.AsciiPanel;
 
 public class KeyStrokePrinter implements InputObserver, Runnable {
 
@@ -11,6 +13,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
     private static String CLASSID = "KeyStrokePrinter";
     private static Queue<Character> inputQueue = null;
     private ObjectDisplayGrid displayGrid;
+    private static AsciiPanel terminal;
 
     public KeyStrokePrinter(ObjectDisplayGrid grid) {
         inputQueue = new ConcurrentLinkedQueue<>();
@@ -147,7 +150,10 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         }
                     }
                 }
-            } else {
+            }else if (ch == '?'){
+                    displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,R,T,w,E,0-9. H <cmd> for more info",0,displayGrid.getBottomMessageHeight()+displayGrid.getTopMessageHeight()+displayGrid.getGameHeight()-1);
+                }
+                else {
                 System.out.println("character " + ch + " entered on the keyboard");
             }
         }

@@ -78,9 +78,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     public int getTopMessageHeight() { return this.topHeight; }
 
     public void setBottomMessageHeight(int _bottomHeight) { this.bottomHeight = _bottomHeight; }
-
+    public int getTotalHeight(){return this.totalHeight-5;}
     public int getBottomMessageHeight() { return this.bottomHeight; }
-
+    public int getGameHeight() { return this.gameHeight; }
     public static void setMainPlayer(Player _mainPlayer) {
         mainPlayer = _mainPlayer;
     }
@@ -99,7 +99,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     }
 
     public final void bottomDisplay() {
-        Char ch = new Char('b');
+        Char ch = new Char(' ');
         for (int i = 0; i < width; i++) {
             for (int j = topHeight + gameHeight; j < totalHeight; j++) {
                 addObjectToDisplay(ch, i, j);
@@ -172,6 +172,8 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
+
+
     private void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getChar();
 
@@ -204,6 +206,17 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         terminal.write(ch, x, y);
         terminal.repaint();
     }
+
+
+
+    public void displayStringToTerminal(String temp,int x, int y) {
+
+
+        terminal.write(temp, x, y);
+        terminal.repaint();
+    }
+
+
 
     public Char getDisplayChar(int x, int y) {
         if ((0 <= x) && (x < objectGrid.length)) {
