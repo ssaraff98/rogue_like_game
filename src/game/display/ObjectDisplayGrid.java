@@ -174,6 +174,18 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
+    public void removeObjectToDisplay(int x, int y) {
+        if ((0 <= x) && (x < objectGrid.length)) {
+            if ((0 <= y) && (y < objectGrid[0].length)) {
+                if (objectGrid[x][y] != null) {
+                    // System.out.println("Obj " + objectGrid[x][y].peek().getChar());
+                    objectGrid[x][y].pop();
+                }
+                writeToTerminal(x, y);
+            }
+        }
+    }
+
     private void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getChar();
 
@@ -203,11 +215,13 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 break;
             }
         }
+        System.out.println("CH PRINTING OUT:"+ch);
         terminal.write(ch, x, y);
         terminal.repaint();
     }
 
     public void displayStringToTerminal(String temp, int x, int y) {
+        terminal.write("                                               ", x, y);
         terminal.write(temp, x, y);
         terminal.repaint();
     }

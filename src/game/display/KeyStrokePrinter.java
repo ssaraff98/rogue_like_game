@@ -4,6 +4,8 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import game.displayable.creature.Player;
 import game.display.Char;
+import game.displayable.item.Item;
+import game.displayable.Dungeon;
 
 public class KeyStrokePrinter implements InputObserver, Runnable {
     private static int DEBUG = 1;
@@ -11,10 +13,12 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
     private static final int MAX_PACK_SIZE = 5;
 
     private static Queue<Character> inputQueue = null;
+    private Dungeon dungeonBeingParsed;
     private ObjectDisplayGrid displayGrid;
 
-    public KeyStrokePrinter(ObjectDisplayGrid grid) {
+    public KeyStrokePrinter(ObjectDisplayGrid grid, Dungeon dungeon) {
         inputQueue = new ConcurrentLinkedQueue<>();
+        dungeonBeingParsed = dungeon;
         displayGrid = grid;
     }
 
@@ -108,7 +112,19 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         }
                         break;
                     case 'p':
-                        // displayGrid.getMainPlayer().addToInventory(itemPicked);
+                        if (charStandingOn == ')' || charStandingOn == ']' || charStandingOn == '?') {
+                            Item itemPicked = dungeonBeingParsed.getItem(x, y, charStandingOn);
+                            if (itemPicked != null) {
+                                displayGrid.displayStringToTerminal("Info: Item picked " + charStandingOn, 0, displayGrid.getTotalHeight() - 1);
+                                displayGrid.getMainPlayer().addToInventory(itemPicked);
+                                displayGrid.removeObjectToDisplay(x, y);
+                                displayGrid.removeObjectToDisplay(x, y);
+                                displayGrid.addObjectToDisplay(new Char('@'), x, y);
+                            }
+                        }
+                        else {
+                            displayGrid.displayStringToTerminal("Info: No item to be picked", 0, displayGrid.getTotalHeight() - 1);
+                        }
                         break;
                     case 'r':
                         processing = false;
@@ -168,7 +184,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
 
         if (displayGrid.getDisplayChar(nextX, nextY).getChar() != 'X') {
             if (charStandingOn != '#' && charStandingOn != ' ') {
-                displayGrid.addObjectToDisplay(new Char(charStandingOn), x, y);
+                displayGrid.removeObjectToDisplay(x,y);
                 displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
                 displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                 displayGrid.getMainPlayer().setPosX(nextX);
@@ -176,7 +192,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             }
             else {
                 if (displayGrid.getDisplayChar(nextX, nextY).getChar() != '.' && displayGrid.getDisplayChar(nextX, nextY).getChar() != ' ' ) {
-                    displayGrid.addObjectToDisplay(new Char(charStandingOn), x, y);
+                    displayGrid.removeObjectToDisplay(x,y);
                     displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
                     displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                     displayGrid.getMainPlayer().setPosX(nextX);

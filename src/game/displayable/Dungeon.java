@@ -56,6 +56,20 @@ public class Dungeon extends Displayable implements Runnable {
 
     public void addItem(Item _item) { items.add(_item); }
 
+    public Item getItem(int x, int y, char ch) {
+        for (Item i : items) {
+            int item_x = i.getPosX();
+            int item_y = i.getPosY();
+            char item_type = i.getType();
+
+            if(x == item_x && y == item_y && ch == item_type) {
+                items.remove(i);
+                return i;
+            }
+        }
+        return null;
+    }
+
     public void addPassage(Passage _passage) { passages.add(_passage); }
 
     public void addRoom(Room _room) { rooms.add(_room); }
@@ -123,6 +137,8 @@ public class Dungeon extends Displayable implements Runnable {
             Item item = items.get(i);
             int x = item.getPosX();
             int y = item.getPosY();
+            item.setPosX(x);
+            item.setPosY(y + topHeight);
 
             displayGrid.addObjectToDisplay(new Char(item.getType()), x, y + topHeight);
         }

@@ -51,7 +51,7 @@ public class Rogue implements Runnable {
             long sleepTime = TIMEPERLOOP - (endTime - startTime);
 
             ObjectDisplayGrid displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
-            KeyStrokePrinter print = new KeyStrokePrinter(displayGrid);
+            KeyStrokePrinter print = new KeyStrokePrinter(displayGrid, dungeon);
             print.run();
 
             if(sleepTime > 0){
@@ -125,7 +125,7 @@ public class Rogue implements Runnable {
         testThread.start();
         game.run();
 
-        game.keyStrokePrinter = new Thread(new KeyStrokePrinter(displayGrid));
+        game.keyStrokePrinter = new Thread(new KeyStrokePrinter(displayGrid,dungeon));
 
         game.keyStrokePrinter.start();
 
