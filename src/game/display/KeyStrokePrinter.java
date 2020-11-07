@@ -6,9 +6,10 @@ import game.displayable.creature.Player;
 import game.display.Char;
 
 public class KeyStrokePrinter implements InputObserver, Runnable {
-
     private static int DEBUG = 1;
     private static String CLASSID = "KeyStrokePrinter";
+    private static final int MAX_PACK_SIZE = 5;
+
     private static Queue<Character> inputQueue = null;
     private ObjectDisplayGrid displayGrid;
 
@@ -61,30 +62,40 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 int x = displayGrid.getMainPlayer().getPosX();
                 int y = displayGrid.getMainPlayer().getPosY();
                 char charStandingOn = displayGrid.getMainPlayer().getCharStandingOn().getChar();
+                char next_ch;
+                int item_number;
                 boolean check = true;
 
                 switch(ch) {
-                    case 'X':
-                        System.out.println("got an X, ending input checking");
-                        break;
                     case '?':
                         displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,r,t,w,E,0-9. H <cmd> for more info", 0, displayGrid.getTotalHeight() - 1);
                         break;
                     case 'c':
                         break;
                     case 'd':
+                        processing = false;
+                        item_number = getNextInt();
+                        System.out.println("Item number: " + item_number);
+                        // drop item
+                        processing = true;
                         break;
                     case 'E':
+                        processing = false;
+                        next_ch = getNextChar();
+                        if (next_ch == 'Y' || next_ch == 'y') {
+                            System.out.println("Ending game");
+                            // quit();
+                        }
+                        else {
+                            processing = true;
+                        }
                         break;
                     case 'i':
                         break;
                     case 'H':
                         processing = false;
-                        boolean printed = false;
-                        while (!printed) {
-                            char next_ch = getNextInput();
-                            printed = printInformation(next_ch);
-                        }
+                        next_ch = getNextChar();
+                        printInformation(next_ch);
                         processing = true;
                         break;
                     case 'h':
@@ -100,10 +111,25 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         // displayGrid.getMainPlayer().addToInventory(itemPicked);
                         break;
                     case 'r':
+                        processing = false;
+                        item_number = getNextInt();
+                        System.out.println("Item number: " + item_number);
+                        // read scroll
+                        processing = true;
                         break;
                     case 't':
+                        processing = false;
+                        item_number = getNextInt();
+                        System.out.println("Item number: " + item_number);
+                        // equip weapon
+                        processing = true;
                         break;
                     case 'w':
+                        processing = false;
+                        item_number = getNextInt();
+                        System.out.println("Item number: " + item_number);
+                        // equip armor
+                        processing = true;
                         break;
                     default:
                         System.out.println("Character " + ch + " entered on the keyboard");
@@ -161,7 +187,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         return true;
     }
 
-    public char getNextInput() {
+    public char getNextChar() {
         char ch = ' ';
         boolean processing = false;
 
@@ -176,7 +202,27 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         return ch;
     }
 
-    public boolean printInformation(char ch) {
+    public int getNextInt() {
+        int item_number = -1;
+        boolean processing = false;
+
+        while (!processing) {
+            if (inputQueue.peek() == null) {
+                processing = false;
+            } else {
+                item_number = (int) (inputQueue.poll() - '0');
+                processing = true;
+            }
+        }
+
+        if (item_number < 0 || item_number > MAX_PACK_SIZE) {
+            displayGrid.displayStringToTerminal("Info: Invalid input. Item number must be between 0-" + MAX_PACK_SIZE, 0, displayGrid.getTotalHeight() - 1);
+        }
+
+        return item_number;
+    }
+
+    public void printInformation(char ch) {
         switch(ch) {
             case '?':
                 displayGrid.displayStringToTerminal("Info: '" + ch + "' lists all available commands", 0, displayGrid.getTotalHeight() - 1);
@@ -222,8 +268,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 break;
             default:
                 displayGrid.displayStringToTerminal("Info: Invalid input. Valid characters: h,l,k,j,i,?,H,c,d,p,r,t,w,E,0-9", 0, displayGrid.getTotalHeight() - 1);
-                return false;
         }
-        return true;
     }
 }
