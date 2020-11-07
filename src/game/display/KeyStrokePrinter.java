@@ -57,76 +57,80 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 if (DEBUG > 1) {
                     System.out.println(CLASSID + ".processInput peek is " + ch);
                 }
-                return checkInputCharacter(ch, is_H);
+
+                int x = displayGrid.getMainPlayer().getPosX();
+                int y = displayGrid.getMainPlayer().getPosY();
+                char charStandingOn = displayGrid.getMainPlayer().getCharStandingOn().getChar();
+                boolean check = true;
+
+                switch(ch) {
+                    case 'X':
+                        System.out.println("got an X, ending input checking");
+                        break;
+                    case '?':
+                        displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,r,t,w,E,0-9. H <cmd> for more info", 0, displayGrid.getTotalHeight() - 1);
+                        break;
+                    case 'c':
+                        break;
+                    case 'd':
+                        break;
+                    case 'E':
+                        break;
+                    case 'i':
+                        break;
+                    case 'H':
+                        processing = false;
+                        boolean printed = false;
+                        while (!printed) {
+                            char next_ch = getNextInput();
+                            printed = printInformation(next_ch);
+                        }
+                        processing = true;
+                        break;
+                    case 'h':
+                    case 'j':
+                    case 'k':
+                    case 'l':
+                        check = moveCharacter(ch, x, y, charStandingOn);
+                        if (!check) {
+                            return false;
+                        }
+                        break;
+                    case 'p':
+                        // displayGrid.getMainPlayer().addToInventory(itemPicked);
+                        break;
+                    case 'r':
+                        break;
+                    case 't':
+                        break;
+                    case 'w':
+                        break;
+                    default:
+                        System.out.println("Character " + ch + " entered on the keyboard");
+                }
             }
         }
         return true;
     }
 
-    public boolean checkInputCharacter(char ch, boolean is_H) {
-        int x = displayGrid.getMainPlayer().getPosX();
-        int y = displayGrid.getMainPlayer().getPosY();
-        char charStandingOn = displayGrid.getMainPlayer().getCharStandingOn().getChar();
-        boolean check = false;
-
-        switch(ch) {
-            case 'X':
-                System.out.println("got an X, ending input checking");
-                break;
-            case '?':
-                displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,R,T,w,E,0-9. H <cmd> for more info", 0, displayGrid.getTotalHeight() - 1);
-                break;
-            case 'c':
-                break;
-            case 'd':
-                break;
-            case 'i':
-                break;
-            case 'H':
-                processInput(true);
-                break;
-            case 'h':
-            case 'j':
-            case 'k':
-            case 'l':
-                check = moveCharacter(ch, x, y, charStandingOn, is_H);
-                break;
-            default:
-                System.out.println("Character " + ch + " entered on the keyboard");
-        }
-        return check;
-    }
-
-    public boolean moveCharacter(char move, int x, int y, char charStandingOn, boolean is_H) {
+    public boolean moveCharacter(char move, int x, int y, char charStandingOn) {
         int nextX = -1;
         int nextY = -1;
 
         switch(move) {
             case 'h':
-                if (is_H) {
-                    displayGrid.displayStringToTerminal("Info: h: move left 1 space", 0, displayGrid.getTotalHeight() - 1);
-                }
                 nextX = x - 1;
                 nextY = y;
                 break;
             case 'j':
-                if (is_H) {
-                    displayGrid.displayStringToTerminal("Info: h: move down 1 space", 0, displayGrid.getTotalHeight() - 1);
-                }
                 nextX = x;
                 nextY = y + 1;
                 break;
             case 'k':
-                if (is_H) {
-                    displayGrid.displayStringToTerminal("Info: h: move up 1 space", 0, displayGrid.getTotalHeight() - 1);
-                }
                 nextX = x;
                 nextY = y - 1;
                 break;
             case 'l':
-                if (is_H) {
-                    displayGrid.displayStringToTerminal("Info: h: move right 1 space", 0, displayGrid.getTotalHeight() - 1);
-                }
                 nextX = x + 1;
                 nextY = y;
                 break;
@@ -154,7 +158,72 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 }
             }
         }
+        return true;
+    }
 
+    public char getNextInput() {
+        char ch = ' ';
+        boolean processing = false;
+
+        while (!processing) {
+            if (inputQueue.peek() == null) {
+                processing = false;
+            } else {
+                ch = inputQueue.poll();
+                processing = true;
+            }
+        }
+        return ch;
+    }
+
+    public boolean printInformation(char ch) {
+        switch(ch) {
+            case '?':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' lists all available commands", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'c':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' take off armor and place in the pack", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'd':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "<integer>' drop item from item number in the pack", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'E':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "<Y/y>' end game", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'i':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' show contents of the pack", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'H':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "<next input>' gives more information about the next input character", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'h':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' move left 1 space", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'j':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' move down 1 space", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'k':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' move up 1 space", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'l':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' move right 1 space", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'p':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "' pick up item under player and put into the pack", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'r':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "<integer>' read the scroll from the item number in the pack", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 't':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "<integer>' equip weapon from the item number in the pack", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            case 'w':
+                displayGrid.displayStringToTerminal("Info: '" + ch + "<integer>' equip armor from the item number in the pack", 0, displayGrid.getTotalHeight() - 1);
+                break;
+            default:
+                displayGrid.displayStringToTerminal("Info: Invalid input. Valid characters: h,l,k,j,i,?,H,c,d,p,r,t,w,E,0-9", 0, displayGrid.getTotalHeight() - 1);
+                return false;
+        }
         return true;
     }
 }

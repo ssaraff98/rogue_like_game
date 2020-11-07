@@ -3,14 +3,20 @@ package game.displayable.creature;
 import game.displayable.item.Item;
 import game.display.Char;
 
-public class Player extends Creature /*implements Runnable, inputObserver*/ {
+import java.util.ArrayList;
+
+public class Player extends Creature {
+    private static final String CLASSID ="game.displayble.creature.Player";
+    private static final int MAX_PACK_SIZE = 5;
+
     private String name;
     private int room;
     private int serial;
+    private Char charStandingOn = new Char('.');
 
     private Item sword;
     private Item armor;
-    private Char charStandingOn = new Char('.');
+    private ArrayList<Item> inventory = new ArrayList<Item>();
 
     public Player() {
     }
@@ -28,17 +34,29 @@ public class Player extends Creature /*implements Runnable, inputObserver*/ {
 
     public void setWeapon(Item _sword) {
         sword = _sword;
+        inventory.add(sword);
     }
 
     public void setArmor(Item _armor) {
         armor = _armor;
+        inventory.add(armor);
     }
+
     public void setCharStandingOn(Char _charStandingOn){
         charStandingOn = _charStandingOn;
     }
 
     public Char getCharStandingOn(){
         return charStandingOn;
+    }
+
+    public boolean addToInventory(Item pickedItem) {
+        if (inventory.size() >= MAX_PACK_SIZE) {
+            System.out.println("Maximum pack size reached. Cannot pick up more items.");
+            return false;
+        }
+        inventory.add(pickedItem);
+        return true;
     }
 
 //    private static final int DEBUG = 1;

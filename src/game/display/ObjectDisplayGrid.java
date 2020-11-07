@@ -174,8 +174,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
-
-
     private void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getChar();
 
@@ -209,14 +207,10 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         terminal.repaint();
     }
 
-
-
     public void displayStringToTerminal(String temp, int x, int y) {
         terminal.write(temp, x, y);
         terminal.repaint();
     }
-
-
 
     public Char getDisplayChar(int x, int y) {
         if ((0 <= x) && (x < objectGrid.length)) {
