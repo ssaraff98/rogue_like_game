@@ -6,10 +6,15 @@ import game.displayable.Displayable;
 import game.displayable.creature.Creature;
 
 public class Item extends Displayable {
-    private Creature creature;
+    private String name;
 
+    private Creature creature;
     private ItemAction blessAction;
     private ItemAction hallucinateAction;
+
+    public String getName() { return this.name; }
+
+    public void setName(String _name) { this.name = _name; }
 
     public Creature getCreature() { return this.creature; }
 
@@ -30,5 +35,24 @@ public class Item extends Displayable {
     public void setHallucinateAction(ItemAction _hallucinateAction) {
         this.hallucinateAction = _hallucinateAction;
         // System.out.println("Hallucinate: " + this.hallucinateAction);
+    }
+
+    public String getItemName(char type) {
+        String name = "";
+
+        if (type == ')') {
+            return name;
+        }
+        else if (type == ']') {
+            name = "Armor";
+        }
+        else if (type == '?') {
+            name = "Scroll";
+        }
+        else {
+            System.out.println("No such item found");
+        }
+
+        return name;
     }
 }

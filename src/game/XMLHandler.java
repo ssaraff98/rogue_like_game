@@ -110,6 +110,7 @@ public class XMLHandler extends DefaultHandler {
 
             Armor armor = new Armor(name);
             dungeonBeingParsed.addItem(armor);
+            armor.setName(name);
             armor.setID(room, serial);
             armor.setType(']');
 
@@ -232,6 +233,7 @@ public class XMLHandler extends DefaultHandler {
 
             Scroll scroll = new Scroll(name);
             dungeonBeingParsed.addItem(scroll);
+            scroll.setName(name);
             scroll.setID(room, serial);
             scroll.setType('?');
 
@@ -246,6 +248,7 @@ public class XMLHandler extends DefaultHandler {
 
             Sword sword = new Sword(name);
             dungeonBeingParsed.addItem(sword);
+            sword.setName(name);
             sword.setID(room, serial);
             sword.setType(')');
 

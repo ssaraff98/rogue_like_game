@@ -102,7 +102,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         int pos = 0;
 
                         for (Item i: inventory) {
-                            inventoryList += (pos + ". " + i.getType() + "  ");
+                            inventoryList += (pos + ". " + i.getName() + "  ");
                             pos++;
                         }
                         displayGrid.displayStringToTerminal("Pack: " + inventoryList, 0, displayGrid.getTotalHeight() - 1 - 2);
