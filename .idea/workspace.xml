@@ -21,14 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Rogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Rogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Creature.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xmlFiles/death.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/xmlFiles/death.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xmlFiles/hallucinate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/xmlFiles/hallucinate.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

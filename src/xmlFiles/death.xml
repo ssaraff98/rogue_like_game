@@ -21,7 +21,7 @@
                     <actionIntValue>5</actionIntValue>
                 </CreatureAction>
             </Monster>
-            <Player name="Player" room="3" serial="8">
+            <Player name="Player" room="1" serial="8">
                 <visible>1</visible>
                 <posX>1</posX>
                 <posY>1</posY>

@@ -122,6 +122,7 @@ public class Dungeon extends Displayable implements Runnable {
 
             if (room_x == -1 || room_y == -1) {
                 System.out.println("Room position is invalid\n");
+                System.out.println("Creature - " + creature + " x: " + creature_x + " y: " + creature_y);
                 return;
             }
 

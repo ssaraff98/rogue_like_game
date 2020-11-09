@@ -55,7 +55,7 @@
                 <hp>0</hp>
                 <maxhit>0</maxhit>
             </Monster>
-            <Player name="Player" room="3" serial="7">
+            <Player name="Player" room="1" serial="7">
                 <visible>1</visible>
                 <posX>2</posX>
                 <posY>3</posY>
