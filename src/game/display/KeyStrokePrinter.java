@@ -81,8 +81,15 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'd':
                         processing = false;
                         item_number = getNextInt();
-                        System.out.println("Item number: " + item_number);
-                        // drop item
+                        Item item = displayGrid.getMainPlayer().removeFromInventory(item_number);
+                        if (item == null) {
+                            displayGrid.displayStringToTerminal("Info: No item to be found at position " + item_number, 0, displayGrid.getTotalHeight() - 1);
+                            break;
+                        }
+                        displayGrid.displayStringToTerminal("Info: Item dropped " + item.getType(), 0, displayGrid.getTotalHeight() - 1);
+                        displayGrid.removeObjectToDisplay(x, y);
+                        displayGrid.addObjectToDisplay(new Char(item.getType()), x, y);
+                        displayGrid.addObjectToDisplay(new Char('@'), x, y);
                         processing = true;
                         break;
                     case 'E':
@@ -100,13 +107,11 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         ArrayList<Item> inventory = displayGrid.getMainPlayer().getInventory();
                         String inventoryList = "";
                         int pos = 0;
-
                         for (Item i: inventory) {
                             inventoryList += (pos + ". " + i.getName() + "  ");
                             pos++;
                         }
                         displayGrid.displayStringToTerminal("Pack: " + inventoryList, 0, displayGrid.getTotalHeight() - 1 - 2);
-
                         break;
                     case 'H':
                         processing = false;

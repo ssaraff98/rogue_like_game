@@ -61,8 +61,13 @@ public class Player extends Creature {
         return true;
     }
 
-    public void removeFromInventory(int item_number) {
-
+    public Item removeFromInventory(int item_number) {
+        if (inventory.size() >= item_number) {
+            Item item = inventory.get(item_number);
+            inventory.remove(item_number);
+            return item;
+        }
+        return null;
     }
 
     public void readScroll(int item_number) {
@@ -71,12 +76,6 @@ public class Player extends Creature {
 
 
 //    private int moveCount =0;
-//    public Player(String name){
-//        super();
-//        type = '@';
-//        inputQueue = new ConcurrentLinkedQueue<>();
-//        this.name = name;
-//    }
 //    @Override
 //    public void initializeDisplayofSelf(){
 //        if(DEBUG > 1){
