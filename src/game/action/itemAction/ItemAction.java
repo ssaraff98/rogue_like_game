@@ -4,9 +4,9 @@ import game.action.Action;
 import game.displayable.item.Item;
 
 public class ItemAction extends Action {
-    private Item owner;
+    private Item item;
 
     public ItemAction(Item _owner) {
-        owner = _owner;
+        item = _owner;
     }
 }

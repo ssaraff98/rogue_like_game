@@ -1,7 +1,8 @@
 package game.displayable.creature;
 
-import game.displayable.Displayable;
 import game.action.creatureAction.CreatureAction;
+
+import game.displayable.Displayable;
 
 public class Creature extends Displayable {
     private String name;
@@ -9,6 +10,7 @@ public class Creature extends Displayable {
     private int serial;
     private int hpMoves;
     private int hp;
+
     private CreatureAction hitAction;
     private CreatureAction deathAction;
 
@@ -31,11 +33,15 @@ public class Creature extends Displayable {
     @Override
     public void setHp(int _hp) { this.hp = _hp; }
 
-    public void setHitAction(CreatureAction _hitAction) {
-        this.hitAction = _hitAction;
-    }
+    public CreatureAction getDeathAction() { return this.deathAction; }
 
     public void setDeathAction(CreatureAction _deathAction) {
         this.deathAction = _deathAction;
+    }
+
+    public CreatureAction getHitAction() { return this.hitAction; }
+
+    public void setHitAction(CreatureAction _hitAction) {
+        this.hitAction = _hitAction;
     }
 }

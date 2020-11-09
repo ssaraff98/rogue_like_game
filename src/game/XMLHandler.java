@@ -1,7 +1,7 @@
 package game;
 
 import game.action.Action;
-import game.action.creatureAction.ChangedDisplayedType;
+import game.action.creatureAction.ChangeDisplayedType;
 import game.action.creatureAction.CreatureAction;
 import game.action.creatureAction.Remove;
 import game.action.creatureAction.Teleport;
@@ -9,7 +9,7 @@ import game.action.creatureAction.UpdateDisplay;
 import game.action.creatureAction.YouWin;
 import game.action.creatureAction.playerAction.DropPack;
 import game.action.creatureAction.playerAction.EndGame;
-import game.action.itemAction.BlessCurse;
+import game.action.itemAction.BlessArmor;
 import game.action.itemAction.Hallucinate;
 import game.action.itemAction.ItemAction;
 
@@ -121,7 +121,11 @@ public class XMLHandler extends DefaultHandler {
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
 
-            // actionStack.push();
+            CreatureAction action = new CreatureAction((Creature) displayableStack.lastElement());
+            action.setName(name);
+            action.setType(type);
+
+            actionStack.push(action);
         }
         // ItemAction tag
         else if (qName.equalsIgnoreCase("ItemAction")) {
@@ -129,7 +133,11 @@ public class XMLHandler extends DefaultHandler {
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
 
-            // actionStack.push();
+            ItemAction action = new ItemAction((Item) displayableStack.lastElement());
+            action.setName(name);
+            action.setType(type);
+
+            actionStack.push(action);
         }
         // Monster tag
         else if (qName.equalsIgnoreCase("Monster")) {
@@ -288,15 +296,15 @@ public class XMLHandler extends DefaultHandler {
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (bActionCharValue) {
             bActionCharValue = false;
-            // actionStack.lastElement().setCharValue(data.toString().charAt(0));
+            actionStack.lastElement().setCharValue(data.toString().charAt(0));
         }
         else if (bActionIntValue) {
             bActionIntValue = false;
-            // actionStack.lastElement().setIntValue(Integer.parseInt(data.toString()));
+            actionStack.lastElement().setIntValue(Integer.parseInt(data.toString()));
         }
         else if (bActionMessage) {
             bActionMessage = false;
-            // actionStack.lastElement().setMessage(data.toString());
+            actionStack.lastElement().setMessage(data.toString());
         }
         else if (bHeight) {
             bHeight = false;
@@ -352,7 +360,6 @@ public class XMLHandler extends DefaultHandler {
         // Dungeon tag
         if (qName.equalsIgnoreCase("Dungeon")) {
             bDungeon = false;
-            // dungeonBeingParsed = null;
             displayableStack.pop();
         }
         // Armor tag
@@ -363,12 +370,12 @@ public class XMLHandler extends DefaultHandler {
         // CreatureAction tag
         else if (qName.equalsIgnoreCase("CreatureAction")) {
             bCreatureAction = false;
-            // actionStack.pop();
+            actionStack.pop();
         }
         // ItemAction tag
         else if (qName.equalsIgnoreCase("ItemAction")) {
             bItemAction = false;
-            // actionStack.pop();
+            actionStack.pop();
         }
         // Monster tag
         else if (qName.equalsIgnoreCase("Monster")) {

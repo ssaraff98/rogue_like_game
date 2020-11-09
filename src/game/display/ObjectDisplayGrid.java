@@ -215,13 +215,13 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 break;
             }
         }
-        System.out.println("CH PRINTING OUT:"+ch);
+
         terminal.write(ch, x, y);
         terminal.repaint();
     }
 
     public void displayStringToTerminal(String temp, int x, int y) {
-        terminal.write("                                               ", x, y);
+        terminal.write("                                                  ", x, y);
         terminal.write(temp, x, y);
         terminal.repaint();
     }

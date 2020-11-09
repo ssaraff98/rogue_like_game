@@ -2,11 +2,11 @@ package game.action.creatureAction;
 
 import game.displayable.creature.Creature;
 
-public class ChangedDisplayedType extends CreatureAction {
+public class ChangeDisplayedType extends CreatureAction {
     private String name;
     private Creature owner;
 
-    public ChangedDisplayedType(String _name, Creature _owner) {
+    public ChangeDisplayedType(String _name, Creature _owner) {
         super(_owner);
         name = _name;
         owner = _owner;

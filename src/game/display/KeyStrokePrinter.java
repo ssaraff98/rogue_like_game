@@ -10,7 +10,7 @@ import game.displayable.Dungeon;
 public class KeyStrokePrinter implements InputObserver, Runnable {
     private static int DEBUG = 1;
     private static String CLASSID = "KeyStrokePrinter";
-    private static final int MAX_PACK_SIZE = 5;
+    private static final int MAX_PACK_SIZE = 10;
 
     private static Queue<Character> inputQueue = null;
     private Dungeon dungeonBeingParsed;
@@ -147,6 +147,16 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         // equip armor
                         processing = true;
                         break;
+                    case '0':
+                    case '1':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                        break;
                     default:
                         System.out.println("Character " + ch + " entered on the keyboard");
                 }
@@ -231,8 +241,8 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             }
         }
 
-        if (item_number < 0 || item_number > MAX_PACK_SIZE) {
-            displayGrid.displayStringToTerminal("Info: Invalid input. Item number must be between 0-" + MAX_PACK_SIZE, 0, displayGrid.getTotalHeight() - 1);
+        if (item_number < 0 || item_number >= MAX_PACK_SIZE) {
+            displayGrid.displayStringToTerminal("Info: Invalid input. Item number must be between 0-" + (MAX_PACK_SIZE - 1), 0, displayGrid.getTotalHeight() - 1);
         }
 
         return item_number;
