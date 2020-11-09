@@ -113,6 +113,11 @@ public class XMLHandler extends DefaultHandler {
             armor.setID(room, serial);
             armor.setType(']');
 
+            if (displayableStack.lastElement().getType() == '@') {
+                Player player = (Player) displayableStack.lastElement();
+                player.setArmor(armor);
+            }
+
             displayableStack.push(armor);
         }
         // CreatureAction tag
@@ -243,6 +248,11 @@ public class XMLHandler extends DefaultHandler {
             dungeonBeingParsed.addItem(sword);
             sword.setID(room, serial);
             sword.setType(')');
+
+            if (displayableStack.lastElement().getType() == '@') {
+                Player player = (Player) displayableStack.lastElement();
+                player.setWeapon(sword);
+            }
 
             displayableStack.push(sword);
         }

@@ -7,6 +7,8 @@ import game.display.Char;
 import game.displayable.item.Item;
 import game.displayable.Dungeon;
 
+import java.util.ArrayList;
+
 public class KeyStrokePrinter implements InputObserver, Runnable {
     private static int DEBUG = 1;
     private static String CLASSID = "KeyStrokePrinter";
@@ -95,6 +97,16 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         }
                         break;
                     case 'i':
+                        ArrayList<Item> inventory = displayGrid.getMainPlayer().getInventory();
+                        String inventoryList = "";
+                        int pos = 0;
+
+                        for (Item i: inventory) {
+                            inventoryList += (pos + ". " + i.getType() + "  ");
+                            pos++;
+                        }
+                        displayGrid.displayStringToTerminal("Pack: " + inventoryList, 0, displayGrid.getTotalHeight() - 1 - 2);
+
                         break;
                     case 'H':
                         processing = false;
