@@ -37,11 +37,13 @@ public class Creature extends Displayable {
 
     public void setDeathAction(CreatureAction _deathAction) {
         this.deathAction = _deathAction;
+        // System.out.println("Death: " + this.deathAction);
     }
 
     public CreatureAction getHitAction() { return this.hitAction; }
 
     public void setHitAction(CreatureAction _hitAction) {
         this.hitAction = _hitAction;
+        // System.out.println("Hit: " + this.hitAction);
     }
 }

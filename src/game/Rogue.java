@@ -119,14 +119,12 @@ public class Rogue implements Runnable {
         dungeon.addObjectToDisplay(displayGrid);
 
         Rogue game = new Rogue(dungeon.getHeight(), dungeon.getWidth(), displayGrid.getTopMessageHeight(), displayGrid.getBottomMessageHeight(), fileName);
-        // System.out.println("SPM: user directory: "+ System.getProperty("user.dir"));
 
         Thread testThread = new Thread(dungeon);
         testThread.start();
         game.run();
 
-        game.keyStrokePrinter = new Thread(new KeyStrokePrinter(displayGrid,dungeon));
-
+        game.keyStrokePrinter = new Thread(new KeyStrokePrinter(displayGrid, dungeon));
         game.keyStrokePrinter.start();
 
         testThread.join();

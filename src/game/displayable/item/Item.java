@@ -15,16 +15,20 @@ public class Item extends Displayable {
 
     public void setOwner(Creature _creature) {
         this.creature = _creature;
-        System.out.println("Owner: " + this.creature);
+        // System.out.println("Owner: " + this.creature);
     }
 
     public ItemAction getBlessAction() { return this.blessAction; }
 
     public void setBlessAction(ItemAction _blessAction) {
         this.blessAction = _blessAction;
+        // System.out.println("Bless: " + this.blessAction);
     }
 
     public ItemAction getHallucinateAction() { return this.hallucinateAction; }
 
-    public void setHallucinateAction(ItemAction _hallucinateAction) { this.hallucinateAction = _hallucinateAction; }
+    public void setHallucinateAction(ItemAction _hallucinateAction) {
+        this.hallucinateAction = _hallucinateAction;
+        // System.out.println("Hallucinate: " + this.hallucinateAction);
+    }
 }

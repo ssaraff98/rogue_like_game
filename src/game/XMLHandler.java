@@ -121,9 +121,16 @@ public class XMLHandler extends DefaultHandler {
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
 
-            CreatureAction action = new CreatureAction((Creature) displayableStack.lastElement());
+            Creature creature = (Creature) displayableStack.lastElement();
+            CreatureAction action = new CreatureAction(creature);
             action.setName(name);
             action.setType(type);
+            if (type.equals("death")) {
+                creature.setDeathAction(action);
+            }
+            else if (type.equals("hit")) {
+                creature.setHitAction(action);
+            }
 
             actionStack.push(action);
         }
@@ -133,9 +140,16 @@ public class XMLHandler extends DefaultHandler {
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
 
-            ItemAction action = new ItemAction((Item) displayableStack.lastElement());
+            Item item = (Item) displayableStack.lastElement();
+            ItemAction action = new ItemAction(item);
             action.setName(name);
             action.setType(type);
+            if (name.equals("BlessArmor")) {
+                item.setBlessAction(action);
+            }
+            else if (name.equals("Hallucinate")) {
+                item.setHallucinateAction(action);
+            }
 
             actionStack.push(action);
         }
