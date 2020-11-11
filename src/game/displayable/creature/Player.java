@@ -74,7 +74,7 @@ public class Player extends Creature {
 
     }
 
-
+//
 //    private int moveCount =0;
 //    @Override
 //    public void initializeDisplayofSelf(){

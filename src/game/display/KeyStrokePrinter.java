@@ -6,6 +6,7 @@ import game.displayable.creature.Player;
 import game.display.Char;
 import game.displayable.item.Item;
 import game.displayable.Dungeon;
+import game.displayable.creature.Monster;
 
 import java.util.ArrayList;
 
@@ -210,12 +211,35 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         }
 
         if (displayGrid.getDisplayChar(nextX, nextY).getChar() != 'X') {
-            if (charStandingOn != '#' && charStandingOn != ' ') {
+            if (charStandingOn != '#' && charStandingOn != ' ' && (charStandingOn == 'S' | charStandingOn == 'T' | charStandingOn=='H')) {
+                System.out.println("attacking The Monster");
                 displayGrid.removeObjectToDisplay(x,y);
                 displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
                 displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                 displayGrid.getMainPlayer().setPosX(nextX);
                 displayGrid.getMainPlayer().setPosY(nextY);
+            }
+            else if (charStandingOn != '#' && charStandingOn != ' ') {
+//                System.out.println("attacking S monster");
+                displayGrid.removeObjectToDisplay(x,y);
+                displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
+                displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
+                displayGrid.getMainPlayer().setPosX(nextX);
+                displayGrid.getMainPlayer().setPosY(nextY);
+            }
+            else if(charStandingOn == 'T' |  charStandingOn == 'H' | charStandingOn == 'S'){
+                System.out.println("Attacking the monster");
+//                int damage = displayGrid.getMainPlayer().getInflictedDamage();
+//                Monster monster = displayGrid.getMainMonster();
+//                monster.performBeingHitActions(displayGrid.getMainPlayer());
+//                if(monster.getHpMoves() > 0){
+//                    displayGrid.getMainPlayer().performBeingHitActions(monster);
+//                }
+//                if(displayGrid.getMainPlayer().getHpMoves()<=0){
+//                    boolean processing = false;
+//                }
+
+
             }
             else {
                 if (displayGrid.getDisplayChar(nextX, nextY).getChar() != '.' && displayGrid.getDisplayChar(nextX, nextY).getChar() != ' ' ) {

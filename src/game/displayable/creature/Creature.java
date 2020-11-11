@@ -8,8 +8,8 @@ public class Creature extends Displayable {
     private String name;
     private int room;
     private int serial;
-    private int hpMoves;
-    private int hp;
+    public int hpMoves;
+    public int hp;
 
     private CreatureAction hitAction;
     private CreatureAction deathAction;
@@ -29,6 +29,12 @@ public class Creature extends Displayable {
     public void setHpMoves(int _hpMoves) {
         this.hpMoves = _hpMoves;
     }
+
+    @Override
+    public int getHpMoves() {
+        return this.hpMoves;
+    }
+
 
     @Override
     public void setHp(int _hp) { this.hp = _hp; }

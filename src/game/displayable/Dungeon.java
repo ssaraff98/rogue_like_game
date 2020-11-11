@@ -52,6 +52,11 @@ public class Dungeon extends Displayable implements Runnable {
         return this.width;
     }
 
+//    public Creature getMonster(int x, int y){
+//        // check x,y for creature , in the creature list.
+//        // then return that monster
+//    }
+
     public void addCreature(Creature _creature) { creatures.add(_creature); }
 
     public void addItem(Item _item) { items.add(_item); }

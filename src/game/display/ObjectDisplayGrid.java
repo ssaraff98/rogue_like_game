@@ -5,6 +5,7 @@ import game.displayable.Dungeon;
 import game.displayable.structure.Passage;
 import game.displayable.structure.Room;
 import game.displayable.creature.Player;
+import game.displayable.creature.Monster;
 import game.display.Char;
 
 import asciiPanel.AsciiPanel;
@@ -24,6 +25,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     private List<InputObserver> inputObservers = null;
     private static Player mainPlayer;
+    private static Monster mainMonster;
 
     private static ObjectDisplayGrid displayGrid = null;
     private int gameHeight;
@@ -91,8 +93,18 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         return mainPlayer;
     }
 
+    public static void setMainMonster(Monster _mainMonster) {
+        mainMonster = _mainMonster;
+    }
+
+    public Monster getMainMonster(){
+        return mainMonster;
+    }
+
+
+
     public final void topDisplay() {
-        Char ch = new Char('t');
+        Char ch = new Char(' ');
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < topHeight; j++) {
                 addObjectToDisplay(ch, i, j);
@@ -185,6 +197,10 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
     }
+
+//    public void writeHp(int hp) {
+//        displayStringToTerminal('HP: '+hp,0,0);
+//    }
 
     private void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getChar();
