@@ -31,8 +31,8 @@ public class Creature extends Displayable {
     }
 
     @Override
-    public int getHpMoves() {
-        return this.hpMoves;
+    public int getHp() {
+        return this.hp;
     }
 
 
