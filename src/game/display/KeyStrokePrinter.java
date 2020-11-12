@@ -24,6 +24,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         inputQueue = new ConcurrentLinkedQueue<>();
         dungeonBeingParsed = dungeon;
         displayGrid = grid;
+        displayGrid.displayStringToTerminal("HP: " + displayGrid.getMainPlayer().getHp() + "      Core: 0", 0, 0);
     }
 
     @Override
@@ -221,12 +222,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 if(checkingForGameEnd == false){
                     return false;
                 }
-                Player player = displayGrid.getMainPlayer();
-                Monster monster = (Monster) dungeonBeingParsed.getMonster(nextX, nextY);
-                int hp_for_monster = monster.getHp();
-                int hp_for_player = player.getHp();
-                System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
-//                System.out.println('HP for Monster: ');
             }
             else if (charStandingOn != '#' && charStandingOn != ' ') {
                 displayGrid.removeObjectToDisplay(x,y);
@@ -345,37 +340,29 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         Monster monster = (Monster) dungeonBeingParsed.getMonster(creature_x, creature_y);
         int hp_for_monster = monster.getHp();
         int hp_for_player = player.getHp();
-        displayGrid.displayStringToTerminal("HP: "+hp_for_player+"      core: 0", 0, 0);
+
+        displayGrid.displayStringToTerminal("HP: " + hp_for_player + "      Core: 0", 0, 0);
         System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
 
         int damageMonster = monster.performBeingHitActions(player);
-//        displayGrid.displayStringToTerminal("Info: damage incurred: "+damageMonster , 0, displayGrid.getTotalHeight() - 1);
+        displayGrid.displayStringToTerminal("Info: Damage inflicted to monster is " + damageMonster + "HP", 0, displayGrid.getTotalHeight() - 1);
         if (monster.getHp() > 0) {
             int playerDamage = player.performBeingHitActions(monster);
-            displayGrid.displayStringToTerminal("Info: damage incurred: "+playerDamage , 0, displayGrid.getTotalHeight() - 1);
-
-//            return true;
+            displayGrid.displayStringToTerminal("Info: Damage inflicted to player is " + playerDamage + "HP", 0, displayGrid.getTotalHeight() - 1);
         }
         else {
-
             displayGrid.removeObjectToDisplay(creature_x, creature_y);
             displayGrid.removeObjectToDisplay(creature_x, creature_y);
             displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
-//            return true;
-
-            //remove monster from display
-            // monster death
+            // remove monster from dungeon creature list
         }
 
         if (player.getHp() <= 0) {
-            System.out.println("GAME SHOULD ENDDDDD");
-//            printInformation('E');
+            System.out.println("Ending game");
             return false;
-
-            //exit the game
+            // exit the game
             // player death
         }
         return true;
-
     }
 }

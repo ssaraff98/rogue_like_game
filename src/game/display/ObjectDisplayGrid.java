@@ -108,6 +108,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 addObjectToDisplay(ch, i, j);
             }
         }
+        displayStringToTerminal("HP:       Core: 0", 0, 0);
     }
 
     public final void bottomDisplay() {
@@ -117,6 +118,8 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 addObjectToDisplay(ch, i, j);
             }
         }
+        displayStringToTerminal("Pack: ", 0, totalHeight - 1 - 2);
+        displayStringToTerminal("Info: ", 0, totalHeight - 1);
     }
 
     public final void initializeDisplay() {
@@ -176,9 +179,10 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     public void addObjectToDisplay(Char ch, int x, int y) {
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
-                if (!objectGrid[x][y].contains(ch)) {
-                    objectGrid[x][y].push(ch);
-                }
+                // if (!objectGrid[x][y].contains(ch)) {
+                objectGrid[x][y].push(ch);
+                // System.out.println("Obj " + objectGrid[x][y].peek().getChar());
+                // }
                 writeToTerminal(x, y);
             }
         }
@@ -190,6 +194,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 if (objectGrid[x][y] != null) {
                     // System.out.println("Obj " + objectGrid[x][y].peek().getChar());
                     objectGrid[x][y].pop();
+                    // System.out.println("Obj " + objectGrid[x][y].peek().getChar());
                 }
                 writeToTerminal(x, y);
             }
@@ -235,7 +240,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     }
 
     public void displayStringToTerminal(String temp, int x, int y) {
-        terminal.write("                                                  ", x, y);
+        terminal.write("                                                              ", x, y);
         terminal.write(temp, x, y);
         terminal.repaint();
     }
