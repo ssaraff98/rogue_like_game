@@ -12,6 +12,7 @@ import asciiPanel.AsciiPanel;
 import java.io.IOException;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -101,6 +102,13 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         return mainMonster;
     }
 
+    public void debugObjectGrid(int x, int y) {
+        System.out.println("objectGrid[" + x + "][" + y + "]: ");
+        for(int i = 0; i < objectGrid[x][y].size(); i++) {
+            System.out.println(objectGrid[x][y].get(i).getChar());
+        }
+    }
+
     public final void topDisplay() {
         Char ch = new Char(' ');
         for (int i = 0; i < width; i++) {
@@ -179,10 +187,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     public void addObjectToDisplay(Char ch, int x, int y) {
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
-                // if (!objectGrid[x][y].contains(ch)) {
-                objectGrid[x][y].push(ch);
-                // System.out.println("Obj " + objectGrid[x][y].peek().getChar());
-                // }
+                if (!objectGrid[x][y].contains(ch)) {
+                    objectGrid[x][y].push(ch);
+                }
                 writeToTerminal(x, y);
             }
         }
@@ -192,9 +199,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 if (objectGrid[x][y] != null) {
-                    // System.out.println("Obj " + objectGrid[x][y].peek().getChar());
                     objectGrid[x][y].pop();
-                    // System.out.println("Obj " + objectGrid[x][y].peek().getChar());
                 }
                 writeToTerminal(x, y);
             }
@@ -248,7 +253,13 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     public Char getDisplayChar(int x, int y) {
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
-                // System.out.println("getDisplayChar.objectGrid " + objectGrid[x][y]);
+                if (DEBUG > 1) {
+                    System.out.println(CLASSID + ".getDisplayChar is " + objectGrid[x][y].lastElement().getChar());
+                }
+
+                if (objectGrid[x][y].lastElement().getChar() == '@') {
+                    return objectGrid[x][y].get(objectGrid[x][y].size() - 2);
+                }
                 return objectGrid[x][y].lastElement();
             }
         }

@@ -109,7 +109,6 @@ public class XMLHandler extends DefaultHandler {
             int serial = Integer.parseInt(attributes.getValue("serial"));
 
             Armor armor = new Armor(name);
-            dungeonBeingParsed.addItem(armor);
             armor.setName(name);
             armor.setID(room, serial);
             armor.setType(']');
@@ -119,6 +118,7 @@ public class XMLHandler extends DefaultHandler {
                 player.setArmor(armor);
             }
 
+            dungeonBeingParsed.addItem(armor);
             displayableStack.push(armor);
         }
         // CreatureAction tag
@@ -167,11 +167,11 @@ public class XMLHandler extends DefaultHandler {
             int serial = Integer.parseInt(attributes.getValue("serial"));
 
             Monster monster = new Monster();
-            dungeonBeingParsed.addCreature(monster);
-            roomBeingParsed.setCreature(monster);
             monster.setName(name);
             monster.setID(room, serial);
 
+            dungeonBeingParsed.addCreature(monster);
+            roomBeingParsed.setCreature(monster);
             displayableStack.push(monster);
         }
         // Passage tag
@@ -181,10 +181,10 @@ public class XMLHandler extends DefaultHandler {
             int room2 = Integer.parseInt(attributes.getValue("room2"));
 
             Passage passage = new Passage();
-            dungeonBeingParsed.addPassage(passage);
             passage.setID(room1, room2);
             passage.setType('#');
 
+            dungeonBeingParsed.addPassage(passage);
             displayableStack.push(passage);
         }
         // Passages tag
@@ -199,13 +199,13 @@ public class XMLHandler extends DefaultHandler {
             int serial = Integer.parseInt(attributes.getValue("serial"));
 
             Player player = new Player();
-            dungeonBeingParsed.addCreature(player);
-            roomBeingParsed.setCreature(player);
             player.setName(name);
             player.setID(room, serial);
             player.setType('@');
-            ObjectDisplayGrid.setMainPlayer(player);
 
+            dungeonBeingParsed.addCreature(player);
+            roomBeingParsed.setCreature(player);
+            ObjectDisplayGrid.setMainPlayer(player);
             displayableStack.push(player);
         }
         // Room tag
@@ -214,10 +214,10 @@ public class XMLHandler extends DefaultHandler {
             int room = Integer.parseInt(attributes.getValue("room"));
 
             roomBeingParsed = new Room(room);
-            dungeonBeingParsed.addRoom(roomBeingParsed);
             roomBeingParsed.setId(room);
             roomBeingParsed.setType('X');
 
+            dungeonBeingParsed.addRoom(roomBeingParsed);
             displayableStack.push(roomBeingParsed);
         }
         // Rooms tag
@@ -232,11 +232,11 @@ public class XMLHandler extends DefaultHandler {
             int serial = Integer.parseInt(attributes.getValue("serial"));
 
             Scroll scroll = new Scroll(name);
-            dungeonBeingParsed.addItem(scroll);
             scroll.setName(name);
             scroll.setID(room, serial);
             scroll.setType('?');
 
+            dungeonBeingParsed.addItem(scroll);
             displayableStack.push(scroll);
         }
         // Sword tag
@@ -247,7 +247,6 @@ public class XMLHandler extends DefaultHandler {
             int serial = Integer.parseInt(attributes.getValue("serial"));
 
             Sword sword = new Sword(name);
-            dungeonBeingParsed.addItem(sword);
             sword.setName(name);
             sword.setID(room, serial);
             sword.setType(')');
@@ -257,6 +256,7 @@ public class XMLHandler extends DefaultHandler {
                 player.setWeapon(sword);
             }
 
+            dungeonBeingParsed.addItem(sword);
             displayableStack.push(sword);
         }
 

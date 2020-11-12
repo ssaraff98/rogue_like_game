@@ -75,6 +75,12 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 int item_number;
                 boolean check = true;
 
+                if (DEBUG > 1) {
+                    System.out.println(CLASSID + ".charStandingOn is " + charStandingOn);
+                    System.out.println(CLASSID + ".x is " + x);
+                    System.out.println(CLASSID + ".y is " + y);
+                }
+
                 switch(ch) {
                     case '?':
                         displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,r,t,w,E,0-9. H <cmd> for more info", 0, displayGrid.getTotalHeight() - 1);
@@ -89,9 +95,12 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                             displayGrid.displayStringToTerminal("Info: No item to be found at position " + item_number, 0, displayGrid.getTotalHeight() - 1);
                             break;
                         }
-                        displayGrid.displayStringToTerminal("Info: Item dropped " + item.getType(), 0, displayGrid.getTotalHeight() - 1);
+                        item.setPosX(x);
+                        item.setPosY(y);
+                        displayGrid.displayStringToTerminal("Info: Item dropped " + item.getName() + " at (" + item.getPosX() + ", " + item.getPosY() + ")", 0, displayGrid.getTotalHeight() - 1);
                         displayGrid.removeObjectToDisplay(x, y);
                         displayGrid.addObjectToDisplay(new Char(item.getType()), x, y);
+                        displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(x, y));
                         displayGrid.addObjectToDisplay(new Char('@'), x, y);
                         processing = true;
                         break;
@@ -136,10 +145,11 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         if (charStandingOn == ')' || charStandingOn == ']' || charStandingOn == '?') {
                             Item itemPicked = dungeonBeingParsed.getItem(x, y, charStandingOn);
                             if (itemPicked != null) {
-                                displayGrid.displayStringToTerminal("Info: Item picked " + charStandingOn, 0, displayGrid.getTotalHeight() - 1);
+                                displayGrid.displayStringToTerminal("Info: Item picked " + itemPicked.getName(), 0, displayGrid.getTotalHeight() - 1);
                                 displayGrid.getMainPlayer().addToInventory(itemPicked);
                                 displayGrid.removeObjectToDisplay(x, y);
                                 displayGrid.removeObjectToDisplay(x, y);
+                                displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(x, y));
                                 displayGrid.addObjectToDisplay(new Char('@'), x, y);
                             }
                         }
@@ -179,7 +189,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case '9':
                         break;
                     default:
-                        System.out.println("Character " + ch + " entered on the keyboard");
+                        System.out.println("Invalid character " + ch);
                 }
             }
         }
@@ -229,7 +239,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                 displayGrid.getMainPlayer().setPosX(nextX);
                 displayGrid.getMainPlayer().setPosY(nextY);
-//                System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves() + "  damage:"+ displayGrid.getMainPlayer().getRandom(displayGrid.getMainPlayer().getMaxHit()));
                 setHp = displayGrid.getMainPlayer().setMoves();
             }
             else {
@@ -239,7 +248,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                     displayGrid.getMainPlayer().setPosX(nextX);
                     displayGrid.getMainPlayer().setPosY(nextY);
-//                    System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves());
                     setHp = displayGrid.getMainPlayer().setMoves();
                 }
             }

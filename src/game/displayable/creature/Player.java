@@ -53,7 +53,6 @@ public class Player extends Creature {
     public int getMoves() { return this.moves; }
 
     public boolean setMoves() {
-        System.out.println("Moves: " + moves + " HpMoves: " + getHpMoves());
         this.moves++;
         if (this.moves == this.getHpMoves()) {
             int hp = getHp();
@@ -115,7 +114,6 @@ public class Player extends Creature {
         }
 
         int damage = monster.getInflictedDamage(monster.getMaxHit()) - armorProtection;
-//        System.out.println("yesy");
 
         int hp = getHp();
         if (damage > 0) {
@@ -127,10 +125,8 @@ public class Player extends Creature {
 
         if (DEBUG > 1) {
             System.out.println(CLASSID + ".performBeingHitActions");
-            System.out.println("encroacher damage: " + monster);
-//            displayGrid.displayStringToTerminal("Info: damage incurred: "+damage , 0, displayGrid.getTotalHeight() - 1);
-            System.out.println("Damage Inflicted to Player: " + damage);
-            System.out.println("Hp after hit: " + hp);
+            System.out.println("Encroacher damage: " + monster);
+            System.out.println("HP after hit: " + hp);
         }
 
         if (hp <= 0) {

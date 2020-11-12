@@ -12,6 +12,9 @@ import game.displayable.structure.Room;
 import java.util.ArrayList;
 
 public class Dungeon extends Displayable implements Runnable {
+    private static int DEBUG = 0;
+    private static String CLASSID = "Dungeon";
+
     private String name;
     private int width;
     private int gameHeight;
@@ -74,8 +77,14 @@ public class Dungeon extends Displayable implements Runnable {
             int item_y = i.getPosY();
             char item_type = i.getType();
 
+            if (DEBUG > 1) {
+                System.out.println(CLASSID + ".item_x is " + item_x);
+                System.out.println(CLASSID + ".item_y is " + item_y);
+                System.out.println(CLASSID + ".item_type is " + item_type);
+            }
+
             if(x == item_x && y == item_y && ch == item_type) {
-                items.remove(i);
+                // items.remove(i);
                 return i;
             }
         }
