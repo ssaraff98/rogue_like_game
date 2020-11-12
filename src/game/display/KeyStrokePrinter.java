@@ -345,6 +345,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         Monster monster = (Monster) dungeonBeingParsed.getMonster(creature_x, creature_y);
         int hp_for_monster = monster.getHp();
         int hp_for_player = player.getHp();
+        displayGrid.displayStringToTerminal("HP: "+hp_for_player+"      core: 0", 0, 0);
         System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
 
         monster.performBeingHitActions(player);
@@ -365,6 +366,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
 
         if (player.getHp() <= 0) {
             System.out.println("GAME SHOULD ENDDDDD");
+//            printInformation('E');
             return false;
 
             //exit the game
