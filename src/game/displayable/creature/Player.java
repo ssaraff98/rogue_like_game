@@ -109,7 +109,7 @@ public class Player extends Creature {
         return damage;
     }
 
-    public void performBeingHitActions(Monster monster) {
+    public int performBeingHitActions(Monster monster) {
 //        for(CreatureAction action: hitActions){
 //            action.performAction();
 //        }
@@ -120,6 +120,7 @@ public class Player extends Creature {
         }
 
         int damage = monster.getInflictedDamage(monster.getMaxHit()) - armorProtection;
+//        System.out.println("yesy");
 
         int hp = getHp();
         if (damage > 0) {
@@ -132,6 +133,7 @@ public class Player extends Creature {
         if (DEBUG > 1) {
             System.out.println(CLASSID + ".performBeingHitActions");
             System.out.println("encroacher damage: " + monster);
+//            displayGrid.displayStringToTerminal("Info: damage incurred: "+damage , 0, displayGrid.getTotalHeight() - 1);
             System.out.println("damage incurred: " + damage);
             System.out.println("hp after hit: " + hp);
         }
@@ -139,6 +141,7 @@ public class Player extends Creature {
         if (hp <= 0) {
             // performDeathActions(monster);
         }
+        return damage;
     }
 
 //    @Override

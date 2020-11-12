@@ -348,9 +348,12 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         displayGrid.displayStringToTerminal("HP: "+hp_for_player+"      core: 0", 0, 0);
         System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
 
-        monster.performBeingHitActions(player);
+        int damageMonster = monster.performBeingHitActions(player);
+//        displayGrid.displayStringToTerminal("Info: damage incurred: "+damageMonster , 0, displayGrid.getTotalHeight() - 1);
         if (monster.getHp() > 0) {
-            player.performBeingHitActions(monster);
+            int playerDamage = player.performBeingHitActions(monster);
+            displayGrid.displayStringToTerminal("Info: damage incurred: "+playerDamage , 0, displayGrid.getTotalHeight() - 1);
+
 //            return true;
         }
         else {

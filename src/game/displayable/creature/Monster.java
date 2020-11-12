@@ -33,7 +33,7 @@ public class Monster extends Creature {
         return damage;
     }
 
-    public void performBeingHitActions(Player player) {
+    public int performBeingHitActions(Player player) {
 //        for(CreatureAction action: hitActions){
 //            action.performAction();
 //        }
@@ -58,6 +58,7 @@ public class Monster extends Creature {
         if (hp <= 0) {
             // performDeathActions(monster);
         }
+        return damage;
     }
 
 //    @Override
