@@ -127,6 +127,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'l':
                         check = moveCharacter(ch, x, y, charStandingOn);
                         if (!check) {
+                            processing = false;
                             return false;
                         }
                         break;
@@ -216,7 +217,16 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
 
         if (nextCh != 'X') {
             if (nextCh == 'H' || nextCh == 'S' || nextCh == 'T') {
-                performAttack(nextX, nextY, x, y);
+                boolean checkingForGameEnd = performAttack(nextX, nextY, x, y);
+                if(checkingForGameEnd == false){
+                    return false;
+                }
+                Player player = displayGrid.getMainPlayer();
+                Monster monster = (Monster) dungeonBeingParsed.getMonster(nextX, nextY);
+                int hp_for_monster = monster.getHp();
+                int hp_for_player = player.getHp();
+                System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
+//                System.out.println('HP for Monster: ');
             }
             else if (charStandingOn != '#' && charStandingOn != ' ') {
                 displayGrid.removeObjectToDisplay(x,y);
@@ -224,7 +234,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                 displayGrid.getMainPlayer().setPosX(nextX);
                 displayGrid.getMainPlayer().setPosY(nextY);
-                System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves());
+//                System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves() + "  damage:"+ displayGrid.getMainPlayer().getRandom(displayGrid.getMainPlayer().getMaxHit()));
                 setHp = displayGrid.getMainPlayer().setMoves();
             }
             else {
@@ -234,7 +244,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                     displayGrid.getMainPlayer().setPosX(nextX);
                     displayGrid.getMainPlayer().setPosY(nextY);
-                    System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves());
+//                    System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves());
                     setHp = displayGrid.getMainPlayer().setMoves();
                 }
             }
@@ -330,20 +340,37 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         }
     }
 
-    public void performAttack(int creature_x, int creature_y, int player_x, int player_y) {
+    public boolean performAttack(int creature_x, int creature_y, int player_x, int player_y) {
         Player player = displayGrid.getMainPlayer();
         Monster monster = (Monster) dungeonBeingParsed.getMonster(creature_x, creature_y);
+        int hp_for_monster = monster.getHp();
+        int hp_for_player = player.getHp();
+        System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
 
         monster.performBeingHitActions(player);
         if (monster.getHp() > 0) {
             player.performBeingHitActions(monster);
+//            return true;
         }
         else {
+
+            displayGrid.removeObjectToDisplay(creature_x, creature_y);
+            displayGrid.removeObjectToDisplay(creature_x, creature_y);
+            displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
+//            return true;
+
+            //remove monster from display
             // monster death
         }
 
         if (player.getHp() <= 0) {
+            System.out.println("GAME SHOULD ENDDDDD");
+            return false;
+
+            //exit the game
             // player death
         }
+        return true;
+
     }
 }

@@ -11,7 +11,7 @@ import game.displayable.item.Sword;
 import java.util.ArrayList;
 
 public class Player extends Creature {
-    private static final int DEBUG = 0;
+    private static final int DEBUG = 1;
     private static final String CLASSID ="game.displayble.creature.Player";
     private static final int MAX_PACK_SIZE = 10;
 
@@ -51,6 +51,11 @@ public class Player extends Creature {
     }
 
     public int getMoves() { return this.moves; }
+
+//    @Override
+//    public int getHp() {
+//        return this.hp;
+//    }
 
     public boolean setMoves() {
         System.out.println("Moves: " + moves + " HpMoves: " + getHpMoves());
