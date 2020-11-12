@@ -51,6 +51,4 @@ public class Creature extends Displayable {
         this.hitAction = _hitAction;
         // System.out.println("Hit: " + this.hitAction);
     }
-
-    public void performBeingHitActions(Displayble attacker);
 }

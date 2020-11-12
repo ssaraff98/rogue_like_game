@@ -52,7 +52,11 @@ public class Item extends Displayable {
         else {
             System.out.println("No such item found");
         }
-
         return name;
+    }
+
+    public int getInflictedDamage(int maxHit) {
+        int damage = getRandom(maxHit);
+        return damage;
     }
 }

@@ -1,14 +1,15 @@
 package game.displayable.creature;
-//package game.display;
+
+import game.action.creatureAction.CreatureAction;
+import game.displayable.Displayable;
 
 public class Monster extends Creature {
+    private static final int DEBUG = 0;
+    private static final String CLASSID ="game.displayble.creature.Monster";
+
     private String name;
     private int room;
     private int serial;
-//    private Item sword;
-//    private Item armor;
-//    private ObjectDisplayGrid displayGrid;
-//    displayGrid = ObjectDisplayGrid grid;
 
     public void setName(String _name) {
         this.name = _name;
@@ -27,45 +28,37 @@ public class Monster extends Creature {
         return this.room;
     }
 
+    public int getInflictedDamage(int maxHit) {
+        int damage = getRandom(maxHit);
+        return damage;
+    }
 
-    private int moveCount = 0;
-
-//    @Override
-//    public void initializeDisplayofSelf() {
-//        if (DEBUG > 1) {
-//            System.out.println(CLASSID + ".initializeDisplayOfSelf type " + type);
-//        }
-//        System.out.println(CLASSID + ".initializeDisplayOfSelf posX" + posX + ",poxY" + posY + ", type: " + type + ", hp" + hp);
-//        super.initializeDisplayOfSelf();
-//        ObjectDisplayGrid.writeUp(hp);
-//    }
-//
-//    @Override
-//    public void performBeingHitActions(Displayble attacker) {
-//        if (DEBUG > 1) {
-//            System.out.println(CLASSID + ".performBeingHitActions intial hp: " + hp);
-//        }
-//        for (CreatureAction action : hitActions) {
+    public void performBeingHitActions(Player player) {
+//        for(CreatureAction action: hitActions){
 //            action.performAction();
 //        }
-//        int armorProtection = 0;
-//        if (armor != null) {
-//            armorProtection = armor.getInflictedDamage();
-//        }
-//        int damage = attacker.getInflictedDamage() - armorProtection;
-//        setHP(hp - ((damage > 0) ? damage : -damage));
-//        if (DEBUG > 1) {
-//            System.out.println(CLASSID + ".performBeingHitActions");
-//            System.out.println("armor mitigation: " + armor.getInflictedDamage());
-//            System.out.println("encroacher damage: " + attacker + getInflictedDamage());
-//            System.out.println("damage incurred: " + damage);
-//            System.out.println("hp after hit: " + hp);
-//
-//        }
-//        if (hp <= 0) {
-//            performDeathActions(attacker);
-//        }
-//    }
+
+        int damage = player.getInflictedDamage(player.getMaxHit());
+
+        int hp = getHp();
+        if (damage > 0) {
+            setHp(hp - damage);
+        }
+        else {
+            setHp(hp + damage);
+        }
+
+        if (DEBUG > 1) {
+            System.out.println(CLASSID + ".performBeingHitActions");
+            System.out.println("encroacher damage: " + player);
+            System.out.println("damage incurred: " + damage);
+            System.out.println("hp after hit: " + hp);
+        }
+
+        if (hp <= 0) {
+            // performDeathActions(monster);
+        }
+    }
 
 //    @Override
 //    protected void performMoveActions(int x, int y, Displayble moveToObject) {
@@ -75,16 +68,6 @@ public class Monster extends Creature {
 //            ObjectDisplayGrid.writeHp(hp);
 //        }
 //        moveToObject.performBeingHitActions(this);
-//    }
-
-//    @Override
-//    public int getInflictedDamage() {
-//        int damage = getRandom(maxHit);
-//        if (weapon != null) {
-//            damage += weapon.getInflictedDamage();
-//
-//        }
-//        return damage;
 //    }
 //
 //    @Override

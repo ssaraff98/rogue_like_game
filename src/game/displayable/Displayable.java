@@ -34,7 +34,7 @@ public abstract class Displayable {
 
     public void setHpMoves(int _hpMoves) {
         this.hpMoves = _hpMoves;
-        // System.out.println("HpMoves: " + hpMoves);
+        System.out.println("HpMoves: " + hpMoves);
     }
 
     public int getHpMoves() {

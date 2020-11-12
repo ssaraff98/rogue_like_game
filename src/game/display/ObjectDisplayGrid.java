@@ -1,12 +1,12 @@
 package game.display;
 
+import game.display.Char;
 import game.displayable.Displayable;
 import game.displayable.Dungeon;
 import game.displayable.structure.Passage;
 import game.displayable.structure.Room;
 import game.displayable.creature.Player;
 import game.displayable.creature.Monster;
-import game.display.Char;
 
 import asciiPanel.AsciiPanel;
 import java.io.IOException;
@@ -196,9 +196,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         }
     }
 
-//    public void writeHp(int hp) {
-//        displayStringToTerminal('HP: '+hp,0,0);
-//    }
+    public void writeHp(int hp) {
+        displayStringToTerminal("HP: " + hp,0,0);
+    }
 
     private void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getChar();

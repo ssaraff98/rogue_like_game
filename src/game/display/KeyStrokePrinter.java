@@ -1,14 +1,14 @@
 package game.display;
 
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import game.display.Char;
 import game.displayable.creature.Player;
 import game.displayable.creature.Creature;
-import game.display.Char;
 import game.displayable.item.Item;
 import game.displayable.Dungeon;
 import game.displayable.creature.Monster;
 
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.ArrayList;
 
 public class KeyStrokePrinter implements InputObserver, Runnable {
@@ -129,8 +129,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         if (!check) {
                             return false;
                         }
-
-                        // Increase hp if moves == hpMoves
                         break;
                     case 'p':
                         if (charStandingOn == ')' || charStandingOn == ']' || charStandingOn == '?') {
@@ -214,10 +212,11 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         }
 
         char nextCh = displayGrid.getDisplayChar(nextX, nextY).getChar();
+        boolean setHp = false;
 
         if (nextCh != 'X') {
             if (nextCh == 'H' || nextCh == 'S' || nextCh == 'T') {
-
+                performAttack(nextX, nextY, x, y);
             }
             else if (charStandingOn != '#' && charStandingOn != ' ') {
                 displayGrid.removeObjectToDisplay(x,y);
@@ -225,6 +224,8 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                 displayGrid.getMainPlayer().setPosX(nextX);
                 displayGrid.getMainPlayer().setPosY(nextY);
+                System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves());
+                setHp = displayGrid.getMainPlayer().setMoves();
             }
             else {
                 if (nextCh != '.' && nextCh != ' ' ) {
@@ -233,8 +234,14 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
                     displayGrid.getMainPlayer().setPosX(nextX);
                     displayGrid.getMainPlayer().setPosY(nextY);
+                    System.out.println("HpMoves: " + displayGrid.getMainPlayer().getHpMoves());
+                    setHp = displayGrid.getMainPlayer().setMoves();
                 }
             }
+        }
+
+        if (setHp) {
+            displayGrid.writeHp(displayGrid.getMainPlayer().getHp());
         }
         return true;
     }
@@ -327,12 +334,16 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         Player player = displayGrid.getMainPlayer();
         Monster monster = (Monster) dungeonBeingParsed.getMonster(creature_x, creature_y);
 
-        monster.performBeingHitAction(player);
+        monster.performBeingHitActions(player);
         if (monster.getHp() > 0) {
             player.performBeingHitActions(monster);
         }
+        else {
+            // monster death
+        }
+
         if (player.getHp() <= 0) {
-            // death
+            // player death
         }
     }
 }
