@@ -116,7 +116,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 addObjectToDisplay(ch, i, j);
             }
         }
-        displayStringToTerminal("HP:       Core: 0", 0, 0);
+        displayStringToTerminal("HP:       Score: 0", 0, 0);
     }
 
     public final void bottomDisplay() {
@@ -255,10 +255,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 if (DEBUG > 1) {
                     System.out.println(CLASSID + ".getDisplayChar is " + objectGrid[x][y].lastElement().getChar());
-                }
-
-                if (objectGrid[x][y].lastElement().getChar() == '@') {
-                    return objectGrid[x][y].get(objectGrid[x][y].size() - 2);
                 }
                 return objectGrid[x][y].lastElement();
             }

@@ -97,6 +97,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         }
                         item.setPosX(x);
                         item.setPosY(y);
+
                         displayGrid.displayStringToTerminal("Info: Item dropped " + item.getName() + " at (" + item.getPosX() + ", " + item.getPosY() + ")", 0, displayGrid.getTotalHeight() - 1);
                         displayGrid.removeObjectToDisplay(x, y);
                         displayGrid.addObjectToDisplay(new Char(item.getType()), x, y);
@@ -349,14 +350,14 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         int hp_for_monster = monster.getHp();
         int hp_for_player = player.getHp();
 
-        displayGrid.displayStringToTerminal("HP: " + hp_for_player + "      Core: 0", 0, 0);
+        displayGrid.displayStringToTerminal("HP: " + hp_for_player + "      Score: 0", 0, 0);
         System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
 
         int damageMonster = monster.performBeingHitActions(player);
-        displayGrid.displayStringToTerminal("Info: Damage inflicted to monster is " + damageMonster + "HP", 0, displayGrid.getTotalHeight() - 1);
+        displayGrid.displayStringToTerminal("Info: Damage to monster" + monster.getType() + " is " + damageMonster + " HP", 0, displayGrid.getTotalHeight() - 1);
         if (monster.getHp() > 0) {
             int playerDamage = player.performBeingHitActions(monster);
-            displayGrid.displayStringToTerminal("Info: Damage inflicted to player is " + playerDamage + "HP", 0, displayGrid.getTotalHeight() - 1);
+            displayGrid.displayStringToTerminal("Info: Damage to player is " + playerDamage + " HP", 0, displayGrid.getTotalHeight() - 1);
         }
         else {
             displayGrid.removeObjectToDisplay(creature_x, creature_y);
@@ -366,6 +367,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         }
 
         if (player.getHp() <= 0) {
+            displayGrid.removeObjectToDisplay(player_x, player_y);
             System.out.println("Ending game");
             return false;
             // exit the game
