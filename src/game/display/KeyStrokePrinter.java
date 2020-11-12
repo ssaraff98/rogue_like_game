@@ -129,6 +129,8 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         if (!check) {
                             return false;
                         }
+
+                        // Increase hp if moves == hpMoves
                         break;
                     case 'p':
                         if (charStandingOn == ')' || charStandingOn == ']' || charStandingOn == '?') {
@@ -211,18 +213,11 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 return false;
         }
 
-        if (displayGrid.getDisplayChar(nextX, nextY).getChar() != 'X') {
-            if (charStandingOn != '#' && charStandingOn != ' ' && (charStandingOn == 'S' | charStandingOn == 'T' | charStandingOn=='H')) {
-                int hp = displayGrid.getMainPlayer().getHp();
-                Creature monster = dungeonBeingParsed.getMonster(x,y);
-                int hp2 = monster.getHp();
+        char nextCh = displayGrid.getDisplayChar(nextX, nextY).getChar();
 
-                System.out.println("attacking The Monster" + hp + " " + hp2);
-                displayGrid.removeObjectToDisplay(x,y);
-                displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
-                displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
-                displayGrid.getMainPlayer().setPosX(nextX);
-                displayGrid.getMainPlayer().setPosY(nextY);
+        if (nextCh != 'X') {
+            if (nextCh == 'H' || nextCh == 'S' || nextCh == 'T') {
+
             }
             else if (charStandingOn != '#' && charStandingOn != ' ') {
                 displayGrid.removeObjectToDisplay(x,y);
@@ -231,22 +226,8 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 displayGrid.getMainPlayer().setPosX(nextX);
                 displayGrid.getMainPlayer().setPosY(nextY);
             }
-//            else if(charStandingOn == 'T' |  charStandingOn == 'H' | charStandingOn == 'S'){
-//                System.out.println("Attacking the monster");
-////                int damage = displayGrid.getMainPlayer().getInflictedDamage();
-////                Monster monster = displayGrid.getMainMonster();
-////                monster.performBeingHitActions(displayGrid.getMainPlayer());
-////                if(monster.getHpMoves() > 0){
-////                    displayGrid.getMainPlayer().performBeingHitActions(monster);
-////                }
-////                if(displayGrid.getMainPlayer().getHpMoves()<=0){
-////                    boolean processing = false;
-////                }
-//
-//
-//            }
             else {
-                if (displayGrid.getDisplayChar(nextX, nextY).getChar() != '.' && displayGrid.getDisplayChar(nextX, nextY).getChar() != ' ' ) {
+                if (nextCh != '.' && nextCh != ' ' ) {
                     displayGrid.removeObjectToDisplay(x,y);
                     displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(nextX, nextY));
                     displayGrid.addObjectToDisplay(new Char('@'), nextX, nextY);
@@ -339,6 +320,19 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                 break;
             default:
                 displayGrid.displayStringToTerminal("Info: Invalid input. Valid characters: h,l,k,j,i,?,H,c,d,p,r,t,w,E,0-9", 0, displayGrid.getTotalHeight() - 1);
+        }
+    }
+
+    public void performAttack(int creature_x, int creature_y, int player_x, int player_y) {
+        Player player = displayGrid.getMainPlayer();
+        Monster monster = (Monster) dungeonBeingParsed.getMonster(creature_x, creature_y);
+
+        monster.performBeingHitAction(player);
+        if (monster.getHp() > 0) {
+            player.performBeingHitActions(monster);
+        }
+        if (player.getHp() <= 0) {
+            // death
         }
     }
 }

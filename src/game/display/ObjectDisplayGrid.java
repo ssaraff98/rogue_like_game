@@ -101,8 +101,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         return mainMonster;
     }
 
-
-
     public final void topDisplay() {
         Char ch = new Char(' ');
         for (int i = 0; i < width; i++) {

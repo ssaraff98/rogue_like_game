@@ -1,5 +1,7 @@
 package game.displayable;
 
+import java.util.Random;
+
 public abstract class Displayable {
     private boolean visible;
     private int maxHit;
@@ -105,5 +107,11 @@ public abstract class Displayable {
 
     public int getWidth() {
         return this.width;
+    }
+
+    public int getRandom(int _maxHit) {
+        Random rand = new Random();
+        int damage = rand.nextInt(_maxHit + 1);
+        return damage;
     }
 }

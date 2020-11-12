@@ -52,24 +52,19 @@ public class Dungeon extends Displayable implements Runnable {
         return this.width;
     }
 
+    public void addCreature(Creature _creature) { creatures.add(_creature); }
+
     public Creature getMonster(int x, int y) {
-
         for (Creature c : creatures) {
-            int creat_x = c.getPosX();
-            int creat_y = c.getPosY();
+            int creature_x = c.getPosX();
+            int creature_y = c.getPosY();
 
-            if (creat_x == x && creat_y == y) {
+            if (creature_x == x && creature_y == y) {
                 return c;
             }
-
-            // check x,y for creature , in the creature list.
-            // then return that monster
-
         }
         return null;
     }
-
-    public void addCreature(Creature _creature) { creatures.add(_creature); }
 
     public void addItem(Item _item) { items.add(_item); }
 

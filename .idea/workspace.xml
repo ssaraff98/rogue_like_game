@@ -22,8 +22,11 @@
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/Displayable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Displayable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
