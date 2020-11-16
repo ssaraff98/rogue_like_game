@@ -9,4 +9,9 @@ public class ItemAction extends Action {
     public ItemAction(Item _owner) {
         item = _owner;
     }
+
+    @Override
+    public void performAction() {
+
+    }
 }

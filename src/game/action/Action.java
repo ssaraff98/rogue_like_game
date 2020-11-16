@@ -41,4 +41,6 @@ public abstract class Action {
         this.charValue = _value;
         // System.out.println("Char value: " + this.charValue);
     }
+
+    public abstract void performAction();
 }

@@ -1,8 +1,9 @@
 package game.displayable.creature;
 
 import game.action.creatureAction.CreatureAction;
-
 import game.displayable.Displayable;
+
+import java.util.ArrayList;
 
 public class Creature extends Displayable {
     private String name;
@@ -11,8 +12,8 @@ public class Creature extends Displayable {
     public int hpMoves;
     public int hp;
 
-    private CreatureAction hitAction;
-    private CreatureAction deathAction;
+    private ArrayList<CreatureAction> hitAction = new ArrayList<CreatureAction>();
+    private ArrayList<CreatureAction> deathAction = new ArrayList<CreatureAction>();
 
     public void setName(String _name) { this.name = _name; }
 
@@ -38,17 +39,17 @@ public class Creature extends Displayable {
     @Override
     public void setHp(int _hp) { this.hp = _hp; }
 
-    public CreatureAction getDeathAction() { return this.deathAction; }
+    public ArrayList<CreatureAction> getDeathAction() { return this.deathAction; }
 
     public void setDeathAction(CreatureAction _deathAction) {
-        this.deathAction = _deathAction;
+        this.deathAction.add(_deathAction);
         // System.out.println("Death: " + this.deathAction);
     }
 
-    public CreatureAction getHitAction() { return this.hitAction; }
+    public ArrayList<CreatureAction> getHitAction() { return this.hitAction; }
 
     public void setHitAction(CreatureAction _hitAction) {
-        this.hitAction = _hitAction;
+        this.hitAction.add(_hitAction);
         // System.out.println("Hit: " + this.hitAction);
     }
 }

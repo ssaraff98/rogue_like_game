@@ -104,9 +104,9 @@ public class Player extends Creature {
     }
 
     public int performBeingHitActions(Monster monster) {
-//        for(CreatureAction action: hitActions){
-//            action.performAction();
-//        }
+        for(CreatureAction action: getHitAction()) {
+            action.performAction();
+        }
 
         int armorProtection = 0;
         if(armor != null) {
@@ -130,17 +130,10 @@ public class Player extends Creature {
         }
 
         if (hp <= 0) {
-            // performDeathActions(monster);
+            for(CreatureAction action : getDeathAction()) {
+                action.performAction();
+            }
         }
         return damage;
     }
-
-//    @Override
-//    protected void performDeathActions(Displayble attacker){
-//        ObjectDisplaGrid.showDisplayableGridPoint(this.getPosX(), this.getPosY(), 0);
-//        for(CreatureAction action : deathActions) {
-//            action.performAction();
-//        }
-//        ObjectDisplayGrid.writeHp(hp);
-//    }
 }

@@ -9,4 +9,9 @@ public class CreatureAction extends Action {
     public CreatureAction(Creature _creature) {
         creature = _creature;
     }
+
+    @Override
+    public void performAction() {
+
+    }
 }
