@@ -137,6 +137,15 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'k':
                     case 'l':
                         check = moveCharacter(ch, x, y, charStandingOn);
+                        int curr_moves = displayGrid.getMainPlayer().getMoves();
+                        int hpMoves  = displayGrid.getMainPlayer().getHpMoves();
+                        System.out.println(curr_moves+" "+hpMoves);
+                        if(curr_moves == 5){
+                            System.out.println("equal to hpmoves");
+                        }
+//                        if(curr_moves == getHpMoves){
+//                            displayGrid.getMainPlayer().setMoves();
+//                        }
                         if (!check) {
                             processing = false;
                             return false;

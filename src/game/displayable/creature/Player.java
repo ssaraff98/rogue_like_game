@@ -52,11 +52,16 @@ public class Player extends Creature {
 
     public int getMoves() { return this.moves; }
 
+
+
     public boolean setMoves() {
         this.moves++;
-        if (this.moves == this.getHpMoves()) {
+        if (this.moves == 5) {// hard coded as of now
+            System.out.println("MOVES EQUAL");
             int hp = getHp();
-            setHp(hp++);
+            hp = hp+1;
+            System.out.println(hp);
+            setHp(hp);
             this.moves = 0;
             return true;
         }

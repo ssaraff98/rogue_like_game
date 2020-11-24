@@ -25,7 +25,7 @@ public abstract class Displayable {
 
     public void setHp(int _hp) {
         this.hp = _hp;
-        // System.out.println("Hitpoint: " + _hp);
+        System.out.println("Hitpoint: " + _hp);
     }
 
     public int getHp() {
@@ -33,11 +33,13 @@ public abstract class Displayable {
     }
 
     public void setHpMoves(int _hpMoves) {
+
         this.hpMoves = _hpMoves;
-        System.out.println("HpMoves: " + hpMoves);
+//        System.out.println("HpMoves: " + hpMoves);
     }
 
     public int getHpMoves() {
+        System.out.println("whats coming in: "+this.hpMoves);
         return this.hpMoves;
     }
 

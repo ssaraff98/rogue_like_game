@@ -343,6 +343,8 @@ public class XMLHandler extends DefaultHandler {
         }
         else if (bHPMoves) {
             bHPMoves = false;
+            System.out.println("what are HP moves: "+Integer.parseInt(data.toString()));
+//            displayableStack.lastElement().settingHPMOVES(Integer.parseInt(data.toString()));
             displayableStack.lastElement().setHpMoves(Integer.parseInt(data.toString()));
         }
         else if (bItemIntValue) {
