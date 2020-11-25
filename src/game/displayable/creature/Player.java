@@ -56,12 +56,13 @@ public class Player extends Creature {
 
     public boolean setMoves() {
         this.moves++;
-        if (this.moves == 5) {// hard coded as of now
+        if (this.moves == this.getHpMoves()) {// hard coded as of now
             System.out.println("MOVES EQUAL");
-            int hp = getHp();
-            hp = hp+1;
-            System.out.println(hp);
-            setHp(hp);
+            int hp1 = getHp();
+            hp1 = hp1+1;
+            System.out.println("printing hp before: "+hp);
+            setHp(hp1);
+            System.out.println("printing hp after: "+hp);
             this.moves = 0;
             return true;
         }

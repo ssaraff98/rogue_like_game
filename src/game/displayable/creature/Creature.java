@@ -37,7 +37,18 @@ public class Creature extends Displayable {
     }
 
     @Override
-    public void setHp(int _hp) { this.hp = _hp; }
+    public void setHp(int _hp) {
+        int old_hp = this.hp;
+        if(old_hp>_hp && _hp>0){
+//            loop through hit action and call doaction.
+        }
+        this.hp = _hp;
+
+        if(hp<=0){
+//            loop through the death action
+        }
+
+    }
 
     public ArrayList<CreatureAction> getDeathAction() { return this.deathAction; }
 

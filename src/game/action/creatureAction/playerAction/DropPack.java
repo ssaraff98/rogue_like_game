@@ -13,4 +13,7 @@ public class DropPack extends CreatureAction {
         owner = _owner;
         System.out.println("DropPack Name:" + _name + " Dropack owner:"+_owner);
     }
+    public void doaction(){
+
+    }
 }
