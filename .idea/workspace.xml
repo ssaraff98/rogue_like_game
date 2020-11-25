@@ -21,9 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/DropPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/DropPack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/Remove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/displayable/Displayable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Displayable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xmlFiles/death.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/xmlFiles/death.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

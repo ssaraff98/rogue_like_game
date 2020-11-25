@@ -33,6 +33,7 @@ public abstract class Displayable {
     }
 
     public void setHpMoves(int _hpMoves) {
+        System.out.println("this is the setHP: "+ _hpMoves);
 
         this.hpMoves = _hpMoves;
 //        System.out.println("HpMoves: " + hpMoves);

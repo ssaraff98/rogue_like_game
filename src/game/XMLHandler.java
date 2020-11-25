@@ -126,9 +126,13 @@ public class XMLHandler extends DefaultHandler {
             bCreatureAction = true;
             String name = attributes.getValue("name");
             String type = attributes.getValue("type");
-
             Creature creature = (Creature) displayableStack.lastElement();
             CreatureAction action = new CreatureAction(creature);
+            if(name.equalsIgnoreCase("remove")){
+                action = new Remove(name,creature);
+            }
+
+
             action.setName(name);
             action.setType(type);
             if (type.equals("death")) {

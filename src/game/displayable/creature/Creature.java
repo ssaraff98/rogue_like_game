@@ -25,11 +25,11 @@ public class Creature extends Displayable {
     }
 
     public int getRoom() { return this.room; }
-
-    @Override
-    public void setHpMoves(int _hpMoves) {
-        this.hpMoves = _hpMoves;
-    }
+//
+//    @Override
+//    public void setHpMoves(int _hpMoves) {
+//        this.hpMoves = _hpMoves;
+//    }
 
     @Override
     public int getHp() {
@@ -44,8 +44,12 @@ public class Creature extends Displayable {
         }
         this.hp = _hp;
 
-        if(hp<=0){
-//            loop through the death action
+        if(_hp<=0){
+//            System.out.println("THIS IS CALLED");
+            for(CreatureAction deathAct: deathAction){
+                deathAct.performAction();
+            }
+            loop through the death action
         }
 
     }

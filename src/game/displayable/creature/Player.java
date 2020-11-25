@@ -55,7 +55,9 @@ public class Player extends Creature {
 
 
     public boolean setMoves() {
+        System.out.println(this.moves +" "+ this.getHpMoves());;
         this.moves++;
+
         if (this.moves == this.getHpMoves()) {// hard coded as of now
             System.out.println("MOVES EQUAL");
             int hp1 = getHp();

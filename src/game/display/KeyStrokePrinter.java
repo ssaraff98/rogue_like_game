@@ -20,6 +20,8 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
     private Dungeon dungeonBeingParsed;
     private ObjectDisplayGrid displayGrid;
 
+
+
     public KeyStrokePrinter(ObjectDisplayGrid grid, Dungeon dungeon) {
         inputQueue = new ConcurrentLinkedQueue<>();
         dungeonBeingParsed = dungeon;
@@ -137,12 +139,12 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'k':
                     case 'l':
                         check = moveCharacter(ch, x, y, charStandingOn);
-                        int curr_moves = displayGrid.getMainPlayer().getMoves();
-                        int hpMoves  = displayGrid.getMainPlayer().getHpMoves();
-                        System.out.println(curr_moves+" "+hpMoves);
-                        if(curr_moves == 5){
-                            System.out.println("equal to hpmoves");
-                        }
+//                        int curr_moves = displayGrid.getMainPlayer().getMoves();
+//                        int hpMoves  = displayGrid.getMainPlayer().getHpMoves();
+//                        System.out.println(curr_moves+" "+hpMoves);
+//                        if(curr_moves == hpMoves){
+//                            System.out.println("equal to hpmoves");
+//                        }
 //                        if(curr_moves == getHpMoves){
 //                            displayGrid.getMainPlayer().setMoves();
 //                        }
@@ -368,12 +370,12 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             int playerDamage = player.performBeingHitActions(monster);
             displayGrid.displayStringToTerminal("Info: Damage to player is " + playerDamage + " HP", 0, displayGrid.getTotalHeight() - 1);
         }
-        else {
-            displayGrid.removeObjectToDisplay(creature_x, creature_y);
-            displayGrid.removeObjectToDisplay(creature_x, creature_y);
-            displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
-            // remove monster from dungeon creature list
-        }
+//        else {
+//            displayGrid.removeObjectToDisplay(creature_x, creature_y);
+//            displayGrid.removeObjectToDisplay(creature_x, creature_y);
+//            displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
+//            // remove monster from dungeon creature list
+//        }
 
         if (player.getHp() <= 0) {
             displayGrid.removeObjectToDisplay(player_x, player_y);
