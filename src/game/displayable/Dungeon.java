@@ -104,8 +104,8 @@ public class Dungeon extends Displayable implements Runnable {
             int xending = xstarting + rooms.get(j).getWidth();
             int yending = ystarting + rooms.get(j).getHeight();
 
-            for(int i = xstarting; i < xending; i++){
-                for(int l = ystarting; l < yending; l++){
+            for(int i = xstarting+1; i < xending; i++){
+                for(int l = ystarting+1; l < yending; l++){
                     displayGrid.addObjectToDisplay(new Char('.'), i, l+topHeight);
                 }
             }

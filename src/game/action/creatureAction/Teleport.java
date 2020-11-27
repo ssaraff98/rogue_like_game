@@ -3,6 +3,8 @@ package game.action.creatureAction;
 import game.displayable.creature.Creature;
 import game.display.ObjectDisplayGrid;
 import game.display.Char;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Teleport extends CreatureAction {
     private String name;
@@ -22,7 +24,18 @@ public class Teleport extends CreatureAction {
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.addObjectToDisplay(new Char('.'), this.owner.getPosX(), this.owner.getPosY());
-        displayGrid.addObjectToDisplay(new Char(this.owner.getType()), this.owner.getPosX()+1, this.owner.getPosY()+1);
+        ArrayList<Integer> xValues = displayGrid.xValues;
+        ArrayList<Integer> yValues = displayGrid.yValues;
+        int lengthoflist = xValues.size();
+        Random randNum = new Random();
+        int nxt = randNum.nextInt(lengthoflist);
+        int Xval = xValues.get(nxt);
+        int Yval = yValues.get(nxt);
+        System.out.println("XYVal " + Xval+"  "+Yval);
+        displayGrid.addObjectToDisplay(new Char(this.owner.getType()),Xval, Yval);
+        this.owner.setPosX(Xval);
+        this.owner.setPosY(Yval);
+//        terminal.repaint();
 
 //        displayGrid.removeObjectToDisplay(this.owner.getPosX(),this.owner.getPosY());
     }

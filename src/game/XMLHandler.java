@@ -131,6 +131,13 @@ public class XMLHandler extends DefaultHandler {
             if(name.equalsIgnoreCase("remove")){
                 action = new Remove(name,creature);
             }
+            if(name.equalsIgnoreCase("teleport")){
+                action = new Teleport(name,creature);
+            }
+            if(name.equalsIgnoreCase("ChangeDisplayedType")){
+                action = new ChangeDisplayedType(name,creature);
+            }
+
 
 
             action.setName(name);
@@ -139,11 +146,6 @@ public class XMLHandler extends DefaultHandler {
                 creature.setDeathAction(action);
             }
             else if (type.equals("hit")) {
-                if(name.equalsIgnoreCase("teleport")){
-                    action = new Teleport(name,creature);
-                }
-
-
                 creature.setHitAction(action);
             }
 

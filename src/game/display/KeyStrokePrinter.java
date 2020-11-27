@@ -378,9 +378,9 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
 //        }
 
         if (player.getHp() <= 0) {
-            displayGrid.removeObjectToDisplay(player_x, player_y);
+//            displayGrid.removeObjectToDisplay(player_x, player_y);
             System.out.println("Ending game");
-            return false;
+//            return false;
             // exit the game
             // player death
         }

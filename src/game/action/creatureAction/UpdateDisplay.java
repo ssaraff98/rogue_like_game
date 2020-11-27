@@ -11,4 +11,7 @@ public class UpdateDisplay extends CreatureAction {
         name = _name;
         owner = _owner;
     }
+
+
+
 }

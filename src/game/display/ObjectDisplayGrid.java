@@ -25,6 +25,8 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     private Stack<Char>[][] objectGrid = null;
 
     private List<InputObserver> inputObservers = null;
+    public ArrayList<Integer> xValues = new ArrayList<Integer>();
+    public ArrayList<Integer> yValues = new ArrayList<Integer>();
     private static Player mainPlayer;
     private static Monster mainMonster;
 
@@ -188,12 +190,20 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 if (!objectGrid[x][y].contains(ch)) {
+                    if(ch.getChar()=='.' || ch.getChar()=='#' || ch.getChar()=='+'){
+                        xValues.add(x);
+                        yValues.add(y);
+                    }
+//                    if(ch.getChar() == 'T'){
+//                        System.out.println("Printing for T in addobj2disp "+ x+" "+y);
+//                    }
                     objectGrid[x][y].push(ch);
                 }
                 writeToTerminal(x, y);
             }
         }
     }
+
 
     public void removeObjectToDisplay(int x, int y) {
         if ((0 <= x) && (x < objectGrid.length)) {
