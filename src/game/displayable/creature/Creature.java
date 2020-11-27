@@ -40,6 +40,9 @@ public class Creature extends Displayable {
     public void setHp(int _hp) {
         int old_hp = this.hp;
         if(old_hp>_hp && _hp>0){
+            for(CreatureAction hitAct: hitAction){
+                hitAct.performAction();
+            }
 //            loop through hit action and call doaction.
         }
         this.hp = _hp;
@@ -49,7 +52,7 @@ public class Creature extends Displayable {
             for(CreatureAction deathAct: deathAction){
                 deathAct.performAction();
             }
-            loop through the death action
+
         }
 
     }
