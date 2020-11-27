@@ -11,4 +11,11 @@ public class YouWin extends CreatureAction {
         name = _name;
         owner = _owner;
     }
+
+    @Override
+    public void performAction() {
+        System.out.println(getMessage());
+        System.out.println("You Win Implemented");
+
+    }
 }

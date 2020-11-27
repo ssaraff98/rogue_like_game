@@ -12,7 +12,7 @@
                 <posX>2</posX>
                 <posY>2</posY>
                 <type>T</type>
-                <hp>30</hp>
+                <hp>2</hp>
                 <maxhit>5</maxhit>
                 <CreatureAction name="Remove" type ="death">
                 </CreatureAction>

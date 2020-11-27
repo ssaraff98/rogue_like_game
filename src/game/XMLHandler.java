@@ -137,6 +137,12 @@ public class XMLHandler extends DefaultHandler {
             if(name.equalsIgnoreCase("ChangeDisplayedType")){
                 action = new ChangeDisplayedType(name,creature);
             }
+            if(name.equalsIgnoreCase("UpdateDisplay")){
+                action = new UpdateDisplay(name,creature);
+            }
+            if(name.equalsIgnoreCase("YouWin")){
+                action = new YouWin(name,creature);
+            }
 
 
 

@@ -220,7 +220,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         displayStringToTerminal("HP: " + hp,0,0);
     }
 
-    private void writeToTerminal(int x, int y) {
+    public void writeToTerminal(int x, int y) {
         char ch = objectGrid[x][y].lastElement().getChar();
 
         int count1 = 0;

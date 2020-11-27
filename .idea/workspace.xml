@@ -22,12 +22,9 @@
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/XMLHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/ChangeDisplayedType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/ChangeDisplayedType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/YouWin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/YouWin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/xmlFiles/death.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/xmlFiles/death.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
