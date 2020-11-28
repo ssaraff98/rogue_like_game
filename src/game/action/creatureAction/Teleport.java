@@ -21,6 +21,8 @@ public class Teleport extends CreatureAction {
         System.out.println("Teleport action IMPLEMENTED"+this.owner.getPosX()+this.owner.getPosY());
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
+        System.out.println(getMessage());
+        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.addObjectToDisplay(new Char('.'), this.owner.getPosX(), this.owner.getPosY());

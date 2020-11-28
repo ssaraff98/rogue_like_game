@@ -1,6 +1,9 @@
 package game.action.creatureAction;
 
 import game.displayable.creature.Creature;
+import game.action.Action;
+import game.display.ObjectDisplayGrid;
+import game.display.Char;
 
 public class YouWin extends CreatureAction {
     private String name;
@@ -14,8 +17,12 @@ public class YouWin extends CreatureAction {
 
     @Override
     public void performAction() {
-        System.out.println(getMessage());
-        System.out.println("You Win Implemented");
+        ObjectDisplayGrid displayGrid;
+        displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
+        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
+//        System.out.println(getMessage());
+//        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
+//        System.out.println("You Win Implemented");
 
     }
 }
