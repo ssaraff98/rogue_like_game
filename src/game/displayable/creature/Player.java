@@ -32,8 +32,6 @@ public class Player extends Creature {
     private ArrayList<Item> inventory = new ArrayList<Item>();
 
     public Player() {
-        this.sword = null;
-        this.armor = null;
         this.moves = 0;
     }
 
@@ -48,18 +46,46 @@ public class Player extends Creature {
 
     public int getRoom() { return this.room; }
 
-    public Item getSword() { return this.sword; }
+    public Item getWeapon() { return this.sword; }
+
+    public boolean equipWeapon(int item_number) {
+        if (inventory.size() >= MAX_PACK_SIZE) {
+            System.out.println("Item number entered exceeds maximum pack size.");
+            return false;
+        }
+
+        if (this.sword != null) {
+            inventory.add(this.sword);
+        }
+        setWeapon(inventory.get(item_number));
+        inventory.remove(item_number);
+        return true;
+    }
 
     public void setWeapon(Item _sword) {
-        sword = _sword;
-        inventory.add(sword);
+        this.sword = _sword;
+        // inventory.add(sword);
     }
 
     public Item getArmor() { return this.armor; }
 
+    public boolean equipArmor(int item_number) {
+        if (inventory.size() >= MAX_PACK_SIZE) {
+            System.out.println("Item number entered exceeds maximum pack size.");
+            return false;
+        }
+
+        if (this.armor != null) {
+            inventory.add(this.armor);
+        }
+        setArmor(inventory.get(item_number));
+        inventory.remove(item_number);
+        return true;
+    }
+
     public void setArmor(Item _armor) {
-        armor = _armor;
-        inventory.add(armor);
+        this.armor = _armor;
+        // inventory.add(armor);
     }
 
     public int getMoves() { return this.moves; }

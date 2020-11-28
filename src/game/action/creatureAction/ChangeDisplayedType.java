@@ -27,4 +27,4 @@ public class ChangeDisplayedType extends CreatureAction {
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.addObjectToDisplay(new Char(getCharValue()), this.owner.getPosX(), this.owner.getPosY());
     }
-    }
+}

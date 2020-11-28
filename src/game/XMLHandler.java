@@ -130,19 +130,19 @@ public class XMLHandler extends DefaultHandler {
             CreatureAction action = new CreatureAction(creature);
 
             if(name.equalsIgnoreCase("remove")) {
-                action = new Remove(name,creature);
+                action = new Remove(name, creature);
             }
             if(name.equalsIgnoreCase("teleport")) {
-                action = new Teleport(name,creature);
+                action = new Teleport(name, creature);
             }
             if(name.equalsIgnoreCase("ChangeDisplayedType")) {
-                action = new ChangeDisplayedType(name,creature);
+                action = new ChangeDisplayedType(name, creature);
             }
             if(name.equalsIgnoreCase("UpdateDisplay")) {
-                action = new UpdateDisplay(name,creature);
+                action = new UpdateDisplay(name, creature);
             }
             if(name.equalsIgnoreCase("YouWin")) {
-                action = new YouWin(name,creature);
+                action = new YouWin(name, creature);
             }
 
             action.setName(name);
@@ -164,15 +164,17 @@ public class XMLHandler extends DefaultHandler {
 
             Item item = (Item) displayableStack.lastElement();
             ItemAction action = new ItemAction(item);
-            action.setName(name);
-            action.setType(type);
 
             if (name.equals("BlessArmor")) {
+                action = new BlessArmor(item);
                 item.setBlessAction(action);
             }
             else if (name.equals("Hallucinate")) {
+                action = new Hallucinate(item);
                 item.setHallucinateAction(action);
             }
+            action.setName(name);
+            action.setType(type);
 
             actionStack.push(action);
         }

@@ -20,8 +20,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
     private Dungeon dungeonBeingParsed;
     private ObjectDisplayGrid displayGrid;
 
-
-
     public KeyStrokePrinter(ObjectDisplayGrid grid, Dungeon dungeon) {
         inputQueue = new ConcurrentLinkedQueue<>();
         dungeonBeingParsed = dungeon;
@@ -139,15 +137,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'k':
                     case 'l':
                         check = moveCharacter(ch, x, y, charStandingOn);
-//                        int curr_moves = displayGrid.getMainPlayer().getMoves();
-//                        int hpMoves  = displayGrid.getMainPlayer().getHpMoves();
-//                        System.out.println(curr_moves+" "+hpMoves);
-//                        if(curr_moves == hpMoves){
-//                            System.out.println("equal to hpmoves");
-//                        }
-//                        if(curr_moves == getHpMoves){
-//                            displayGrid.getMainPlayer().setMoves();
-//                        }
                         if (!check) {
                             processing = false;
                             return false;
@@ -172,22 +161,31 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'r':
                         processing = false;
                         item_number = getNextInt();
-                        System.out.println("Item number: " + item_number);
-                        // read scroll
+                        displayGrid.getMainPlayer().readScroll(item_number);
                         processing = true;
                         break;
                     case 't':
                         processing = false;
                         item_number = getNextInt();
                         System.out.println("Item number: " + item_number);
-                        // equip weapon
+                        if (displayGrid.getMainPlayer().equipWeapon(item_number)) {
+                            displayGrid.displayStringToTerminal("Info: Equipped sword", 0, displayGrid.getTotalHeight() - 1);
+                        }
+                        else {
+                            displayGrid.displayStringToTerminal("Info: Item number entered exceeds maximum pack size", 0, displayGrid.getTotalHeight() - 1);
+                        }
                         processing = true;
                         break;
                     case 'w':
                         processing = false;
                         item_number = getNextInt();
                         System.out.println("Item number: " + item_number);
-                        // equip armor
+                        if (displayGrid.getMainPlayer().equipArmor(item_number)) {
+                            displayGrid.displayStringToTerminal("Info: Equipped armor", 0, displayGrid.getTotalHeight() - 1);
+                        }
+                        else {
+                            displayGrid.displayStringToTerminal("Info: Item number entered exceeds maximum pack size", 0, displayGrid.getTotalHeight() - 1);
+                        }
                         processing = true;
                         break;
                     case '0':
