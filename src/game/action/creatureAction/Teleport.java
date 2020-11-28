@@ -18,7 +18,7 @@ public class Teleport extends CreatureAction {
 
     @Override
     public void performAction() {
-        System.out.println("Teleport action IMPLEMENTED"+this.owner.getPosX()+this.owner.getPosY());
+        System.out.println("Teleport action IMPLEMENTED"+ this.owner.getPosX() + this.owner.getPosY());
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
         System.out.println(getMessage());
@@ -37,8 +37,5 @@ public class Teleport extends CreatureAction {
         displayGrid.addObjectToDisplay(new Char(this.owner.getType()),Xval, Yval);
         this.owner.setPosX(Xval);
         this.owner.setPosY(Yval);
-//        terminal.repaint();
-
-//        displayGrid.removeObjectToDisplay(this.owner.getPosX(),this.owner.getPosY());
     }
 }

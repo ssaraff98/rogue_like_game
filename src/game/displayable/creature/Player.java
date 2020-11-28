@@ -54,17 +54,17 @@ public class Player extends Creature {
             return false;
         }
 
-        if (this.sword != null) {
+        if (this.sword != null && !this.sword.equals(inventory.get(item_number))) {
             inventory.add(this.sword);
         }
-        setWeapon(inventory.get(item_number));
+        this.sword = inventory.get(item_number);
         inventory.remove(item_number);
         return true;
     }
 
     public void setWeapon(Item _sword) {
         this.sword = _sword;
-        // inventory.add(sword);
+        inventory.add(sword);
     }
 
     public Item getArmor() { return this.armor; }
@@ -75,17 +75,17 @@ public class Player extends Creature {
             return false;
         }
 
-        if (this.armor != null) {
+        if (this.armor != null && !this.armor.equals(inventory.get(item_number))) {
             inventory.add(this.armor);
         }
-        setArmor(inventory.get(item_number));
+        this.armor = inventory.get(item_number);
         inventory.remove(item_number);
         return true;
     }
 
     public void setArmor(Item _armor) {
         this.armor = _armor;
-        // inventory.add(armor);
+        inventory.add(armor);
     }
 
     public int getMoves() { return this.moves; }
@@ -94,13 +94,8 @@ public class Player extends Creature {
         System.out.println(this.moves + " " + this.getHpMoves());;
         this.moves++;
 
-        // !!!!!! What is happening here? !!!!!!
         if (this.moves == this.getHpMoves()) {
-            int hp1 = getHp();
-            hp1 = hp1 + 1;
-            System.out.println("Printing hp before: "+hp);
-            setHp(hp1);
-            System.out.println("Printing hp after: "+hp);
+            setHp(getHp() + 1);
             this.moves = 0;
             return true;
         }
@@ -136,14 +131,16 @@ public class Player extends Creature {
     }
 
     public void readScroll(int item_number) {
+        ObjectDisplayGrid displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
+
         Scroll item = (Scroll) inventory.get(item_number);
         if (!item.getName().equals("Scroll")) {
-            System.out.println("Item chosen is not a scroll");
+            displayGrid.displayStringToTerminal("Info: Item chosen is not a scroll", 0, displayGrid.getTotalHeight() - 1);
             return;
         }
 
         if (item.getRead() == true) {
-            System.out.println("This scroll has been read");
+            displayGrid.displayStringToTerminal("Info: Scroll chosen has already been read", 0, displayGrid.getTotalHeight() - 1);
             return;
         }
         item.setRead();
@@ -157,7 +154,7 @@ public class Player extends Creature {
             hallucinateAction.performAction();
         }
         else {
-            System.out.println("No item action associated with scroll");
+            displayGrid.displayStringToTerminal("Info: No action associated with the scroll chosen", 0, displayGrid.getTotalHeight() - 1);
         }
     }
 
