@@ -15,9 +15,9 @@ public class Teleport extends CreatureAction {
         name = _name;
         owner = _owner;
     }
+
     @Override
     public void performAction() {
-
         System.out.println("Teleport action IMPLEMENTED"+this.owner.getPosX()+this.owner.getPosY());
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);

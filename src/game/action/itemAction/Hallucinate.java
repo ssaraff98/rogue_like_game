@@ -10,4 +10,9 @@ public class Hallucinate extends ItemAction {
         owner = _owner;
         System.out.println("Hallucinate Owner: " + _owner);
     }
+
+    @Override
+    public void performAction() {
+
+    }
 }

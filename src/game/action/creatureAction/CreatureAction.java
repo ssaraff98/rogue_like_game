@@ -11,7 +11,5 @@ public class CreatureAction extends Action {
     }
 
     @Override
-    public void performAction() {
-
-    }
+    public void performAction() { }
 }

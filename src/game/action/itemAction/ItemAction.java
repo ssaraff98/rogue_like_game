@@ -11,7 +11,5 @@ public class ItemAction extends Action {
     }
 
     @Override
-    public void performAction() {
-
-    }
+    public void performAction() { }
 }

@@ -190,20 +190,16 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 if (!objectGrid[x][y].contains(ch)) {
-                    if(ch.getChar()=='.' || ch.getChar()=='#' || ch.getChar()=='+'){
+                    if(ch.getChar() == '.' || ch.getChar() == '#' || ch.getChar() == '+'){
                         xValues.add(x);
                         yValues.add(y);
                     }
-//                    if(ch.getChar() == 'T'){
-//                        System.out.println("Printing for T in addobj2disp "+ x+" "+y);
-//                    }
                     objectGrid[x][y].push(ch);
                 }
                 writeToTerminal(x, y);
             }
         }
     }
-
 
     public void removeObjectToDisplay(int x, int y) {
         if ((0 <= x) && (x < objectGrid.length)) {
@@ -217,7 +213,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     }
 
     public void writeHp(int hp) {
-        displayStringToTerminal("HP: " + hp,0,0);
+        displayStringToTerminal("HP: " + hp + "       Score: 0",0,0);
     }
 
     public void writeToTerminal(int x, int y) {

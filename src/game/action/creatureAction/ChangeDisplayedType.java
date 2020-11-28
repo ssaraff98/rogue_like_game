@@ -17,6 +17,7 @@ public class ChangeDisplayedType extends CreatureAction {
         System.out.println("Creature Name: " + _name + " Creature owner: "+_owner);
 
     }
+
     @Override
     public void performAction() {
         ObjectDisplayGrid displayGrid;

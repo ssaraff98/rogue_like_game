@@ -8,6 +8,11 @@ public class BlessArmor extends ItemAction {
     public BlessArmor(Item _owner) {
         super(_owner);
         item = _owner;
-        System.out.println("BlessCurser Owner: " + item);
+        // System.out.println("BlessCurser Owner: " + item);
+    }
+
+    @Override
+    public void performAction() {
+
     }
 }

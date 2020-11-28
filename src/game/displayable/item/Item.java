@@ -20,7 +20,6 @@ public class Item extends Displayable {
 
     public void setOwner(Creature _creature) {
         this.creature = _creature;
-        // System.out.println("Owner: " + this.creature);
     }
 
     public ItemAction getBlessAction() { return this.blessAction; }

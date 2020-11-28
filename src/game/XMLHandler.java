@@ -128,23 +128,22 @@ public class XMLHandler extends DefaultHandler {
             String type = attributes.getValue("type");
             Creature creature = (Creature) displayableStack.lastElement();
             CreatureAction action = new CreatureAction(creature);
-            if(name.equalsIgnoreCase("remove")){
+
+            if(name.equalsIgnoreCase("remove")) {
                 action = new Remove(name,creature);
             }
-            if(name.equalsIgnoreCase("teleport")){
+            if(name.equalsIgnoreCase("teleport")) {
                 action = new Teleport(name,creature);
             }
-            if(name.equalsIgnoreCase("ChangeDisplayedType")){
+            if(name.equalsIgnoreCase("ChangeDisplayedType")) {
                 action = new ChangeDisplayedType(name,creature);
             }
-            if(name.equalsIgnoreCase("UpdateDisplay")){
+            if(name.equalsIgnoreCase("UpdateDisplay")) {
                 action = new UpdateDisplay(name,creature);
             }
-            if(name.equalsIgnoreCase("YouWin")){
+            if(name.equalsIgnoreCase("YouWin")) {
                 action = new YouWin(name,creature);
             }
-
-
 
             action.setName(name);
             action.setType(type);
@@ -167,6 +166,7 @@ public class XMLHandler extends DefaultHandler {
             ItemAction action = new ItemAction(item);
             action.setName(name);
             action.setType(type);
+
             if (name.equals("BlessArmor")) {
                 item.setBlessAction(action);
             }

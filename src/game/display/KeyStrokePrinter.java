@@ -26,7 +26,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         inputQueue = new ConcurrentLinkedQueue<>();
         dungeonBeingParsed = dungeon;
         displayGrid = grid;
-        displayGrid.displayStringToTerminal("HP: " + displayGrid.getMainPlayer().getHp() + "      Core: 0", 0, 0);
+        displayGrid.displayStringToTerminal("HP: " + displayGrid.getMainPlayer().getHp() + "      Score: 0", 0, 0);
     }
 
     @Override

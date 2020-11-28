@@ -1,11 +1,17 @@
 package game.displayable.creature;
 
 import game.action.creatureAction.CreatureAction;
+import game.action.itemAction.BlessArmor;
+import game.action.itemAction.Hallucinate;
+import game.action.itemAction.ItemAction;
+
 import game.display.Char;
 import game.display.ObjectDisplayGrid;
+
 import game.displayable.Displayable;
 import game.displayable.item.Item;
 import game.displayable.item.Armor;
+import game.displayable.item.Scroll;
 import game.displayable.item.Sword;
 
 import java.util.ArrayList;
@@ -26,6 +32,8 @@ public class Player extends Creature {
     private ArrayList<Item> inventory = new ArrayList<Item>();
 
     public Player() {
+        this.sword = null;
+        this.armor = null;
         this.moves = 0;
     }
 
@@ -40,10 +48,14 @@ public class Player extends Creature {
 
     public int getRoom() { return this.room; }
 
+    public Item getSword() { return this.sword; }
+
     public void setWeapon(Item _sword) {
         sword = _sword;
         inventory.add(sword);
     }
+
+    public Item getArmor() { return this.armor; }
 
     public void setArmor(Item _armor) {
         armor = _armor;
@@ -52,19 +64,17 @@ public class Player extends Creature {
 
     public int getMoves() { return this.moves; }
 
-
-
     public boolean setMoves() {
-        System.out.println(this.moves +" "+ this.getHpMoves());;
+        System.out.println(this.moves + " " + this.getHpMoves());;
         this.moves++;
 
-        if (this.moves == this.getHpMoves()) {// hard coded as of now
-            System.out.println("MOVES EQUAL");
+        // !!!!!! What is happening here? !!!!!!
+        if (this.moves == this.getHpMoves()) {
             int hp1 = getHp();
-            hp1 = hp1+1;
-            System.out.println("printing hp before: "+hp);
+            hp1 = hp1 + 1;
+            System.out.println("Printing hp before: "+hp);
             setHp(hp1);
-            System.out.println("printing hp after: "+hp);
+            System.out.println("Printing hp after: "+hp);
             this.moves = 0;
             return true;
         }
@@ -100,7 +110,29 @@ public class Player extends Creature {
     }
 
     public void readScroll(int item_number) {
+        Scroll item = (Scroll) inventory.get(item_number);
+        if (!item.getName().equals("Scroll")) {
+            System.out.println("Item chosen is not a scroll");
+            return;
+        }
 
+        if (item.getRead() == true) {
+            System.out.println("This scroll has been read");
+            return;
+        }
+        item.setRead();
+
+        if (item.getBlessAction() != null) {
+            BlessArmor blessAction = (BlessArmor) item.getBlessAction();
+            blessAction.performAction();
+        }
+        else if (item.getHallucinateAction() != null) {
+            Hallucinate hallucinateAction = (Hallucinate) item.getHallucinateAction();
+            hallucinateAction.performAction();
+        }
+        else {
+            System.out.println("No item action associated with scroll");
+        }
     }
 
     public int getInflictedDamage(int maxHit) {

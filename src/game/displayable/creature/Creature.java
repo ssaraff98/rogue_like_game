@@ -25,11 +25,6 @@ public class Creature extends Displayable {
     }
 
     public int getRoom() { return this.room; }
-//
-//    @Override
-//    public void setHpMoves(int _hpMoves) {
-//        this.hpMoves = _hpMoves;
-//    }
 
     @Override
     public int getHp() {
@@ -39,22 +34,19 @@ public class Creature extends Displayable {
     @Override
     public void setHp(int _hp) {
         int old_hp = this.hp;
-        if(old_hp>_hp && _hp>0){
-            for(CreatureAction hitAct: hitAction){
+        if (old_hp > _hp && _hp > 0) {
+            for (CreatureAction hitAct: hitAction) {
                 hitAct.performAction();
             }
 //            loop through hit action and call doaction.
         }
         this.hp = _hp;
 
-        if(_hp<=0){
-//            System.out.println("THIS IS CALLED");
-            for(CreatureAction deathAct: deathAction){
+        if (_hp <= 0) {
+            for (CreatureAction deathAct: deathAction) {
                 deathAct.performAction();
             }
-
         }
-
     }
 
     public ArrayList<CreatureAction> getDeathAction() { return this.deathAction; }
