@@ -153,6 +153,10 @@ public class XMLHandler extends DefaultHandler {
                 System.out.println("REACHED FOR Empty Pack Action");
                 action = new EmptyPack(name, creature);
             }
+            if(name.equalsIgnoreCase("EndGame")) {
+                System.out.println("REACHED FOR end game Action");
+                action = new EndGame(name, creature);
+            }
 
             action.setName(name);
             action.setType(type);

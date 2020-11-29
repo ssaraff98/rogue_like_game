@@ -19,7 +19,7 @@ public class UpdateDisplay extends CreatureAction {
         System.out.println("Performing action for Update Display");
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
-        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
+//        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
         displayGrid.writeToTerminal(this.owner.getPosX(),this.owner.getPosY());
 
     }
