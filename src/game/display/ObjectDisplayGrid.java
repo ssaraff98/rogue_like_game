@@ -16,10 +16,12 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.Random;
 
 public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubject {
     private static final int DEBUG = 0;
     private static final String CLASSID = ".ObjectDisplayGrid";
+    private final char[] displayableCharacters = {'#', '.', '+', 'S', 'T', 'H', '@', ']', ')', '?', 'X'};
 
     private static AsciiPanel terminal;
     private Stack<Char>[][] objectGrid = null;
@@ -27,15 +29,18 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     private List<InputObserver> inputObservers = null;
     public ArrayList<Integer> xValues = new ArrayList<Integer>();
     public ArrayList<Integer> yValues = new ArrayList<Integer>();
+
     private static Player mainPlayer;
     private static Monster mainMonster;
-
     private static ObjectDisplayGrid displayGrid = null;
+
     private int gameHeight;
     private int width;
     private int topHeight;
     private int bottomHeight;
     private int totalHeight;
+    private int hallucinateMoves;
+    private boolean hallucinate;
 
     public ObjectDisplayGrid() {
         gameHeight = -1;
@@ -102,6 +107,11 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     public Monster getMainMonster(){
         return mainMonster;
+    }
+
+    public void setHallucination(boolean _hallucinate, int _hallucinateMoves) {
+        hallucinate = _hallucinate;
+        hallucinateMoves = _hallucinateMoves;
     }
 
     public void debugObjectGrid(int x, int y) {
@@ -247,6 +257,10 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
 
+        if (hallucinate) {
+            ch = hallucinateAction(ch);
+        }
+
         terminal.write(ch, x, y);
         terminal.repaint();
     }
@@ -267,5 +281,88 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
         return null;
+    }
+
+    public int checkIndex(int i, int length) {
+        int new_i = i;
+        if (i >= length) {
+            new_i -= length;
+        }
+        return new_i;
+    }
+
+    public char changeCharacter(char ch, int i) {
+        char new_ch;
+        switch(ch) {
+            case 'X':
+                new_ch = displayableCharacters[checkIndex(i + 0, displayableCharacters.length)];
+                break;
+            case '#':
+                new_ch = displayableCharacters[checkIndex(i + 1, displayableCharacters.length)];
+                break;
+            case '.':
+                new_ch = displayableCharacters[checkIndex(i + 2, displayableCharacters.length)];
+                break;
+            case '+':
+                new_ch = displayableCharacters[checkIndex(i + 3, displayableCharacters.length)];
+                break;
+            case 'S':
+                new_ch = displayableCharacters[checkIndex(i + 4, displayableCharacters.length)];
+                break;
+            case 'T':
+                new_ch = displayableCharacters[checkIndex(i + 5, displayableCharacters.length)];
+                break;
+            case 'H':
+                new_ch = displayableCharacters[checkIndex(i + 6, displayableCharacters.length)];
+                break;
+            case '@':
+                new_ch = displayableCharacters[checkIndex(i + 7, displayableCharacters.length)];
+                break;
+            case ']':
+                new_ch = displayableCharacters[checkIndex(i + 8, displayableCharacters.length)];
+                break;
+            case ')':
+                new_ch = displayableCharacters[checkIndex(i + 9, displayableCharacters.length)];
+                break;
+            case '?':
+                new_ch = displayableCharacters[checkIndex(i + 10, displayableCharacters.length)];
+                break;
+            default:
+                new_ch = ch;
+                break;
+        }
+        return new_ch;
+    }
+
+    public char hallucinateAction(char ch) {
+        char new_ch;
+
+        if (hallucinateMoves == 0) {
+            for (int x = 0; x < objectGrid.length; x++) {
+                for (int y = 0; y < objectGrid[0].length; y++) {
+                    char displayed_ch = objectGrid[x][y].lastElement().getChar();
+                    terminal.write(displayed_ch, x, y);
+                }
+            }
+            hallucinate = false;
+            new_ch = ch;
+        }
+        else {
+            Random rand = new Random();
+            int i = rand.nextInt(displayableCharacters.length - 1);
+
+            for (int x = 0; x < objectGrid.length; x++) {
+                for (int y = 0; y < objectGrid[0].length; y++) {
+                    char displayed_ch = objectGrid[x][y].lastElement().getChar();
+                    char new_displayed_ch = changeCharacter(displayed_ch, i);
+                    terminal.write(new_displayed_ch, x, y);
+                }
+            }
+            new_ch = changeCharacter(ch, i);
+            System.out.println("Moves: " + hallucinateMoves);
+        }
+
+        hallucinateMoves--;
+        return new_ch;
     }
 }

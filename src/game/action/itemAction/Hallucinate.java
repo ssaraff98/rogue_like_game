@@ -17,9 +17,6 @@ public class Hallucinate extends ItemAction {
     public void performAction() {
         ObjectDisplayGrid displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
         displayGrid.displayStringToTerminal("Info: You start hallucinating for the next " + getIntValue() + " turns!", 0, displayGrid.getTotalHeight() - 1);
-
-        for (int i = 0; i < getIntValue(); i++) {
-
-        }
+        displayGrid.setHallucination(true, getIntValue());
     }
 }
