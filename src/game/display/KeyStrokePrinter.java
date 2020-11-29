@@ -90,6 +90,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'd':
                         processing = false;
                         item_number = getNextInt();
+                        System.out.println(item_number+" ITEM NUMBER");
                         Item item = displayGrid.getMainPlayer().removeFromInventory(item_number);
                         if (item == null) {
                             displayGrid.displayStringToTerminal("Info: No item to be found at position " + item_number, 0, displayGrid.getTotalHeight() - 1);

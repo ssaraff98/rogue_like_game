@@ -144,6 +144,10 @@ public class XMLHandler extends DefaultHandler {
             if(name.equalsIgnoreCase("YouWin")) {
                 action = new YouWin(name, creature);
             }
+            if(name.equalsIgnoreCase("DropPack")) {
+                System.out.println("REACHED FOR DROPPACK ACTION");
+                action = new DropPack(name, creature);
+            }
 
             action.setName(name);
             action.setType(type);

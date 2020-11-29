@@ -129,6 +129,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
         displayStringToTerminal("Pack: ", 0, totalHeight - 1 - 2);
+        displayStringToTerminal(" ", 0, totalHeight - 2);
         displayStringToTerminal("Info: ", 0, totalHeight - 1);
     }
 
