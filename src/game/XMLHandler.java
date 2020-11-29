@@ -9,6 +9,7 @@ import game.action.creatureAction.UpdateDisplay;
 import game.action.creatureAction.YouWin;
 import game.action.creatureAction.playerAction.DropPack;
 import game.action.creatureAction.playerAction.EndGame;
+import game.action.creatureAction.playerAction.EmptyPack;
 import game.action.itemAction.BlessArmor;
 import game.action.itemAction.Hallucinate;
 import game.action.itemAction.ItemAction;
@@ -147,6 +148,10 @@ public class XMLHandler extends DefaultHandler {
             if(name.equalsIgnoreCase("DropPack")) {
                 System.out.println("REACHED FOR DROPPACK ACTION");
                 action = new DropPack(name, creature);
+            }
+            if(name.equalsIgnoreCase("EmptyPack")) {
+                System.out.println("REACHED FOR Empty Pack Action");
+                action = new EmptyPack(name, creature);
             }
 
             action.setName(name);
