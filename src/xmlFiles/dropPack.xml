@@ -14,7 +14,7 @@
                 <hp>100</hp>
                 <maxhit>1</maxhit>
                 <hpMoves>5</hpMoves>
-                <CreatureAction name="EmptyPack" type="hit">
+                <CreatureAction name="DropPack" type="hit">
                     <actionMessage>You have dropped an item from your pack!</actionMessage>
                 </CreatureAction>
             </Player>
@@ -42,7 +42,7 @@
                 <visible>1</visible>
                 <posX>4</posX>
                 <posY>2</posY>
-                <ItemIntValue>10</ItemIntValue>
+                <ItemIntValue>5</ItemIntValue>
             </Armor>
             <Sword name="+5 Sword" room="1" serial="3">
                 <visible>1</visible>

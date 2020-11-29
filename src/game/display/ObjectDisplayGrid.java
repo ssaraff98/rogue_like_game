@@ -111,7 +111,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
 
     public void setHallucination(boolean _hallucinate, int _hallucinateMoves) {
         hallucinate = _hallucinate;
-        hallucinateMoves = _hallucinateMoves;
+        hallucinateMoves = _hallucinateMoves + 5;
     }
 
     public void debugObjectGrid(int x, int y) {
@@ -361,7 +361,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             new_ch = changeCharacter(ch, i);
             System.out.println("Moves: " + hallucinateMoves);
         }
-
+//        System.out.println("CHECK");
         hallucinateMoves--;
         return new_ch;
     }

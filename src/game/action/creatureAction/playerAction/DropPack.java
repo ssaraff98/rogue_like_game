@@ -20,7 +20,6 @@ public class DropPack extends CreatureAction {
         System.out.println("DropPack Name:" + _name + " Dropack owner:"+_owner);
     }
     public void performAction() {
-        System.out.println("DROPPPPPPPPPPPPPPPPPPPPPPPACKKKKKKKKKKKKKKKKKK");
         int x = this.owner2.getPosX();
         int y = this.owner2.getPosY();
         ObjectDisplayGrid displayGrid;
@@ -28,7 +27,8 @@ public class DropPack extends CreatureAction {
         int sizeofInv = this.owner2.getInventory().size();
         if (sizeofInv == 0) {
             System.out.println("size is 0");
-        } else {
+        }
+        else {
             int item_number = 0;
             Item item = this.owner2.removeFromInventory(item_number);
             if (item == null) {

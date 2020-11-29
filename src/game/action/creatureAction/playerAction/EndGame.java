@@ -25,7 +25,7 @@ public class EndGame extends CreatureAction {
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
         System.out.println("ENDING GAME INVOKED");
 //        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
-        displayGrid.removeObjectToDisplay(this.owner2.getPosX(), this.owner2.getPosY());
+//        displayGrid.removeObjectToDisplay(this.owner2.getPosX(), this.owner2.getPosY());
         // System.exit(0);
 //        displayGrid.removeObjectToDisplay(this.owner.getPosX(),this.owner.getPosY());
     }
