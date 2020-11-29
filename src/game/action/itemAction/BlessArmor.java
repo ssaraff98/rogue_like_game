@@ -41,6 +41,7 @@ public class BlessArmor extends ItemAction {
                 displayGrid.displayStringToTerminal("Info: Scroll has no effect", 0, displayGrid.getTotalHeight() - 1);
             }
             playerEquip.setIntValue(playerEquip.getIntValue() + bless_value);
+            playerEquip.setName("playerEquip.getIntValue() " + playerEquip.getName());
         }
     }
 }

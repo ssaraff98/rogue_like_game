@@ -48,18 +48,27 @@ public class Player extends Creature {
 
     public Item getWeapon() { return this.sword; }
 
-    public boolean equipWeapon(int item_number) {
+    public void equipWeapon(int item_number) {
+        ObjectDisplayGrid displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
+
         if (inventory.size() >= MAX_PACK_SIZE) {
-            System.out.println("Item number entered exceeds maximum pack size.");
-            return false;
+            displayGrid.displayStringToTerminal("Info: Item number entered exceeds maximum pack size", 0, displayGrid.getTotalHeight() - 1);
+            return;
+        }
+        else if (inventory.get(item_number).getType() != ')') {
+            displayGrid.displayStringToTerminal("Info: Item chosen is not a sword", 0, displayGrid.getTotalHeight() - 1);
+            return;
+        }
+        else if (this.sword != null && this.sword.equals(inventory.get(item_number))) {
+            displayGrid.displayStringToTerminal("Info: Item chosen was already equipped", 0, displayGrid.getTotalHeight() - 1);
+            return;
         }
 
         if (this.sword != null && !this.sword.equals(inventory.get(item_number))) {
             inventory.add(this.sword);
         }
         this.sword = inventory.get(item_number);
-        inventory.remove(item_number);
-        return true;
+        displayGrid.displayStringToTerminal("Info: Equipped " + this.sword.getName(), 0, displayGrid.getTotalHeight() - 1);
     }
 
     public void setWeapon(Item _sword) {
@@ -69,18 +78,28 @@ public class Player extends Creature {
 
     public Item getArmor() { return this.armor; }
 
-    public boolean equipArmor(int item_number) {
+    public void equipArmor(int item_number) {
+        ObjectDisplayGrid displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
+        Item item = inventory.get(item_number);
+
         if (inventory.size() >= MAX_PACK_SIZE) {
-            System.out.println("Item number entered exceeds maximum pack size.");
-            return false;
+            displayGrid.displayStringToTerminal("Info: Item number entered exceeds maximum pack size", 0, displayGrid.getTotalHeight() - 1);
+            return;
+        }
+        else if (item.getType() != ']') {
+            displayGrid.displayStringToTerminal("Info: Item chosen is not an armor", 0, displayGrid.getTotalHeight() - 1);
+            return;
+        }
+        else if (this.armor != null && this.armor.equals(inventory.get(item_number))) {
+            displayGrid.displayStringToTerminal("Info: Item chosen was already equipped", 0, displayGrid.getTotalHeight() - 1);
+            return;
         }
 
-        if (this.armor != null && !this.armor.equals(inventory.get(item_number))) {
+        if (this.armor != null && !this.armor.equals(item)) {
             inventory.add(this.armor);
         }
-        this.armor = inventory.get(item_number);
-        inventory.remove(item_number);
-        return true;
+        this.armor = item;
+        displayGrid.displayStringToTerminal("Info: Equipped " + this.armor.getName(), 0, displayGrid.getTotalHeight() - 1);
     }
 
     public void setArmor(Item _armor) {

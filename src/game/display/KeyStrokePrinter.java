@@ -168,25 +168,13 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 't':
                         processing = false;
                         item_number = getNextInt();
-                        System.out.println("Item number: " + item_number);
-                        if (displayGrid.getMainPlayer().equipWeapon(item_number)) {
-                            displayGrid.displayStringToTerminal("Info: Equipped sword", 0, displayGrid.getTotalHeight() - 1);
-                        }
-                        else {
-                            displayGrid.displayStringToTerminal("Info: Item number entered exceeds maximum pack size", 0, displayGrid.getTotalHeight() - 1);
-                        }
+                        displayGrid.getMainPlayer().equipWeapon(item_number);
                         processing = true;
                         break;
                     case 'w':
                         processing = false;
                         item_number = getNextInt();
-                        System.out.println("Item number: " + item_number);
-                        if (displayGrid.getMainPlayer().equipArmor(item_number)) {
-                            displayGrid.displayStringToTerminal("Info: Equipped armor", 0, displayGrid.getTotalHeight() - 1);
-                        }
-                        else {
-                            displayGrid.displayStringToTerminal("Info: Item number entered exceeds maximum pack size", 0, displayGrid.getTotalHeight() - 1);
-                        }
+                        displayGrid.getMainPlayer().equipArmor(item_number);
                         processing = true;
                         break;
                     case '0':
@@ -369,17 +357,17 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             int playerDamage = player.performBeingHitActions(monster);
             displayGrid.displayStringToTerminal("Info: Damage to player is " + playerDamage + " HP", 0, displayGrid.getTotalHeight() - 1);
         }
-//        else {
+        else {
 //            displayGrid.removeObjectToDisplay(creature_x, creature_y);
 //            displayGrid.removeObjectToDisplay(creature_x, creature_y);
 //            displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
-//            // remove monster from dungeon creature list
-//        }
+            // remove monster from dungeon creature list
+        }
 
         if (player.getHp() <= 0) {
 //            displayGrid.removeObjectToDisplay(player_x, player_y);
             System.out.println("Ending game");
-//            return false;
+            // return false;
             // exit the game
             // player death
         }

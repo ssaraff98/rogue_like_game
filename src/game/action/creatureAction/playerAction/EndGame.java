@@ -18,6 +18,7 @@ public class EndGame extends CreatureAction {
 
         System.out.println("Endgame Name: " + _name + " Owner: "+owner2);
     }
+
     @Override
     public void performAction() {
         ObjectDisplayGrid displayGrid;
@@ -25,7 +26,7 @@ public class EndGame extends CreatureAction {
         System.out.println("ENDING GAME INVOKED");
 //        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
         displayGrid.removeObjectToDisplay(this.owner2.getPosX(), this.owner2.getPosY());
-        System.exit(0);
+        // System.exit(0);
 //        displayGrid.removeObjectToDisplay(this.owner.getPosX(),this.owner.getPosY());
     }
 }
