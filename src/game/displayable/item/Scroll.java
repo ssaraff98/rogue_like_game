@@ -11,8 +11,6 @@ public class Scroll extends Item {
         this.read = false;
     }
 
-    public String getName() { return this.name; }
-
     public void setID(int _room, int _serial) {
         this.room = _room;
         this.serial = _serial;

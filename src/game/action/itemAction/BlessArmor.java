@@ -2,6 +2,7 @@ package game.action.itemAction;
 
 import game.action.Action;
 import game.display.ObjectDisplayGrid;
+import game.displayable.Displayable;
 import game.displayable.creature.Player;
 import game.displayable.item.Item;
 
@@ -41,7 +42,13 @@ public class BlessArmor extends ItemAction {
                 displayGrid.displayStringToTerminal("Info: Scroll has no effect", 0, displayGrid.getTotalHeight() - 1);
             }
             playerEquip.setIntValue(playerEquip.getIntValue() + bless_value);
-            playerEquip.setName("playerEquip.getIntValue() " + playerEquip.getName());
+
+            if (playerEquip.getType() == ')') {
+                playerEquip.setName((playerEquip.getIntValue() > 0 ? "+" : "") + playerEquip.getIntValue() + " Sword" + (player.getWeapon().equals(playerEquip) ? " (w)" : ""));
+            }
+            else if (playerEquip.getType() == ']') {
+                playerEquip.setName((playerEquip.getIntValue() > 0 ? "+" : "") + playerEquip.getIntValue() + " Armor" + (player.getArmor().equals(playerEquip) ? " (a)" : ""));
+            }
         }
     }
 }

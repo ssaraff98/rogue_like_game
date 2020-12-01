@@ -25,6 +25,7 @@ public class Player extends Creature {
     private int room;
     private int serial;
     private int moves;
+    private boolean receiveInput = true;
     private Char charStandingOn = new Char('.');
 
     private Item sword;
@@ -42,6 +43,14 @@ public class Player extends Creature {
     public void setID(int _room, int _serial) {
         this.room = _room;
         this.serial = _serial;
+    }
+
+    public void setReceiveInput(boolean value) {
+        this.receiveInput = value;
+    }
+
+    public boolean getReceiveInput() {
+        return this.receiveInput;
     }
 
     public int getRoom() { return this.room; }
@@ -65,14 +74,17 @@ public class Player extends Creature {
         }
 
         if (this.sword != null && !this.sword.equals(inventory.get(item_number))) {
+            this.sword.setName((this.sword.getIntValue() > 0 ? "+" : "") + this.sword.getIntValue() + " Sword");
             inventory.add(this.sword);
         }
         this.sword = inventory.get(item_number);
+        this.sword.setName(this.sword.getName() + " (w)");
         displayGrid.displayStringToTerminal("Info: Equipped " + this.sword.getName(), 0, displayGrid.getTotalHeight() - 1);
     }
 
     public void setWeapon(Item _sword) {
         this.sword = _sword;
+        this.sword.setName(this.sword.getName() + " (w)");
         inventory.add(sword);
     }
 
@@ -96,14 +108,17 @@ public class Player extends Creature {
         }
 
         if (this.armor != null && !this.armor.equals(item)) {
+            this.armor.setName((this.armor.getIntValue() > 0 ? "+" : "") + this.armor.getIntValue() + " Armor");
             inventory.add(this.armor);
         }
         this.armor = item;
+        this.armor.setName(this.armor.getName() + " (a)");
         displayGrid.displayStringToTerminal("Info: Equipped " + this.armor.getName(), 0, displayGrid.getTotalHeight() - 1);
     }
 
     public void setArmor(Item _armor) {
         this.armor = _armor;
+        this.armor.setName(this.armor.getName() + " (a)");
         inventory.add(armor);
     }
 
@@ -141,9 +156,16 @@ public class Player extends Creature {
     }
 
     public Item removeFromInventory(int item_number) {
-        if (inventory.size() >= item_number) {
+        if (inventory.size() - 1 >= item_number) {
             Item item = inventory.get(item_number);
             inventory.remove(item_number);
+
+            if (item.equals(this.sword)) {
+                item.setName((item.getIntValue() > 0 ? "+" : "") + item.getIntValue() + " Sword");
+            }
+            else if (item.equals(this.armor)) {
+                item.setName((item.getIntValue() > 0 ? "+" : "") + item.getIntValue() + " Armor");
+            }
             return item;
         }
         return null;

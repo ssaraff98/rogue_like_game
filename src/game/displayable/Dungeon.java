@@ -84,11 +84,14 @@ public class Dungeon extends Displayable implements Runnable {
             }
 
             if(x == item_x && y == item_y && ch == item_type) {
-                // items.remove(i);
                 return i;
             }
         }
         return null;
+    }
+
+    public void removeItem(Item _item) {
+        items.remove(_item);
     }
 
     public void addPassage(Passage _passage) { passages.add(_passage); }

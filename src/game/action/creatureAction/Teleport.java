@@ -18,24 +18,41 @@ public class Teleport extends CreatureAction {
 
     @Override
     public void performAction() {
-        System.out.println("Teleport action IMPLEMENTED"+ this.owner.getPosX() + this.owner.getPosY());
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
+        ArrayList<Integer> x_pos = displayGrid.xValues;
+        ArrayList<Integer> y_pos = displayGrid.yValues;
+        Random randNum = new Random();
+
         System.out.println(getMessage());
-        displayGrid.displayStringToTerminal("Info: "+getMessage(), 0, displayGrid.getTotalHeight() - 1);
+        displayGrid.displayStringToTerminal("Info: " + getMessage(), 0, displayGrid.getTotalHeight() - 1);
+
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.addObjectToDisplay(new Char('.'), this.owner.getPosX(), this.owner.getPosY());
-        ArrayList<Integer> xValues = displayGrid.xValues;
-        ArrayList<Integer> yValues = displayGrid.yValues;
-        int lengthoflist = xValues.size();
-        Random randNum = new Random();
-        int nxt = randNum.nextInt(lengthoflist);
-        int Xval = xValues.get(nxt);
-        int Yval = yValues.get(nxt);
-        System.out.println("XYVal " + Xval+"  "+Yval);
-        displayGrid.addObjectToDisplay(new Char(this.owner.getType()),Xval, Yval);
-        this.owner.setPosX(Xval);
-        this.owner.setPosY(Yval);
+
+//        int nxt = randNum.nextInt(xValues.size());
+//        int Xval = xValues.get(nxt);
+//        int Yval = yValues.get(nxt);
+
+        int x = -1;
+        int y = -1;
+
+        do {
+            int i = randNum.nextInt(x_pos.size());
+            x = x_pos.get(i);
+            y = y_pos.get(i);
+            System.out.println("x: " + x + " y:" + y);
+        }
+        while (!displayGrid.checkPosition(x, y));
+
+        if (x == -1 && y == -1) {
+            System.out.println("Could not find position to teleport monster");
+            return;
+        }
+
+        displayGrid.addObjectToDisplay(new Char(this.owner.getType()), x, y);
+        this.owner.setPosX(x);
+        this.owner.setPosY(y);
     }
 }

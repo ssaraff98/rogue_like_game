@@ -13,9 +13,6 @@ public class ChangeDisplayedType extends CreatureAction {
         super(_owner);
         name = _name;
         owner = _owner;
-
-        System.out.println("Creature Name: " + _name + " Creature owner: "+_owner);
-
     }
 
     @Override
@@ -23,7 +20,6 @@ public class ChangeDisplayedType extends CreatureAction {
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
         displayGrid.displayStringToTerminal("Info: ChangeDisplayType Action Implemented", 0, displayGrid.getTotalHeight() - 1);
-        displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.addObjectToDisplay(new Char(getCharValue()), this.owner.getPosX(), this.owner.getPosY());
     }

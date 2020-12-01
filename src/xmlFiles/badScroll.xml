@@ -24,18 +24,18 @@
                 <hp>20</hp>
                 <hpMoves>5</hpMoves>
                 <maxhit>6</maxhit>
-                <Armor name="+5 Armor" room="1" serial="3">
-                    <visible>1</visible>
-                    <posX>1</posX>
-                    <posY>2</posY>
-                    <ItemIntValue>5</ItemIntValue>
-                </Armor>
                 <CreatureAction name="Remove" type="death">
                 </CreatureAction>
                 <CreatureAction name="YouWin" type="death">
                     <actionMessage>You have killed me!  The game is over!</actionMessage>
                     <actionIntValue>5</actionIntValue>
                 </CreatureAction>
+                <Armor name="+5 Armor" room="1" serial="3">
+                    <visible>1</visible>
+                    <posX>1</posX>
+                    <posY>2</posY>
+                    <ItemIntValue>5</ItemIntValue>
+                </Armor>
                 <Sword name="+10 Sword" room="1" serial="3">
                     <visible>1</visible>
                     <posX>5</posX>

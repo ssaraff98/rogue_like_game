@@ -24,7 +24,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         inputQueue = new ConcurrentLinkedQueue<>();
         dungeonBeingParsed = dungeon;
         displayGrid = grid;
-        displayGrid.displayStringToTerminal("HP: " + displayGrid.getMainPlayer().getHp() + "      Score: 0", 0, 0);
+        displayGrid.displayStringToTerminal("HP: " + displayGrid.getMainPlayer().getHp(), 0, 0);
     }
 
     @Override
@@ -81,6 +81,10 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     System.out.println(CLASSID + ".y is " + y);
                 }
 
+                if (!displayGrid.getMainPlayer().getReceiveInput()) {
+                    return false;
+                }
+
                 switch(ch) {
                     case '?':
                         displayGrid.displayStringToTerminal("Info: h,l,k,j,i,?,H,c,d,p,r,t,w,E,0-9. H <cmd> for more info", 0, displayGrid.getTotalHeight() - 1);
@@ -90,8 +94,8 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'd':
                         processing = false;
                         item_number = getNextInt();
-                        System.out.println(item_number+" ITEM NUMBER");
                         Item item = displayGrid.getMainPlayer().removeFromInventory(item_number);
+                        dungeonBeingParsed.addItem(item);
                         if (item == null) {
                             displayGrid.displayStringToTerminal("Info: No item to be found at position " + item_number, 0, displayGrid.getTotalHeight() - 1);
                             break;
@@ -110,8 +114,8 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                         processing = false;
                         next_ch = getNextChar();
                         if (next_ch == 'Y' || next_ch == 'y') {
-                            System.out.println("Ending game");
-                            // quit();
+                            displayGrid.displayStringToTerminal("Info: Ending game", 0, displayGrid.getTotalHeight() - 1);
+                            displayGrid.getMainPlayer().setReceiveInput(false);
                         }
                         else {
                             processing = true;
@@ -138,6 +142,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'k':
                     case 'l':
                         check = moveCharacter(ch, x, y, charStandingOn);
+                        displayGrid.checkHallucinate();
                         if (!check) {
                             processing = false;
                             return false;
@@ -146,6 +151,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
                     case 'p':
                         if (charStandingOn == ')' || charStandingOn == ']' || charStandingOn == '?') {
                             Item itemPicked = dungeonBeingParsed.getItem(x, y, charStandingOn);
+                            dungeonBeingParsed.removeItem(itemPicked);
                             if (itemPicked != null) {
                                 displayGrid.displayStringToTerminal("Info: Item picked " + itemPicked.getName(), 0, displayGrid.getTotalHeight() - 1);
                                 displayGrid.getMainPlayer().addToInventory(itemPicked);
@@ -348,11 +354,12 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         int hp_for_monster = monster.getHp();
         int hp_for_player = player.getHp();
 
-        displayGrid.displayStringToTerminal("HP: " + hp_for_player + "      Score: 0", 0, 0);
+        displayGrid.displayStringToTerminal("HP: " + hp_for_player, 0, 0);
         System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
 
         int damageMonster = monster.performBeingHitActions(player);
-        displayGrid.displayStringToTerminal("Info: Damage to monster" + monster.getType() + " is " + damageMonster + " HP", 0, displayGrid.getTotalHeight() - 1);
+        displayGrid.displayStringToTerminal("Info: Damage to monster " + monster.getType() + " is " + damageMonster + " HP", 0, displayGrid.getTotalHeight() - 1);
+
         if (monster.getHp() > 0) {
             int playerDamage = player.performBeingHitActions(monster);
             displayGrid.displayStringToTerminal("Info: Damage to player is " + playerDamage + " HP", 0, displayGrid.getTotalHeight() - 1);
@@ -362,21 +369,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             displayGrid.removeObjectToDisplay(creature_x, creature_y);
             displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
         }
-//        else {
-////            displayGrid.removeObjectToDisplay(creature_x, creature_y);
-////            displayGrid.removeObjectToDisplay(creature_x, creature_y);
-////            displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
-//            // remove monster from dungeon creature list
-//        }
 
-        if (player.getHp() <= 0) {
-//            displayGrid.removeObjectToDisplay(player_x, player_y);
-            displayGrid.displayStringToTerminal("Info: Ending Game" , 0, displayGrid.getTotalHeight() - 1);
-            System.out.println("Ending game");
-            // return false;
-            // exit the game
-            // player death
-        }
         return true;
     }
 }

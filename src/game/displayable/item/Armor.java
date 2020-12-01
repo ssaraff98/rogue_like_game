@@ -7,8 +7,6 @@ public class Armor extends Item {
 
     public Armor(String _name) { this.name = _name; }
 
-    public String getName() { return this.name; }
-
     public void setID(int _room, int _serial) {
         this.room = _room;
         this.serial = _serial;

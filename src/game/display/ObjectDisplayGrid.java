@@ -109,11 +109,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         return mainMonster;
     }
 
-    public void setHallucination(boolean _hallucinate, int _hallucinateMoves) {
-        hallucinate = _hallucinate;
-        hallucinateMoves = _hallucinateMoves + 5;
-    }
-
     public void debugObjectGrid(int x, int y) {
         System.out.println("objectGrid[" + x + "][" + y + "]: ");
         for(int i = 0; i < objectGrid[x][y].size(); i++) {
@@ -128,7 +123,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 addObjectToDisplay(ch, i, j);
             }
         }
-        displayStringToTerminal("HP:       Score: 0", 0, 0);
+        displayStringToTerminal("HP: ", 0, 0);
     }
 
     public final void bottomDisplay() {
@@ -201,11 +196,12 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         if ((0 <= x) && (x < objectGrid.length)) {
             if ((0 <= y) && (y < objectGrid[0].length)) {
                 if (!objectGrid[x][y].contains(ch)) {
-                    if(ch.getChar() == '.' || ch.getChar() == '#' || ch.getChar() == '+'){
-                        xValues.add(x);
-                        yValues.add(y);
+                    if (!objectGrid[x][y].isEmpty() && objectGrid[x][y].lastElement().getChar() == '@' && (ch.getChar() == ')' || ch.getChar() == ']')) {
+                        // do nothing
                     }
-                    objectGrid[x][y].push(ch);
+                    else {
+                        objectGrid[x][y].push(ch);
+                    }
                 }
                 writeToTerminal(x, y);
             }
@@ -224,7 +220,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
     }
 
     public void writeHp(int hp) {
-        displayStringToTerminal("HP: " + hp + "       Score: 0",0,0);
+        displayStringToTerminal("HP: " + hp,0,0);
     }
 
     public void writeToTerminal(int x, int y) {
@@ -257,8 +253,9 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
 
-        if (hallucinate) {
-            ch = hallucinateAction(ch);
+        if(ch == '.' || ch == '#' || ch == '+') {
+            xValues.add(x);
+            yValues.add(y);
         }
 
         terminal.write(ch, x, y);
@@ -281,6 +278,18 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             }
         }
         return null;
+    }
+
+    public void setHallucination(boolean _hallucinate, int _hallucinateMoves) {
+        hallucinate = _hallucinate;
+        hallucinateMoves = _hallucinateMoves;
+    }
+
+    public void checkHallucinate() {
+        if (hallucinate) {
+            hallucinateAction();
+            hallucinateMoves--;
+        }
     }
 
     public int checkIndex(int i, int length) {
@@ -334,9 +343,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         return new_ch;
     }
 
-    public char hallucinateAction(char ch) {
-        char new_ch;
-
+    public void hallucinateAction() {
         if (hallucinateMoves == 0) {
             for (int x = 0; x < objectGrid.length; x++) {
                 for (int y = 0; y < objectGrid[0].length; y++) {
@@ -345,7 +352,6 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                 }
             }
             hallucinate = false;
-            new_ch = ch;
         }
         else {
             Random rand = new Random();
@@ -358,11 +364,18 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
                     terminal.write(new_displayed_ch, x, y);
                 }
             }
-            new_ch = changeCharacter(ch, i);
-            System.out.println("Moves: " + hallucinateMoves);
         }
-//        System.out.println("CHECK");
-        hallucinateMoves--;
-        return new_ch;
+
+        writeHp(getMainPlayer().getHp());
+        displayStringToTerminal("Pack: ", 0, totalHeight - 1 - 2);
+        displayStringToTerminal("Info: Nothing seems as it is!", 0, totalHeight - 1);
+    }
+
+    public boolean checkPosition(int x, int y) {
+        char ch = objectGrid[x][y].lastElement().getChar();
+        if (ch == '.' || ch == '#' || ch == '+') {
+            return true;
+        }
+        return false;
     }
 }

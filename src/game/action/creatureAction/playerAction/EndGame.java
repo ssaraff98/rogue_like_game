@@ -1,4 +1,5 @@
 package game.action.creatureAction.playerAction;
+
 import game.action.creatureAction.CreatureAction;
 import game.action.Action;
 import game.displayable.creature.Creature;
@@ -15,8 +16,6 @@ public class EndGame extends CreatureAction {
         super(_owner);
         name = _name;
         owner2 = (Player)_owner;
-
-        System.out.println("Endgame Name: " + _name + " Owner: "+owner2);
     }
 
     @Override
@@ -24,9 +23,6 @@ public class EndGame extends CreatureAction {
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
         System.out.println("ENDING GAME INVOKED");
-//        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
-//        displayGrid.removeObjectToDisplay(this.owner2.getPosX(), this.owner2.getPosY());
-        // System.exit(0);
-//        displayGrid.removeObjectToDisplay(this.owner.getPosX(),this.owner.getPosY());
+        owner2.setReceiveInput(false);
     }
 }
