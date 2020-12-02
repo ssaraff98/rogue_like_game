@@ -5,7 +5,6 @@ import game.displayable.creature.Creature;
 import game.display.ObjectDisplayGrid;
 import game.display.Char;
 
-
 public class Remove extends CreatureAction {
     private String name;
     private Creature owner;

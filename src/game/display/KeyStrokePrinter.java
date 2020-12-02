@@ -11,15 +11,17 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.ArrayList;
 
+// Getting keyboard inputs from player
 public class KeyStrokePrinter implements InputObserver, Runnable {
     private static int DEBUG = 1;
     private static String CLASSID = "KeyStrokePrinter";
-    private static final int MAX_PACK_SIZE = 10;
+    private static final int MAX_PACK_SIZE = 10;            // Maximum number of items allowed in player pack
 
-    private static Queue<Character> inputQueue = null;
-    private Dungeon dungeonBeingParsed;
-    private ObjectDisplayGrid displayGrid;
+    private static Queue<Character> inputQueue = null;      // Queue to store successive inputs made by player
+    private Dungeon dungeonBeingParsed;                     // Object reference for dungeon map being used
+    private ObjectDisplayGrid displayGrid;                  // Object reference for grid to display game on terminal
 
+    // Constructor
     public KeyStrokePrinter(ObjectDisplayGrid grid, Dungeon dungeon) {
         inputQueue = new ConcurrentLinkedQueue<>();
         dungeonBeingParsed = dungeon;
@@ -27,6 +29,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         displayGrid.displayStringToTerminal("HP: " + displayGrid.getMainPlayer().getHp(), 0, 0);
     }
 
+    // Getting keyboard character inputs
     @Override
     public void observerUpdate(char ch) {
         if (DEBUG > 0) {
@@ -35,6 +38,7 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         inputQueue.add(ch);
     }
 
+    // Calling function that processes input for game
     @Override
     public void run() {
         displayGrid.registerInputObserver(this);
@@ -49,11 +53,11 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         try {
             Thread.sleep(20);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
+    // Mapping keyboard inputs to available player functions
     public boolean processInput(boolean is_H) {
         char ch;
         boolean processing = true;
@@ -295,7 +299,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         if (item_number < 0 || item_number >= MAX_PACK_SIZE) {
             displayGrid.displayStringToTerminal("Info: Invalid input. Item number must be between 0-" + (MAX_PACK_SIZE - 1), 0, displayGrid.getTotalHeight() - 1);
         }
-
         return item_number;
     }
 
@@ -355,7 +358,9 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
         int hp_for_player = player.getHp();
 
         displayGrid.displayStringToTerminal("HP: " + hp_for_player, 0, 0);
-        System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
+        if (DEBUG > 1) {
+            System.out.println("HP Monster: "+ hp_for_monster + " Player HP: "+ hp_for_player);
+        }
 
         int damageMonster = monster.performBeingHitActions(player);
         displayGrid.displayStringToTerminal("Info: Damage to monster " + monster.getType() + " is " + damageMonster + " HP", 0, displayGrid.getTotalHeight() - 1);
@@ -369,7 +374,6 @@ public class KeyStrokePrinter implements InputObserver, Runnable {
             displayGrid.removeObjectToDisplay(creature_x, creature_y);
             displayGrid.addObjectToDisplay(new Char('.'), creature_x, creature_y);
         }
-
         return true;
     }
 }

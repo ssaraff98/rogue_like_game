@@ -2,10 +2,10 @@ package game.action.creatureAction.playerAction;
 
 import game.action.creatureAction.CreatureAction;
 import game.action.Action;
-import game.displayable.creature.Creature;
-import game.displayable.creature.Player;
 import game.display.ObjectDisplayGrid;
 import game.display.Char;
+import game.displayable.creature.Creature;
+import game.displayable.creature.Player;
 
 public class EndGame extends CreatureAction {
     private String name;

@@ -17,7 +17,6 @@ public class UpdateDisplay extends CreatureAction {
 
     @Override
     public void performAction() {
-        System.out.println("Performing action for Update Display");
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
         displayGrid.writeToTerminal(this.owner.getPosX(), this.owner.getPosY());
