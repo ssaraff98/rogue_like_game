@@ -14,7 +14,7 @@
                 <hp>1</hp>
                 <hpMoves>5</hpMoves>
                 <maxhit>6</maxhit>
-                <Armor name="+10 Armor" room="1" serial="2">
+                <Armor name="+2 Armor" room="1" serial="2">
                     <visible>1</visible>
                     <ItemIntValue>2</ItemIntValue>
                 </Armor>
