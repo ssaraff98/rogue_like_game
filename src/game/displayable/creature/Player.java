@@ -162,9 +162,11 @@ public class Player extends Creature {
 
             if (item.equals(this.sword)) {
                 item.setName((item.getIntValue() > 0 ? "+" : "") + item.getIntValue() + " Sword");
+                this.sword = null;
             }
             else if (item.equals(this.armor)) {
                 item.setName((item.getIntValue() > 0 ? "+" : "") + item.getIntValue() + " Armor");
+                this.armor = null;
             }
             return item;
         }

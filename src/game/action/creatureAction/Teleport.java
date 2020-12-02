@@ -31,10 +31,6 @@ public class Teleport extends CreatureAction {
         displayGrid.removeObjectToDisplay(this.owner.getPosX(), this.owner.getPosY());
         displayGrid.addObjectToDisplay(new Char('.'), this.owner.getPosX(), this.owner.getPosY());
 
-//        int nxt = randNum.nextInt(xValues.size());
-//        int Xval = xValues.get(nxt);
-//        int Yval = yValues.get(nxt);
-
         int x = -1;
         int y = -1;
 
