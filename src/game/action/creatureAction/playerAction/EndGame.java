@@ -22,7 +22,6 @@ public class EndGame extends CreatureAction {
     public void performAction() {
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
-        System.out.println("ENDING GAME INVOKED");
         owner2.setReceiveInput(false);
     }
 }

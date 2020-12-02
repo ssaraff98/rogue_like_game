@@ -20,23 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b869b27-1011-490e-9da2-eeb21968fc2f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rogue_like_game.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/ChangeDisplayedType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/ChangeDisplayedType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/Teleport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/UpdateDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/creatureAction/playerAction/EndGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/action/itemAction/BlessArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/action/itemAction/BlessArmor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/KeyStrokePrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/display/ObjectDisplayGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/Dungeon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/creature/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Scroll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Scroll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/displayable/item/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/displayable/item/Sword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xmlFiles/badScroll.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/xmlFiles/badScroll.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xmlFiles/hallucinate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/xmlFiles/hallucinate.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
