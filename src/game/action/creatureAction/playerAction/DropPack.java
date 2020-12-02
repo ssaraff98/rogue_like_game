@@ -1,11 +1,11 @@
 package game.action.creatureAction.playerAction;
 
-import game.action.creatureAction.CreatureAction;
-import game.displayable.creature.Creature;
-import game.displayable.creature.Player;
 import game.action.Action;
+import game.action.creatureAction.CreatureAction;
 import game.display.ObjectDisplayGrid;
 import game.display.Char;
+import game.displayable.creature.Creature;
+import game.displayable.creature.Player;
 import game.displayable.item.Item;
 
 public class DropPack extends CreatureAction {
@@ -17,16 +17,18 @@ public class DropPack extends CreatureAction {
         super(_owner);
         name = _name;
         owner2 = (Player)_owner;
-        System.out.println("DropPack Name:" + _name + " Dropack owner:"+_owner);
     }
+
+    @Override
     public void performAction() {
-        int x = this.owner2.getPosX();
-        int y = this.owner2.getPosY();
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0, 0, 0, 0);
-        int sizeofInv = this.owner2.getInventory().size();
-        if (sizeofInv == 0) {
-            System.out.println("size is 0");
+
+        int x = this.owner2.getPosX();
+        int y = this.owner2.getPosY();
+
+        if (this.owner2.getInventory().size() == 0) {
+            displayGrid.displayStringToTerminal("Info: No item in the pack", 0, displayGrid.getTotalHeight() - 1);
         }
         else {
             int item_number = 0;
@@ -37,8 +39,7 @@ public class DropPack extends CreatureAction {
                 item.setPosX(x);
                 item.setPosY(y);
 
-                System.out.println("ITEM DROPPED FROM ACTION");
-                displayGrid.displayStringToTerminal("Info: Item dropped " + item.getName() + " at (" + item.getPosX() + ", " + item.getPosY() + ")", 0, displayGrid.getTotalHeight() - 1);
+                displayGrid.displayStringToTerminal("Info: Item " + item.getName() + " dropped at (" + item.getPosX() + ", " + item.getPosY() + ")", 0, displayGrid.getTotalHeight() - 1);
                 displayGrid.removeObjectToDisplay(x, y);
                 displayGrid.addObjectToDisplay(new Char(item.getType()), x, y);
                 displayGrid.getMainPlayer().setCharStandingOn(displayGrid.getDisplayChar(x, y));

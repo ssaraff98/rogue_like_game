@@ -60,23 +60,4 @@ public class Monster extends Creature {
         }
         return damage;
     }
-
-//    @Override
-//    protected void performMoveActions(int x, int y, Displayble moveToObject) {
-//        moveCount = ++moveCount % hpMoves;
-//        if (moveCount == 0) {
-//            setHp(hp++);
-//            ObjectDisplayGrid.writeHp(hp);
-//        }
-//        moveToObject.performBeingHitActions(this);
-//    }
-//
-//    @Override
-//    protected void performDeathActions(Displayble attacker) {
-//        displayGrid.showDisplayableGridPoint(this.getPosX(), this.getPosY(), 0);
-//        for (CreatureAction action : deathActions) {
-//            action.performAction();
-//        }
-//        displayGrid.writeHp(hp);
-//    }
 }

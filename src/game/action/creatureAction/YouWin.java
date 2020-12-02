@@ -20,9 +20,5 @@ public class YouWin extends CreatureAction {
         ObjectDisplayGrid displayGrid;
         displayGrid = ObjectDisplayGrid.getObjectDisplayGrid(0,0,0,0);
         displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
-//        System.out.println(getMessage());
-//        displayGrid.displayStringToTerminal(getMessage(), 0, displayGrid.getTotalHeight() - 1);
-//        System.out.println("You Win Implemented");
-
     }
 }

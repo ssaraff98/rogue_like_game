@@ -1,8 +1,9 @@
 package game.action.creatureAction;
 
-import game.displayable.creature.Creature;
 import game.display.ObjectDisplayGrid;
 import game.display.Char;
+import game.displayable.creature.Creature;
+
 import java.util.ArrayList;
 import java.util.Random;
 
